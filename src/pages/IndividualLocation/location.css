@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section.hero .heart-and-back-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1em;
+  margin-left: 3em;
+}
+.image {
+  margin-left: 2.5em;
+  vertical-align: middle;
+}
+section.hero .heart-and-back-btn button {
+  border: 0px;
+  background-color: transparent;
+}
+.contact-and-location{
+  padding-top: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.contact-and-location .location-address {
+  margin-top: 1em;
+}
+
+section.hero .heart-and-back-btn label {
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+section.hero .heart-and-back-btn label.back-btn {
+  padding-right: 2em;
+}
+
+.heart {
+  margin-left: 2.5em;
+}
+
+section.hero .main-hero {
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+section.hero .main-hero .image-for-destination {
+  display: flex;
+  width: 30%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section.hero .main-hero .destination-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 10%;
+  width: auto;
+}
+
+
+section.hero .main-hero .destination-info .destination-name {
+  font-size: 1.5em;
+  padding: 0em 0em 2em 0em;
+}
+
+section.hero .main-hero .destination-info .destination-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  
+  height: 20%;
+}
+.review-section h1 {
+  color: #283c64;
+}
+.distributions-not-available{
+  margin-top: 1em;
+  margin-left:1em;
+  font-style: italic;
+}
+.written-and-general-review {
+  display: flex;
+  flex-direction: row;
+  gap: 10em;
+}
+.general-review {
+  align-content: center;
+  vertical-align: middle;
+}
+.review-distributions {
+  font-size: 2.5em;
+}
+.general-review h2 {
+  margin: 0em;
+}
+th {
+  padding-right: .5em;
+}
+
+.general-review progress {
+  accent-color: #ffc107;
+  
+}
+.title-of-review {
+  margin-bottom: .5em;
+  margin-top: .5em;
+  border: 1px solid #888;
+  font-size: 25px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+
+}
+.writing-area  {
+  margin-bottom: 1em;
+  border: 1px solid #888;
+  resize:none;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+.review-submit{
+  background-color: var(--primary-color); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+}
+.if-not-logged-in-review {
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+section.hero .main-hero .destination-info .criteria-of-destination {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+section.hero .main-hero .destination-info .criteria-of-destination h5 {
+  font-size: 1em;
+}
+
+section.contact-info .container {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #2e2d2d;
+  color: white;
+}
+
+.contact-info .container h5 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.contact-info .container ul {
+  margin: 0em;
+}
+
+.contact-info .container div {
+  padding: 0 5em 0 5em;
+}
+
+.contact-info .container div li {
+  list-style: none;
+  padding: 1em 0 1em 0;
+}
+.navbar nav .return-home:hover {
+  font-weight: bold;
+}
+.navbar nav .myacc:hover {
+  font-weight: bold;
+}
+
+.make-a-review {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.star-radio {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+  
+}
+/*# sourceMappingURL=location.css.map */

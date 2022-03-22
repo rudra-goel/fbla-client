@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+}
+
+.navbar {
+  padding: .5em 1em .75em 1.5em;
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 0 .5em 0 var(--mediumgray-color);
+}
+
+.navbar .logo {
+  text-decoration: none;
+  padding-top: .4em;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar .logo span {
+  color: var(--primary-color);
+}
+
+.navbar nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar nav a.register {
+  background-color: var(--primary-color);
+  color: white;
+  padding: .5em .75em;
+  border-radius: 2em;
+}
+
+.navbar nav a.register:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
+.navbar nav .top-left {
+  padding: 1em 0 0 3em;
+  font-size: 1em;
+}
+
+.navbar nav .top-left:hover {
+  font-weight: bold;
+}
+
+.navbar nav .top-right {
+  margin-left: auto;
+  padding-top: 1em;
+  padding-right: 2em;
+}
+
+
+.register{
+  
+  /* position: absolute; */
+  left: 50%;
+  text-align: center;
+  /* background-color: var(--secondary-color); */
+  color: black;
+  padding: .5em .75em;
+  border-radius: 2em;
+} 
+
+.createAcc a.register:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
+.hero .specificformat{
+  padding: 1em;
+  margin-bottom: 3em;
+  height: 40em;
+}
+
+.hero .container h1 {
+  margin: 0em;
+  font-size: 3em;
+  text-align: center;
+  color: var(--primary-color);
+  padding: .5em 0 .25em 0;
+}
+
+.hero .container .enter-credentials {
+  /*
+  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
+          box-shadow: 0 2px 4px 0 #857d7d;
+  */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  height: 50%;
+  width: 65%;
+  padding: 1em;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.hero .enter-credentials .credential {
+  padding: .5em;
+  font-size: 1.5em;
+}
+
+.hero .enter-credentials .credential label {
+  padding-right: .5em;
+}
+
+.hero .container .enter-credentials input {
+  border: 2px solid #555;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 2em;
+}
+
+.hero .container .enter-credentials .btn-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 1em 2em 0 0;
+}
+
+.hero .container .enter-credentials button {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  border-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  width: 80px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: color 100ms;
+  transition: color 100ms;
+  vertical-align: baseline;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+}
+
+.hero .container .enter-credentials .btn-login :hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
+/*
+.hero .enter-credentials:hover {
+  -webkit-box-shadow: 0 4px 8px 0 #857d7d;
+          box-shadow: 0 4px 8px 0 #857d7d;
+}
+*/
+
+.contact-info .container {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #2e2d2d;
+  color: white;
+  padding: 1em 4em 2em 4em;
+}
+
+.contact-info .container h5 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.contact-info .container ul {
+  margin: 0em;
+}
+
+.contact-info .container div {
+  padding: 0 5em 0 5em;
+}
+
+.contact-info .container div li {
+  list-style: none;
+  padding: 1em 0 1em 0;
+}
+/*# sourceMappingURL=login.css.map */

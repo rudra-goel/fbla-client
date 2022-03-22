@@ -1,0 +1,461 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  padding: .5em 1em .75em 1.5em;
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 3em;
+  box-shadow: 0 0 .75em 0 var(--mediumgray-color);
+}
+.circular-progress{
+  font-weight: bold;
+}
+/*Logo*/
+.navbar {
+  background-size: 50px;
+  background-image: url('ViewRadoLogo.png');
+  background-repeat: no-repeat;
+  background-origin: content-box;
+} 
+
+.navbar .logo {
+  text-decoration: none;
+  padding-top: .4em;
+  margin-left: 3em;
+  color: black;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.navbar .logo span {
+  color: var(--primary-color);
+}
+
+
+.if-logged-in-navbar label{
+  font-size: 1.5em;
+  padding-top: .3em;
+  padding-right: 1em;
+}
+
+nav.top-left nav.myacc {
+  font-size: 1.5em;
+}
+
+.if-logged-in-navbar button{
+  background-color: var(--primary-color);
+	border-radius:20px;
+	border:1px solid var(--primary-color);
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:1em;
+	padding:.5em .75em;
+  
+	text-decoration:none;
+}
+
+.navbar nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar nav a.login {
+  color: white;
+  padding: .5em .75em;
+  margin-right: 1em;
+  background-color: var(--primary-color);
+}
+
+.navbar nav a.login:hover {
+ font-weight: bold;
+ background-color: var(--hover-color);
+}
+
+.navbar nav .top-left {
+  padding: .5em 0 0 2em;
+  
+}
+.top-left a {
+  padding: .5em 0 0 2em;
+    font-size: 1.25em;
+}
+
+.return-home:hover {
+  font-weight: bold;
+}
+.myAcc {
+  padding: .5em 0 0 2em;
+  font-size: 1.25em;
+}
+
+.myAcc:hover{
+  font-weight: bold;
+}
+
+.navbar nav .top-right {
+  margin-left: auto;
+  padding-top: 1em;
+  padding-right: 2em;
+}
+
+.hero {
+  margin-top: 4.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden; /*stupid horizontal scrollbar */
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+section.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section.hero .bottom-hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.pagination-bar {
+  margin-left: 5em;
+  
+}
+
+
+/*
+Search Bar
+*/
+
+.search-bar-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /*
+  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
+  box-shadow: 0 2px 4px 0 #857d7d;
+  */
+  text-align: center;
+  width: 60%;
+  height: 75%;
+  border: 5px solid white;
+  border-radius: 0.75em; /*2em is wayyy too round */
+}
+
+.search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  height: 20em;
+
+  background-size: 100% 150%;
+  border-radius: 1em;
+  background-image: url('coloradobackground.jpg');
+  background-position: center;
+}
+
+/*
+From Master Branch - incorporate later
+*/
+
+.search-bar .main-searchbar-input-and-button input {
+  width: 60%;
+  border-radius: 1.5em;
+  margin-right: 1em;
+  font-size: large;
+}
+
+.search-bar label.main-searchbar-title {
+  font-family: "Poppins";
+  font-weight: bolder;
+  color: var(--primary-color);
+  font-size: 3em;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.search-bar .main-searchbar-input-and-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+/*
+.search-bar{
+  background-size: 1550px 600px;
+  border-radius: 1em;
+  background-image: url('background.jpg');
+  background-position: center;
+
+}*/
+.search-bar .main-searchbar-input-and-button input {
+  width: 60%;
+  height: 3em;
+  border-radius: 0.55em;
+  margin-right: 1em;
+  font-size: 1.25em;
+  border-color: var(--primary-color);
+}
+
+.search-bar .main-searchbar-input-and-button button {
+  border-radius: 0.5em;
+  border: 5px var(--lightgray-color);
+  background-color: var(--lightgray-color);
+  display: inline-block;
+  cursor: pointer;
+  font-family: 'Poppins';
+  font-size: 15px;
+  padding: .5em .5em;
+  text-decoration: none;
+}
+
+.search-bar .main-searchbar-input-and-button button:hover {
+  border: 5px var(--mediumgray-color);
+  background-color: var(--mediumgray-color);
+}
+
+/*
+SEARCH FILTERS
+*/
+
+.search-criteria {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 3em;
+  padding: 1em;
+  height: 750px;
+  width: 350px;
+  /*
+  border: 2px solid #2c2b2b;
+  border-radius: 1em;
+  */
+}
+
+.search-criteria .container {
+  color: black;
+  padding: 8px;
+
+}
+
+
+.search-criteria .container .SC-name {
+  font-size: 2.25em;
+  font-weight: lighter;
+  text-align: center;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+
+.search-criteria .input-criteria-container {
+  padding: 1em 0em 0em 1em;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-right: 1.5em;
+  border-right: 1.5px solid var(--mediumgray-color);
+}
+
+.search-criteria .input-criteria-container .checkbox-search-criteria,
+.search-criteria .input-criteria-container .search-location,
+.search-criteria .input-criteria-container .demographic,
+.search-criteria .input-criteria-container .seasonal,
+.search-criteria .input-criteria-container .cost {
+  margin-top: .75em;
+  margin-bottom: .5em;
+}
+
+
+/*
+Filter by Activities Section
+*/
+
+.search-criteria .input-criteria-container .checkbox-search-criteria
+{
+  box-sizing: border-box;
+  height: 200px;
+  border-radius: 5px;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.search-criteria .input-criteria-container .checkbox-search-criteria scrollbar {
+  width: 300px;
+}
+
+/*
+Formatting the Scrollbar
+webkit-scrollbar changes the track, thumb, and shape of scrollbar so it's less fugly
+*/
+
+::-webkit-scrollbar-track {
+  /*border: 1px solid;*/
+  padding: 2px;
+  background-color: var(--lightgray-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hover-color);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/*
+Rest of Search Filters
+*/
+
+.search-criteria .input-criteria-container .search-location .location-search-slider .zip-input {
+  margin-left: .5em;
+  width: 100px;
+}
+
+.search-criteria .input-criteria-container .search-location .location-search-slider {
+  margin: .5em;
+}
+
+.search-criteria .input-criteria-container .search-location .location-search-name {
+  margin: .5em;
+}
+
+.search-criteria .input-criteria-container .search-location .location-search-name input {
+  margin-left: .5em;
+  width: 100px;
+}
+
+.search-criteria .input-criteria-container .search-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.search-criteria .input-criteria-container .search-btn button {
+  background-color: var(--primary-color);
+  border-radius: 25px;
+  border: 1px solid var(--primary-color);
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: .5em .5em .5em .5em;
+  margin-right: 1em;
+  margin-left: 1em;
+  text-decoration: none;
+}
+
+.search-criteria .input-criteria-container .search-btn .search-btn:hover {
+  /*font-weight: bold;*/
+  background-color: var(--hover-color);
+}
+
+.location-card {
+  width: 80%;
+}
+
+/*
+.search-criteria:hover {
+  -webkit-box-shadow: 0 4px 8px 0 #857d7d;
+  box-shadow: 0 4px 8px 0 #857d7d;
+}
+
+*/
+
+/*
+What is this even for??
+.input-criteria-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+*/
+
+.checkbox-search-criteria .search-location .demographic .seasonal .cost .search-intensity {
+  margin-top: .5em;
+  margin-bottom: .5em;
+  height: 500px;
+}
+
+.activities .intensity .location .name-age .price {
+  font-weight: bolder;
+}
+
+/*# sourceMappingURL=lpstyle.css.map */

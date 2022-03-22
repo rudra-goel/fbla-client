@@ -1,0 +1,29 @@
+
+.review-container {
+    padding: 1em;
+    border-bottom: 2px dashed black;
+    
+    margin-top: 1em;
+    margin-bottom: 1em;
+    
+}
+.review-container:last-child {
+    border-bottom: none;
+}
+
+.nameOfReviewer {
+    display: flex;
+    gap: .3em;
+    padding-bottom: .5em;
+    font-size: 1.3em;
+    
+}
+.title {
+    padding-bottom: .5em;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.stars {
+    padding-bottom: 1em;
+}

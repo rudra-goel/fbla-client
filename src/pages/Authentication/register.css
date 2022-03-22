@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("http://fonts.googleapis.com/css?family=Oswald");
+
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Oswald';
+}
+
+.navbar {
+  padding: .5em 1em .5em 1.5em;
+  background-color: white;
+}
+
+.navbar .logo {
+  text-decoration: none;
+  padding-top: .4em;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar .logo span {
+  color: var(--secondary-color);
+}
+
+.navbar nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar nav a.login {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: .5em .75em;
+  
+  border-radius: 2em;
+}
+
+
+.navbar nav a.login:hover {
+  font-weight: bold;
+}
+
+.navbar nav .top-left {
+  padding: 1em 0 0 3em;
+  font-size: 1em;
+}
+
+.navbar nav .top-left:hover {
+  font-weight: bold;
+}
+
+.navbar nav .top-right {
+  margin-left: auto;
+  padding-top: 1em;
+  padding-right: 5em;
+}
+
+.hero {
+  padding: 1em;
+  margin-bottom: 3em;
+  justify-content: center;
+}
+.hero .container{
+  width: 1500px;
+}
+
+.hero h1 {
+  margin: 0em;
+  font-size: 3em;
+  text-align: center;
+  color: var(--secondary-color);
+  padding: .5em 0 .25em 0;
+}
+
+.hero .enter-credentials {
+  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
+          box-shadow: 0 2px 4px 0 #857d7d;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  height: auto;
+  width: 65%;
+  padding: 1em;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.hero .enter-credentials .btn-register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  padding-right: 3em;
+
+}
+
+.hero .enter-credentials input {
+  border: 2px solid #555;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 2em;
+}
+
+.hero .enter-credentials div {
+  padding: .5em;
+}
+
+.hero .enter-credentials div label {
+  font-size: 1.5em;
+  padding-right: .5em;
+}
+.hero .enter-credentials button {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  border-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  width: 80px;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: color 100ms;
+  transition: color 100ms;
+  vertical-align: baseline;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+}
+
+.hero .enter-credentials:hover {
+  -webkit-box-shadow: 0 4px 8px 0 #857d7d;
+          box-shadow: 0 4px 8px 0 #857d7d;
+}
+
+.contact-info .container {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #2e2d2d;
+  color: white;
+  padding: 1em 4em 2em 4em;
+}
+
+.contact-info .container h5 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.contact-info .container ul {
+  margin: 0em;
+}
+
+.contact-info .container div {
+  padding: 0 5em 0 5em;
+}
+
+.contact-info .container div li {
+  list-style: none;
+  padding: 1em 0 1em 0;
+}
+/*# sourceMappingURL=register.css.map */

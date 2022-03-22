@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+}
+
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+}
+
+.navbar {
+  padding: .5em 1em .5em 1.5em;
+  background-color: white;
+}
+
+.navbar .logo {
+  text-decoration: none;
+  padding-top: .4em;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar .logo span {
+  color: var(--primary-color);
+}
+
+.navbar nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar nav a.login {
+  color: Black;
+  padding: .5em .75em;
+  margin-right: 1em;
+}
+
+.navbar nav a.login:hover {
+  font-weight: bold;
+}
+
+.navbar nav .top-left {
+  padding: 1em 0 0 3em;
+  font-size: 1em;
+}
+
+.navbar nav .return-home:hover {
+  font-weight: bold;
+}
+.navbar nav .myacc:hover {
+  font-weight: bold;
+}
+
+
+.navbar nav .top-right {
+  margin-left: auto;
+  padding-top: 1em;
+  padding-right: 2em;
+}
+
+.hero {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: flex-start;
+    
+}
+
+section.hero {
+  display: flex;
+  flex-direction: column;
+  .bottom-hero {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.search-bar-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
+  box-shadow: 0 2px 4px 0 #857d7d;
+  text-align: center;
+  width: 60%;
+  height:75%;
+  
+  border: 1px solid gray;
+  border-radius: 2em;
+}
+
+.search-bar {
+display:flex;
+align-items: center;
+justify-content: center;
+
+height: 250px;
+label.main-searchbar-title {
+  //font-size: large;
+  font-weight: bolder;
+  font-family: sans-serif; 
+  color: var(--primary-color);
+  font-size: 3em;
+  text-align: center;
+  padding-bottom: .5em;
+}
+.main-searchbar-input-and-button {
+  display: flex;
+  justify-content: center;
+  input{
+    width: 60%;
+    height: 3em;
+    border-radius: 1.5em;
+    margin-right: 1em;
+    font-size: large;
+    
+  }
+  button {
+    border-radius: 1.5em;
+    //width: 80px;
+    border:1px solid rgb(146, 7, 146);
+    display:inline-block;
+    cursor:pointer;
+    //color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding: .5em .5em;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #EA4C89;
+
+    }
+  }
+}
+
+
+.search-criteria{
+    display: flex;
+    flex-direction: column;
+    margin: 3em;
+    padding: 1em;
+    height:625px;
+    width:350px;
+    border: 2px solid rgb(44, 43, 43);
+    border-radius: 1em;
+    .container {
+        color:#c53232;
+        padding: 8px;
+        .SC-name {
+            font-size:x-large;
+            font-weight: bold;
+        }
+
+    }
+    .input-criteria-container{
+        padding: 0em 0em 0em 1em;
+        justify-content: space-between;
+
+        .checkbox-search-criteria, 
+        .search-location, 
+        .demographic, 
+        .seasonal,
+        .cost{
+            margin-top: .5em;
+            margin-bottom: .5em;
+            
+          }
+        
+        .checkbox-search-criteria{
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+          scrollbar {
+            width: 300px;
+          }
+        }
+          
+          .search-location .location-search-slider .zip-input{
+            margin-left: .5em;
+            width: 100px;
+          }
+          .search-location .location-search-slider{
+            margin: .5em;
+          }
+          .search-location .location-search-name{
+            margin: .5em;
+          }
+          .search-location .location-search-name input{
+            margin-left: .5em;
+            width:100px
+          }
+          .search-btn {
+            display: flex;
+            justify-content: end;
+            button {
+              background-color: #EA4C89;
+              border-radius:28px;
+              border:1px solid #EA4C89;
+              display:inline-block;
+              cursor:pointer;
+              color:#ffffff;
+              font-family:Arial;
+              font-size:17px;
+              padding: .5em .5em;
+              text-decoration:none;
+              text-shadow:0px 1px 0px #EA4C89;
+            }
+            .search-btn:hover{
+              font-weight: bold;
+            }
+          }
+
+    }
+    
+}
+.location-card {
+  width: 80%;
+}
+.search-criteria:hover {
+    -webkit-box-shadow: 0 4px 8px 0 #857d7d;
+    box-shadow: 0 4px 8px 0 #857d7d;
+}
+
+.input-criteria-container{
+  display: flex;
+  flex-direction: column;  
+}
+.checkbox-search-criteria .search-location .demographic .seasonal .cost {
+  margin-top: .5em;
+  margin-bottom: .5em;
+  height: 500px;
+}
