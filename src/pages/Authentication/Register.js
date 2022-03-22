@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {registerUser} from '../../actions/actions'
 import { GoogleLogin } from 'react-google-login'
+import {  CircularProgress, Grid } from '@material-ui/core'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       
   const dispatch = useDispatch();
   const history = useNavigate()
+  const [loading, setLoading] = useState(false);
 
   /*
   The following code is outlined for the google O-authentication 
@@ -43,7 +45,9 @@ function App() {
     //console.log('handlesubmit')
     event.preventDefault()//prevent the form to reload to a different page when submitting
     try {
+        setLoading(true)
         dispatch(registerUser(postData, history))//first call of the registerUser fution imported from actions/posts and then it is dispatched 
+        setLoading(false)
     } catch (error) {
         console.log(error)
     }
@@ -98,6 +102,9 @@ function App() {
                           <button type = "submit" href = '/'>Register</button>
                       </div>
                   </form>
+                  {
+                      loading ? <CircularProgress /> : <div></div>
+                  }
               </div>
           </div>
       </section>

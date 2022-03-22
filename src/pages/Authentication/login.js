@@ -3,6 +3,7 @@ import './login.css'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
+import {  CircularProgress, Grid } from '@material-ui/core'
 
 import { checkUser } from "../../actions/actions"
 
@@ -11,11 +12,14 @@ function App() {
     const [loginData, setLoginData] = useState({email: '', password: ''})
     const history = useNavigate()
    // const location = useLocation()
-  
+   const [loading, setLoading] = useState(false);
+
   async function loginUser(event) {
     event.preventDefault()//prevent the form to reload to a different page when submitting
     try {
+        setLoading(true)
         dispatch(checkUser(loginData, history))
+        setLoading(false)
 
     } catch (error) {
         console.log(error)
@@ -67,6 +71,9 @@ function App() {
                         </form>
                         <a class = "register" href = "register">Don't have an account? Create one now!</a>
                     </div>
+                    {
+                      loading ? <CircularProgress /> : <div></div>
+                    }
                     
                 </div>
             </div>
