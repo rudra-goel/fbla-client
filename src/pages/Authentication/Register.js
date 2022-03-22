@@ -47,7 +47,7 @@ function App() {
     try {
         setLoading(true)
         dispatch(registerUser(postData, history))//first call of the registerUser fution imported from actions/posts and then it is dispatched 
-        setLoading(false)
+        
     } catch (error) {
         console.log(error)
     }
@@ -103,7 +103,7 @@ function App() {
                       </div>
                   </form>
                   {
-                      loading ? <CircularProgress /> : <div></div>
+                      loading ? <div><CircularProgress /> We are setting up you account</div> : <div></div>
                   }
               </div>
           </div>

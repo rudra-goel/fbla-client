@@ -15,11 +15,11 @@ function App() {
    const [loading, setLoading] = useState(false);
 
   async function loginUser(event) {
+      setLoading(true)
     event.preventDefault()//prevent the form to reload to a different page when submitting
     try {
-        setLoading(true)
         dispatch(checkUser(loginData, history))
-        setLoading(false)
+        // setLoading(false)
 
     } catch (error) {
         console.log(error)
@@ -57,7 +57,7 @@ function App() {
                 <div class = "container">
                     <h1>Login</h1>
                     <div class = "enter-credentials">
-                        <form onSubmit = {loginUser}>
+                        <form >
                             <div class="credential">
                                 <label for = "username">Email</label>
                                 <input value = {loginData.email} onChange = {(e) => setLoginData({...loginData, email: e.target.value})} type = "text" id = "name" name = "name" required></input>                            </div>
@@ -66,14 +66,14 @@ function App() {
                                 <input value = {loginData.password} onChange = {(e) => setLoginData({...loginData, password: e.target.value})} type = "password" id = "password" name = "password" required></input>                            </div>
 
                             <div class="btn-login">
-                                <button type = "submit">Login</button>
+                                <button type = "submit" onClick = {loginUser} >Login</button>
                             </div>
                         </form>
                         <a class = "register" href = "register">Don't have an account? Create one now!</a>
+                        {
+                            loading ? <div><CircularProgress /> Verifying credentials</div> : <div></div>
+                        }
                     </div>
-                    {
-                      loading ? <CircularProgress /> : <div></div>
-                    }
                     
                 </div>
             </div>
