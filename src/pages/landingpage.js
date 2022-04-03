@@ -334,7 +334,7 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" value="10" min="1" max="100" oninput="rangeValue.innerText = this.value"/>
+                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" oninput="rangeValue.innerText = this.value"/>
                                                 <br></br>
                                                 <label id="rangeValue">10</label>
                                                 
