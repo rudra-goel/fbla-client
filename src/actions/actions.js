@@ -1,21 +1,47 @@
+/**
+ * This file is the middle management system between the static page files and the API calls to the backend server.
+ * Essentially, anny action that requires business logic handling calls functions declared in this file
+ * 
+ * We first import all of the API calls from the API file 
+ */
 import * as api from '../api'
 
-//Action Creators are function that return actions
-
+/**
+ * This file parses through the data passed by the frontend
+ * It makes the data api call to fetch the locations performed by a basic - name only - search query
+ * After recieving data, it is then dispatched to the global state of varibales
+ * The type specifies which state the data is stored in 
+ * The payload represents the data returned
+ * 
+ * The Structuring of this callback variable is different
+ * We use the redux-thunk framework to pass the dispatched function as part of this function's method header
+ * @param {JSON} params 
+ * @returns None explicitely - actions are dispatched where data that is retuned by the backend server is stored in the global state variables
+ */
 export const getLocationsBasicSearch  = (params) => async (dispatch) => { //the use of two arrow functions is with redux-thunk because fetching data is an asynchronous method
     try {
-        console.log(params)
+
         const data = await api.fetchLocationsBasicSearch(params);
-        //console.log(data.data)
-       // console.log('method first, then dispatch')
-        //console.log(data)
+
         dispatch({ type: "GET_LOCATIONS_BASIC_SEARCH", payload : data })
-       /// console.log(dispatch({ type: "GET_LOCATIONS_BASIC_SEARCH", payload : data }).payload.data)
 
     } catch (error) {
         console.log(error)
     }
 } 
+
+/**
+ * This file parses through the data passed by the frontend
+ * It takes the search strinng the user entered in and passes it through to the api call
+ * After recieving data, it is then dispatched to the global state of varibales
+ * The type specifies which state the data is stored in 
+ * The payload represents the data returned
+ * 
+ * The Structuring of this callback variable is different
+ * We use the redux-thunk framework to pass the dispatched function as part of this function's method header
+ * @param {JSON} params 
+ * @returns An array of JSON Objects each containing the 
+ */
 export const searchFAQ = async (params) => {
     try {
         
