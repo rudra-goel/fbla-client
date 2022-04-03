@@ -20,7 +20,7 @@ function useQuery() {
 function App() {
     console.log("main app invoked")
     const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
-    const [rangeVal, setRangeVal] = useState(null)
+    const rangeVal = 10;
 
 
     
@@ -337,7 +337,7 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange = { (event) => setRangeVal(event.target.value) } />
+                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange = { (event) => { rangeVal = event } } />
                                                 <br></br>                                                
                                                 <label class="many-miles"> {rangeVal} miles radius from</label>
                                                 <input class="zip-input" type="text" placeholder="ZIP Code" id="ZIPinput"></input>
