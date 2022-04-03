@@ -334,9 +334,9 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value"></input>
+                                                <input type="range" id="slider" value="10" min="1" max="100" oninput="rangeValue.innerText = this.value"></input>
                                                 <br></br>
-                                                <output>24</output>
+                                                <p id="rangeValue">10</p>
                                                 <label class="many-miles"> miles radius from</label>
                                                 <input class="zip-input" type="text" placeholder="ZIP Code" id="ZIPinput"></input>
                                             </div>
