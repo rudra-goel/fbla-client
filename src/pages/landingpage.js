@@ -20,6 +20,8 @@ function useQuery() {
 function App() {
     console.log("main app invoked")
     const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
+    const [rangeVal, setRangeVal] = useState(null)
+
 
     
     const dispatch = useDispatch()
@@ -123,7 +125,7 @@ function App() {
         //console.log(postDataOnAdvancedSearch.Checkbox)
 
         if (document.getElementById("radio1").checked) {
-            ZIPFilterArray.push((document.getElementById("slider").value))
+            ZIPFilterArray.push(rangeVal)
             ZIPFilterArray.push((document.getElementById("ZIPinput").value))
             CityArray.push({ $exists: true })
         } else if (document.getElementById("radio2").checked) {
@@ -183,6 +185,7 @@ function App() {
         history('/')
         setUser(null)
     }
+
 
     return (
         <div onL>
@@ -334,7 +337,7 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" oninput="rangeValue.innerText = this.value"/>
+                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange = { (event) => setRangeVal(event.target.value) } />
                                                 <br></br>
                                                 <label id="rangeValue">10</label>
                                                 
