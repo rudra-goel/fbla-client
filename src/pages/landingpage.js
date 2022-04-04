@@ -194,13 +194,11 @@ function App() {
         const inputRange = document.getElementById("slider");
         console.log(inputRange)
         if(displayRangeValue && inputRange){
-
-            inputRange.oninput(()=> {
+            inputRange.addEventListener('input', ()=> {
                 let value = inputRange.value
                 rangeVal = value;
                 displayRangeValue.textContent = value;
-    
-            })
+            }, false)
         }
     }
 
