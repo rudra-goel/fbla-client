@@ -20,7 +20,7 @@ function useQuery() {
 function App() {
     console.log("main app invoked")
     const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
-    const rangeVal = 10;
+    let rangeVal = 10;
     
     
 
