@@ -24,11 +24,13 @@ function App() {
 
     const displayRangeValue = document.getElementById("rangeValueID")
     const inputRange = document.getElementById("slider");
-
-    inputRange.oninput = (() => {
+    inputRange.addEventListener('input', ()=> {
         let value = inputRange.value
+        rangeVal = value;
         displayRangeValue.textContent = value;
-    })
+
+    }, false)
+    
     
 
 
@@ -346,7 +348,7 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange = { (event) => { rangeVal = event } } />
+                                                <input type="range" id="slider" defaultValue="10" min="1" max="100"/>
                                                 <br></br>
                                                 <div class="miles-paragraph">
                                                     <label id="rangeValueID">10</label>
