@@ -188,7 +188,7 @@ function App() {
         setUser(null)
     }
     function handleRangerAction(){
-
+        console.log("SOMEONE MOVED THE SLIDER")
         const displayRangeValue = document.getElementById("rangeValueID")
         console.log(displayRangeValue)
         const inputRange = document.getElementById("slider");
@@ -197,6 +197,7 @@ function App() {
             inputRange.addEventListener('input', ()=> {
                 let value = inputRange.value
                 rangeVal = value;
+                console.log("CHANging the text")
                 displayRangeValue.innerHTML = value;
             }, false)
         }
