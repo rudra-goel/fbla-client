@@ -22,17 +22,20 @@ function App() {
     const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
     const rangeVal = 10;
 
-    const displayRangeValue = document.getElementById("rangeValueID")
-    console.log(displayRangeValue)
-    const inputRange = document.getElementById("slider");
-    console.log(inputRange)
-    
-    inputRange.addEventListener('input', ()=> {
-        let value = inputRange.value
-        rangeVal = value;
-        displayRangeValue.textContent = value;
+    function handleRangerAction(){
 
-    }, false)
+        const displayRangeValue = document.getElementById("rangeValueID")
+        console.log(displayRangeValue)
+        const inputRange = document.getElementById("slider");
+        console.log(inputRange)
+        
+        inputRange.addEventListener('input', ()=> {
+            let value = inputRange.value
+            rangeVal = value;
+            displayRangeValue.textContent = value;
+    
+        }, false)
+    }
     
     
 
@@ -351,7 +354,7 @@ function App() {
                                             <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" defaultValue="10" min="1" max="100"/>
+                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange={handleRangerAction()}/>
                                                 <br></br>
                                                 <div class="miles-paragraph">
                                                     <label id="rangeValueID">10</label>
