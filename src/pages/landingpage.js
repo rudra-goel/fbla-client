@@ -21,21 +21,6 @@ function App() {
     console.log("main app invoked")
     const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
     const rangeVal = 10;
-
-    function handleRangerAction(){
-
-        const displayRangeValue = document.getElementById("rangeValueID")
-        console.log(displayRangeValue)
-        const inputRange = document.getElementById("slider");
-        console.log(inputRange)
-        
-        inputRange.addEventListener('input', ()=> {
-            let value = inputRange.value
-            rangeVal = value;
-            displayRangeValue.textContent = value;
-    
-        }, false)
-    }
     
     
 
@@ -201,6 +186,20 @@ function App() {
         dispatch({ type: "LOGOUT" })
         history('/')
         setUser(null)
+    }
+    function handleRangerAction(){
+
+        const displayRangeValue = document.getElementById("rangeValueID")
+        console.log(displayRangeValue)
+        const inputRange = document.getElementById("slider");
+        console.log(inputRange)
+        
+        inputRange.oninput(()=> {
+            let value = inputRange.value
+            rangeVal = value;
+            displayRangeValue.textContent = value;
+
+        })
     }
 
 
