@@ -129,6 +129,8 @@ function App() {
         if (document.getElementById("radio1").checked) {
             ZIPFilterArray.push(rangeVal)
             ZIPFilterArray.push((document.getElementById("ZIPinput").value))
+            console.log('ZIPFilterArray')
+            console.log(ZIPFilterArray)
             CityArray.push({ $exists: true })
         } else if (document.getElementById("radio2").checked) {
             ZIPFilterArray.push({ $exists: true })
