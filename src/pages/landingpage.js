@@ -197,7 +197,7 @@ function App() {
             inputRange.addEventListener('input', ()=> {
                 let value = inputRange.value
                 rangeVal = value;
-                displayRangeValue.textContent = value;
+                displayRangeValue.innerHTML = value;
             }, false)
         }
     }
