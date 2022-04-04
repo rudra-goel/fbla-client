@@ -23,7 +23,10 @@ function App() {
     const rangeVal = 10;
 
     const displayRangeValue = document.getElementById("rangeValueID")
+    console.log(displayRangeValue)
     const inputRange = document.getElementById("slider");
+    console.log(inputRange)
+    
     inputRange.addEventListener('input', ()=> {
         let value = inputRange.value
         rangeVal = value;
