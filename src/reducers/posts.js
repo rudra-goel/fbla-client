@@ -10,7 +10,6 @@ export default  (posts = [], action) => {
             console.log(action.payload.data)
             return {...posts, places: action.payload};
         case "GET_LOCATIONS_BASIC_SEARCH":
-            
             return {...posts, places: action.payload};//this only returns the value of the location sent to the client by the server and so the state variables are then onoly set to the location given.
         case "GET_LOCATIONS_ADVANCED_SEARCH":
             console.log("action.payload")
