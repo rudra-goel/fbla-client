@@ -23,9 +23,6 @@ function App() {
     let rangeVal = 10;
     
     
-
-
-    
     const dispatch = useDispatch()
     const query = useQuery()
     const page = query.get('page') || 1
@@ -415,16 +412,14 @@ function App() {
                         <div class="contact-left">
                             <h5>Contact Us</h5>
                             <ul>
-                                <li>Name</li>
-                                <li>Email</li>
-                                <li>Number</li>
+                                <li>contact.viewrado@gmail.com</li>
                             </ul>
                         </div>
                         <div class="contact-right">
                             <h5>Contributers</h5>
                             <ul class="contributer">
-                                <li>Person1</li>
-                                <li>Person2</li>
+                                <li>Mimi Rai</li>
+                                <li>Rudra Goel</li>
                             </ul>
                         </div>
 
