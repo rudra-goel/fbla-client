@@ -1,52 +1,31 @@
-import { getLocationByID, getLocationsAdvancedSearch, likeLocation } from '../../actions/actions'
-import React, { useEffect } from 'react'
+/**
+ * This file serves as the React Functional component for each review posted onto a location
+ * It takes in the JSON data through props and parses it into a readable HTML format
+ * 
+ * The first import is used to setup the react component to allow it to recieve props
+ */
+import React from 'react'
+
+/**
+ * Used for styling the page
+ */
 import "./ReviewCard.css"
-import { useState, setState} from 'react'
-
-import {  CircularProgress, Grid } from '@material-ui/core'
-import { useNavigate, useLocation} from 'react-router-dom'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
-
-import heart from  "../HeartButton.png"
-import backbtn from  "../backButton.png"
-import { keys } from '@material-ui/core/styles/createBreakpoints'
+/**
+ * This import is for the star icon that users and apply to reviews
+ */
 import { FaStar } from "react-icons/fa"
+/**
+ * This import is for the profile picture that appear next to each user's name in their review
+ */
 import { CgProfile } from "react-icons/cg"
 
-
-/*
-Destructuring of the reviews on one location
-Reviews : [
-    {
-        "Stars": # to indicate number of stars, 
-        "NameOfReviewer": "Name of Reviewer", 
-        "Review": "Their Review"
-    },
-    {
-        "Stars": # to indicate number of stars, 
-        "NameOfReviewer": "Name of Reviewer", 
-        "Review": "Their Review"
-    }, 
-    {
-        "Stars": # to indicate number of stars, 
-        "NameOfReviewer": "Name of Reviewer", 
-        "Review": "Their Review"
-    }
-]
-
-Document Summary
-Reviews: [ { JSON Object }, { JSON Object }, { JSON Object } ]
-*/
-
+/**
+ * All React Components follow the same syntax where a function that contains certain business logic is created
+ * The return of the function is the HTML that is rendered onto the webpage
+ * This function notation allows for the re-render upon variable change
+ * @returns HTML Body that is rendered onto the webpage
+ */
 function App({ review }){
-
-    console.log("this component is getting invokd")
-    console.log("this is the review in the new card i made")
-    console.log(review)
-    
-
   return (
       <div class="review-container">
           <div class="title">

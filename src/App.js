@@ -1,17 +1,20 @@
+/**
+ * THIS FILE SERVES AS THE BASE OF THE APPLICATION
+ * It only contains the routing for the different pages that are to be loaded
+ */
 import React, { useEffect } from 'react'
-import { BrowserRouter, Routes,  Route, Redirect } from 'react-router-dom'//allows for the routes to be setup
+import { BrowserRouter, Routes,  Route } from 'react-router-dom'//allows for the routes to be setup
 import { useDispatch } from 'react-redux' 
 import { getLocationsBasicSearch } from './actions/actions'
 
-/*
-the following imports specify the static pages on the client side
-*/
-
-//react pages must be capital!!
+/**
+ * The following imports delcare the necessary pages to be routuer to in the application
+ * This is the base of the application
+ * It only contains a React Commponent that redirects the user to certain web pages
+ */
 import Login from './pages/Authentication/login'
 import MyAccount from "./pages/myAccount"
 import Register from './pages/Authentication/Register'
-import Favorites from "./pages/favorites"
 import LandingPage from "./pages/landingpage"
 import Location from "./pages/IndividualLocation/location"
 import FAQs from "./pages/FAQ"
@@ -24,9 +27,6 @@ const App = () => {
     useEffect(() => {
         dispatch(getLocationsBasicSearch);
     }, [dispatch]) 
-
-    const user = JSON.parse(localStorage.getItem('profile'))
-    console.log(user)
 
     return <div>
         <BrowserRouter>
@@ -41,7 +41,6 @@ const App = () => {
                 
 
                 <Route path="/myAccount"  element={<MyAccount />} />
-                <Route path="/favorites"  element={<Favorites />} />
                 <Route path="/faqs"  element={<FAQs />} />
 
             </Routes>

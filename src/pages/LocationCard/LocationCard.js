@@ -1,21 +1,27 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { likeLocations, getLocationByID } from "../../actions/actions.js"
-import { CardMedia } from '@material-ui//core'
+/**
+ * This file serves as the individual card for each location that is displayed on the landing page.
+ * It takes in the details fo the location through props and it puts it into a readable format via HTML5
+ */
 
+/**
+ * The React import statement is used for creating the component and allowing it to be added to the overall application
+ * The second import statement is used to style the card itself
+ */
+import React from 'react'
 import './LocationCard.css'
 
-function App({ location }) {
-    const dispatch = useDispatch()
 
-    //console.log(locations)
-    //console.log(location.data.length)
-    //console.log("inside individual card")
-    //console.log(location)
+function App({ location }) {
+    /**
+     * Formatting the Base64 String og the image properly so that the HTML <img> tage and properly read it
+     * 
+     * We pull part of the base64 url which comes from the database, and we append strings to the front
+     */
     const imgURL = `data:image/jpeg;base64,${location.Base64String}`
-    const type = "Business URL"
     
-    
+    /**
+     * The HTML of the component is then declared as followed and returned to be displayed on the maing application
+     */
     return (
         <div>
         <div class="list-locations">
@@ -30,7 +36,6 @@ function App({ location }) {
                         <label class='categories'>{location.BusinessURL}</label>
                     </div>
                 </div>
-
             </a>                       
         </div>
     </div>

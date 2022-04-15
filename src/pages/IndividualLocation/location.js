@@ -1,74 +1,148 @@
+/**
+ * This file serves as the more indepth deatils page for each location
+ * When the user clicks on a location tile from the main page, this page is rendered where the JSON data of the location is put into a more readable format
+ * This page also includes the reviews section of the location -> this is a separate react component
+ */
 import './location.css'
 
-import { getLocationByID, getLocationsAdvancedSearch, likeLocation, postReview } from '../../actions/actions'
-import React, { useEffect } from 'react'
-import { useState, setState} from 'react'
+/**
+ * Two actions that are imported into the component 
+ * 
+ * The first action is meant to add the location to the user's list of liked locations
+ * 
+ * The second import is used to post a review when an authenticated user wishes to do so
+ */
+import { likeLocation, postReview } from '../../actions/actions'
 
-import {  CircularProgress, Grid } from '@material-ui/core'
+/**
+ * Importing React to allow the functional component to be added to the React Router Dom
+ * The useEffect hook is imported to invoke a certain action with a dependency array
+ * This means that every time a certain thing (variable, component, etc. ) changes, we can invoke certain actions
+ * It is very similar to the onChange method in many input fields of HTML
+ */
+import React, { useEffect } from 'react'
+
+/**
+ * The useState hook is imported to uodate the page when certain variables or states change
+ */
+import { useState } from 'react'
+
+/**
+ * UX of a circular progress bar
+ */
+import {  CircularProgress } from '@material-ui/core'
+
+/**
+ * Both useNavigate and useLocation are used to renavigate the user to certain pages on certain requests
+ */
 import { useNavigate, useLocation} from 'react-router-dom'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+/**
+ * Dispatch is imported to manage the global state variables
+ */
+import { useDispatch } from 'react-redux'
+/**
+ * useParams is used to get strings from the URL parameters
+ */
+import { useParams } from 'react-router-dom'
 
-import heart from  "../HeartButton.png"
+/**
+ * Image for the back button
+ */
 import backbtn from  "../backButton.png"
-import { keys } from '@material-ui/core/styles/createBreakpoints'
+
+/**
+ * React Component for the review card to be posted on each location
+ */
 import ReviewCard from './ReviewCard'
+
+/**
+ * React Icons imported for better UX
+ */
 import { FaStar } from "react-icons/fa"
 import { AiFillHeart } from "react-icons/ai"
 
 
+
 function App(){
-
+    /**
+     * Initilzation of dispatch object
+     */
     const dispatch = useDispatch()
-    const { id } = useParams()
 
-    //dispatch(getLocationByID(id))
+    /**
+     * Pulling the location's ID via the parameters of the URL
+     */
+    const { id } = useParams()
     
+    /**
+     * Initilization of the useNavigate hook
+     */
     const history = useNavigate()
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))//this is how to access the user on the localstorage of the web'
-    console.log("the state of the user is")
-    console.log(user)
-    const window = useLocation()
+    /**
+     * We are pulling the user's data from the local storage of the client by the localstorage.getItem call
+     * We are then setting a user variable to that data using the useSatte hook provided by React
+     */
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 
+    /**
+     * Initialization of the useLocation hook
+     */
+    const window = useLocation()
+    
+    /**
+     * Everytime the window object experiences a change, this useEffect hook will be invoked -> hence the dependency array
+     * We are then setting the updated user with the updated information we are pulling from the local storage
+     */
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('profile')))
-
     }, [window])
 
+    /**
+     * Here we are pulling all the locations from the local storage
+     * The next lines in essence will parse through the different possible kinds of the JSON data and format it properly into the details variable
+     */
     let location
-
     location = JSON.parse(localStorage.getItem('locations'))
-    console.log("in te individual place")
-    console.log(location)
+
     let details
-    //console.log(location)
-    //get the correct locaiton to detail
+
     if (location.places && (location.places?._id || location.places.length===1 || location.places?.data)){
+
         if (location.places?._id) details = location.places
+
         else if (location.places.length===1) details = location.places[0]
+
         else if (location.places?.data._id) details = location.places.data
-    }else{
+
+    } else{
+        /**
+         * This section is only invoked when there are multiple locations and we have to find the correct one to display
+         */
         const ids = [...Array(location.places.length)]
+
         for (let i = 0; i < ids.length; i++){
             ids[i] = location.places[i]._id
         }
-        //const ids = [location.places[0]._id, location.places[1]._id, location.places[2]._id]
-        //console.log(ids)
+
         for (let i = 0; i < ids.length; i++){
+            /**
+             * We are checking the ID from the params and seeing which one it is in the list of possible IDs
+             */
             if (id == ids[i]){
                 details = location.places[i]
             }
         }
     }
-    console.log("this is the details i just wrote")
-    console.log(details)
-    
-    
-    //access the url and other fields that are not one word from the object
+
+    /**
+     * Because the database has JSON data that is not stored with fields as one word, we cannot use dot notation to access the value of the fields with two words.
+     * We must use for loops and compare the fields as variable references to strings
+     * 
+     * For example, we are setting the URL variable equal only to the field with the "website URL" and finding that with the substring of HTTP
+     */
     let url
-    
     for (const key in details){
         if (typeof details[key] == 'string' && details[key].substring(0, 4) == 'http'){
             url = details[key]
@@ -100,24 +174,43 @@ function App(){
     }
     let intensity
     for (const key in details){
-        console.log("key")
-        console.log(key)
         if (key == 'Activity Intensity (L, M, H)'){
             intensity = details[key]
         }
     }
     intensity = intensity.toLowerCase()
 
+    /**
+     * Using the state varibale system to track all of the reviews attached to one location
+     * It is initially a JSON Object with te one field as an array that is already populated with the existing JSON objects of each review
+     */
     const [reviews, setReviews] = useState({listOfReviews: [...details.Reviews]})
 
-    console.log("LIST OF REVIEWS")
-    console.log(reviews)
+    /**
+     * Propper formatting of the base64 string of the image for the HTML5 to read
+     */
     const imageString = `data:image/jpeg;base64,${details.Base64String}`
+
+    /**
+     * This is a function invoked when the user wishes to logout
+     * 
+     * It first dispatches a type of logout to clear any of the user data in the global state variable system
+     * 
+     * We then redirect the user to the landing page with the history call
+     * 
+     * We then set the local user State to null
+     */
     const logout = () => {
         dispatch({ type: "LOGOUT" })
         history('/')
         setUser(null)
     }
+    /**
+     * The state variables are used for one review tracking as well
+     * When the user wishes to wriete a review, the following vields are updated dynamically and when the post review method is called
+     * Each review has the following in the JSON format: number of stars, name of the reviewer, the given review, and the title of the review
+     * This form of JSON is exactly posted to the database
+     */
     const [review, setReview] = useState({
         numStars:0, 
         NameOfReviewer:"",
@@ -125,12 +218,18 @@ function App(){
         title:""
     })
 
-
+    /**
+     * Both the rating and the hover are used as state variables to track the user and the stars they award to the location
+     * For each star they hover, the variable is updated to then update the css and make it filled in with Gold color
+     */
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
+
+    /**
+     * Similar to above, when the user hover's above the hear, it glows pink indicating they can heart it and save it to their account
+     */
     const [hoverHeart, setHoverHeart] = useState(false)
     try {
-        
         const [hoverHeart, setHoverHeart] = useState(user?.result.likedLocations.includes(id) ? true : false)
     } catch (error) {
         console.log(error)
@@ -147,6 +246,17 @@ function App(){
             console.log(error)
         }
     }
+
+    /**
+     * This array is meant to mimic the stars on the location to be displayed with each posted review
+     * In essence, what it does is it parses through each review from the array of reviews on a location and it determines the number of stars
+     * This array is then used to calculate the average distribution of stars accross the location
+     * 
+     * For Example: 
+     *  If I gave 3 stars to one location, the 2nd index of the likeCount would be filled to 1
+     *  If my friend also gave 3 stars on the same location, the likeCount at index 2 would be bumped to 2
+     * 
+     */
     let likeCount = [0, 0, 0, 0, 0]
     reviews.listOfReviews.forEach(individualReview => {
         switch(individualReview.Stars) {
@@ -167,16 +277,17 @@ function App(){
                 break;
         }
     })
+    /**
+     * Using the star distributions above, the percentages of each star rating are calculated to be used for later
+     * We calculate percentages by dividing the number of that star by the total number of reviewers
+     */
     let starPercentages = [0, 0, 0, 0, 0]
     const totalReviews = reviews.listOfReviews.length
     likeCount.forEach((numStars, i) => {
         starPercentages[i] = (numStars/totalReviews)*100
         starPercentages[i] = Math.round(starPercentages[i] * 10) / 10
     })
-    console.log("THE SCORE/STAR DISTRIBUTIONS as %")
-    console.log(starPercentages)
-    console.log("THE SCORE/STAR DISTRIBUTIONS as number")
-    console.log(likeCount)
+    
 
   return (
       !location ? <CircularProgress /> : 
@@ -398,19 +509,17 @@ function App(){
         <section class='contact-info'>
             <div class="container">
                 <div class="contact-left">
-                    <h5>Contact Us</h5>git 
-                    <ul>
-                        <li>Name</li>
-                        <li>Email</li>
-                        <li>Number</li>
-                    </ul>
-                </div>
-                <div class="contact-right">
-                    <h5>Contributers</h5>
-                    <ul class="contributer">
-                        <li>Person1</li>
-                        <li>Person2</li>
-                    </ul>
+                <h5>Contact Us</h5>
+                            <ul>
+                                <li>contact.viewrado@gmail.com</li>
+                            </ul>
+                        </div>
+                        <div class="contact-right">
+                            <h5>Contributers</h5>
+                            <ul class="contributer">
+                                <li>Mimi Rai</li>
+                                <li>Rudra Goel</li>
+                            </ul>
                 </div>
         
             </div>

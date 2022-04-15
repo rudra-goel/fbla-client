@@ -1,59 +1,97 @@
+/**
+ * This file is the React Functional Component for the register page of ViewRado
+ * It contains the form input fields and upon submit, it pipelines the data to the backend server to be registered
+ * 
+ * The first Import statment is the styling of the webpage
+ */
 import './register.css'
+
+/**
+ * useNavigate is another react hook that redirects the webpage
+ * Upon authentication, the user is redicrected to thier account page via this hook
+ */
 import { useNavigate } from 'react-router-dom'
+
+/**
+ * The useState is a react hook that manages the variables wihtin this component -> it is imported through React
+ */
 import { useState } from 'react'
+
+/**
+ * useNavigate is another react hook that redirects the webpage
+ * Upon authentication, the user is redicrected to thier account page via this hook
+ */
 import { useDispatch } from 'react-redux'
+
+/**
+ * This is a prewritten function that is imported to register the user credentials 
+ * This imported function serves as a middleman for the component and the api call to the database
+ */
 import {registerUser} from '../../actions/actions'
-import { GoogleLogin } from 'react-google-login'
-import {  CircularProgress, Grid } from '@material-ui/core'
 
+/**
+ * This is a component preloaded from @material-ui/core that displays a circular progress bar for UX
+ */
+import {  CircularProgress } from '@material-ui/core'
+
+
+/**
+ * All React Components follow the same syntax where a function that contains certain business logic is created
+ * The return of the function is the HTML that is rendered onto the webpage
+ * This function notation allows for the re-render upon variable change
+ * @returns HTML Body that is rendered onto the webpage
+ */
 function App() {
+    /**
+     * This is the use of the state variables where all of the form data the user enters is tracked in the postData variable
+     */
+    const [postData, setPostData] = useState({ 
+        name: '', 
+        email: '', 
+        password: '', 
+        confpassword: ''
+    })
 
-  const [postData, setPostData] = useState({ 
-      name: '', 
-      email: '', 
-      password: '', 
-      confpassword: ''})//wrapping all of the data that user entered into a postData array
-      
-  const dispatch = useDispatch();
-  const history = useNavigate()
-  const [loading, setLoading] = useState(false);
+    /**
+     * Initialization of the dispatch function
+     */
+    const dispatch = useDispatch();
+    /**
+     * Initialization of the useNavigate Hook
+     */
+    const history = useNavigate()
+    /**
+     * This is another React variable that is used for loading
+     * When the user clicks the register button, this loading variable is set to true
+     * The circular progress bar is then displayed to indicate to the user that loading state is activated
+     */
+    const [loading, setLoading] = useState(false);
+    /**
+     * This function is invoked when the user clicks the register button
+     * It parses through the form data and dispatches the data by first calling the validate function
+     * @param {HTML Object} event 
+     */
+    function handleSubmit(event) {
+        /**
+         * Used to prevent page reloading upon form submit
+         * This is standard convention accross React projects
+         */
+        event.preventDefault()
 
-  /*
-  The following code is outlined for the google O-authentication 
-  will be done in later development stages
-    <GoogleLogin clientId = "321003506064-aa3m1bh79tvtr06g5gnr9o821l5rklp6.apps.googleusercontent.com" render={(renderProps) => (
-                          <button class = "google-register" onClick = {renderProps.onClick} >Register With Google!</button>
-                      )} onSuccess = {googleSuccess} onFailure = {googleFailure} cookiePolicy = "single_host_origin" />
-                      
-  */
-    const googleSuccess = async (res) => {
-        const result = res?.profileObj;
-        const token = res?.tokenId;
         try {
-            dispatch({ type: 'AUTH', data: {result, token} })
+            /**
+             * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
+             */
+            setLoading(true)
+            /**
+             * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
+             * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
+             */
+            dispatch(registerUser(postData, history)) 
         } catch (error) {
             console.log(error)
-        }finally {
-            history('/myAccount')
         }
     }
-    const googleFailure = () => {
-        console.log("google sign in was unsuccessful")
-    }
-  function handleSubmit(event) {
-
-    //console.log('handlesubmit')
-    event.preventDefault()//prevent the form to reload to a different page when submitting
-    try {
-        setLoading(true)
-        dispatch(registerUser(postData, history))//first call of the registerUser fution imported from actions/posts and then it is dispatched 
-        
-    } catch (error) {
-        console.log(error)
-    }
-
-    //window.location.href = '/'
-}
 
   return (
   <body>
