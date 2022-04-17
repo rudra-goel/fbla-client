@@ -70,7 +70,60 @@ export default function FAQ() {
         {
             Question: "How many locations are on ViewRado?",
             Answer:"There are more then 1400 locations provided by the Colorado State Department."
-        }
+        }, 
+        {
+            Question: "Who developed ViewRado??",
+            Answer:"ViewRado was developed by Mimi Rai and Rudra Goel in the fall of 2021. It was initially meant to be used as an FBLA presentation to showcase their skills in Computer Science, but it grew into a full stack web application that users across the world can use"
+        }, 
+        {
+            Question: "How can I search for previously seen locations on ViewRado?",
+            Answer:"By creating an account with ViewRado, you get access to saving your locations. At the top of every location picture, you can press the heart icon. Upon doing so, that location will be added to your favorites which is  located in My Account"
+        }, 
+        {
+            Question: "Does ViewRado have a secure connection over the internet?",
+            Answer:"Yes, ViewRado has an SLS Certificate issued by R3 from the Netlify Hosting App. You can see the padlock at the top left corner which verifies the secure HTTPS Protocols"
+        }, 
+        {
+            Question: "Is there a way to validate reviews on locations?",
+            Answer:"As of right now, there is no user based reporting system for validating reviews. We do encourage that all users email contact.viewrado@gmail.com for all question and concerns regarding location reviews. "
+        }, 
+        {
+            Question: "How do I use the advanced search features?",
+            Answer:"The advanced Search Filter is located on the lefthand side in the hero section of ViewRado. Essentially you can applly as many filters as you want. For example, if you wanted to find Spas in Denver, you can apply the Spas search filter in Activity type, and you can select Search By City and only filter results to Denver."
+        }, 
+        {
+            Question: "Do locations pay fees to ViewRado to post their attraction?",
+            Answer:"No. ViewRado is completely independent from monetary compensation from locations. All locations obtained were done so through the Colorado State Department. All information is public reccord"
+        }, 
+        {
+            Question: "Where can I look at my favorited locations?",
+            Answer:"If you direct yourself to the Navbar, you can select the my Account page and a list of your favorited locations will appear. If you have not saved any locations, a header will indicate so."
+        }, 
+        {
+            Question: "How can I add reviews to locations?",
+            Answer:"In order to add reviews to locations, you must first be loggin into your ViewRado account. Then, upon openning a location's inner details, you can scroll to the bottom and you then get access to posting reviews; each review contains a title field, number of stars, and a review description."
+        }, 
+        {
+            Question: "I can't find the information that I'm looking for on the website. What shoud I do?",
+            Answer:"First, search your question in the search bar of the FAQs above and try different keywords to see if any answers pop up. If you are still unable to find what you are looking for, you can email us at contact.viewrado@gmail.com"
+        }, 
+        {
+            Question: "How do I know if your locations are reliable?",
+            Answer:"All locations on ViewRado were provided by the Colorado State Department. As such, the state conducts their own research and validates all locations, thus making ViewRado a safe a reliable source for tourist attractions in Colorado"
+        }, 
+        {
+            Question: "Can I add my location onto ViewRado?",
+            Answer:"Please contact ViewRado at contact.viewrado@gmail.com to collaborate with developers in validating, creating, and regestering a location onto ViewRado. Please provide basic information including descriptions, price ranges, audience available and activity type in your response. "
+        }, 
+        {
+            Question: "What are the different advanced search filters?",
+            Answer:"Currently, there are 5 advanced search locations: activity type, intensity level, location, price, and audience."
+        }, 
+        {
+            Question: "How can I learn more about advertising opportunities on ViewRado?",
+            Answer:"ViewRado currently does not advertise locations in order to ensure locations are able to gain fairer representation."
+        }, 
+        
     ])
     /**
      * This is the loading state of the page 
