@@ -472,6 +472,8 @@ What is this even for??
 
 
 /* CONTACT INFO SECTION */
-li {
+ul {
+  margin: 0 auto;
+  display: inline-block;
   text-align: center;
 }
