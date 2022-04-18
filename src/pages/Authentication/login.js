@@ -132,7 +132,7 @@ function App() {
                         </form>
                         <a class = "register" href = "register">Don't have an account? Create one now!</a>
                         {
-                            loading ? <div><CircularProgress /> Verifying credentials</div> : <div></div>
+                            loading ? <div><CircularProgress /> Verifying Credentials</div> : <div></div>
                         }
                     </div>
                     
