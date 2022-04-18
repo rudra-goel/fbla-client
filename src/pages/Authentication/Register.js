@@ -52,6 +52,11 @@ function App() {
         confpassword: ''
     })
 
+    if (password != confpassword) {
+        console.log("passwords aren't matching")
+        window.alert("passwords are not matching")
+    }
+    
     /**
      * Initialization of the dispatch function
      */
@@ -79,21 +84,17 @@ function App() {
         event.preventDefault()
 
         try {
-            if (password != confpassword) {
-                console.log("passwords aren't matching")
-                window.alert("passwords are not matching")
-            }
-            else {
-                /**
-                 * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
-                 */
-                setLoading(true)
-                /**
-                 * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
-                 * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
-                 */
-                dispatch(registerUser(postData, history)) 
-            }
+            
+
+            /**
+             * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
+             */
+            setLoading(true)
+            /**
+             * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
+             * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
+             */
+            dispatch(registerUser(postData, history)) 
         } catch (error) {
             console.log(error)
             console.log("error")
