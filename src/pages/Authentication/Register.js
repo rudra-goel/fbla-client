@@ -92,10 +92,7 @@ function App() {
              */
             dispatch(registerUser(postData, history)) 
 
-            if (password != confpassword) {
-                console.log("passwords aren't matching")
-                window.alert("passwords are not matching")
-            }
+           
         } catch (error) {
             console.log(error)
             console.log("error")
