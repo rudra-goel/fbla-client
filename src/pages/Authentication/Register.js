@@ -52,11 +52,7 @@ function App() {
         confpassword: ''
     })
 
-    if (password != confpassword) {
-        console.log("passwords aren't matching")
-        window.alert("passwords are not matching")
-    }
-    
+
     /**
      * Initialization of the dispatch function
      */
@@ -84,7 +80,11 @@ function App() {
         event.preventDefault()
 
         try {
-            
+            if (password != confpassword) {
+                console.log("passwords aren't matching")
+                window.alert("passwords are not matching")
+                getElementById(regresponse).innerHTML = "passwords are not matching";
+            }
 
             /**
              * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
@@ -149,7 +149,7 @@ function App() {
                       </div>
                   </form>
                   {
-                      loading ? <div><CircularProgress /> Your account is being set up</div> : <div></div>
+                      loading ? <div id="regresponse"><CircularProgress /> Your account is being set up</div> : <div></div>
                   }
               </div>
           </div>
