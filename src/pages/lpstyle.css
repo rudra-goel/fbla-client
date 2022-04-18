@@ -114,9 +114,14 @@ nav.top-left nav.myacc {
     font-size: 1.25em;
 }
 
-.return-home:hover {
+a.faq:hover {
   font-weight: bold;
 }
+
+a.return-home:hover {
+  font-weight: bold;
+}
+
 .myAcc {
   padding: .5em 0 0 2em;
   font-size: 1.25em;
