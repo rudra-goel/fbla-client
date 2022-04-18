@@ -85,7 +85,7 @@ function App() {
             /**
              * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
              */
-            setLoading(false)
+            setLoading(true)
             /**
              * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
              * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function

@@ -146,7 +146,7 @@ export const registerUser = (params, history) => async (dispatch) => {
 
     } catch (error) {
         console.log(error.message)
-        console.log("error")
+        console.log("there is an error")
 
         if (password != confpassword) {
             console.log("passwords aren't matching")
