@@ -52,6 +52,9 @@ function App() {
         confpassword: ''
     })
 
+    if (password == "123"){
+        console.log("Yes")
+    }
 
     /**
      * Initialization of the dispatch function
