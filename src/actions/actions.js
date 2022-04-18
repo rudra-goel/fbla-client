@@ -146,7 +146,7 @@ export const registerUser = (params, history) => async (dispatch) => {
 
     } catch (error) {
         console.log(error.message)
-        console.log("there is an error")
+        console.log("there is an error with authentication")
     }
 }
 /**
