@@ -76,6 +76,11 @@ nav.top-left nav.myacc {
 	text-decoration:none;
 }
 
+.button:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
 .navbar nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,7 +100,7 @@ nav.top-left nav.myacc {
   background-color: var(--primary-color);
 }
 
-.navbar nav a.login:hover {
+a.login:hover {
  font-weight: bold;
  background-color: var(--hover-color);
 }
@@ -109,9 +114,14 @@ nav.top-left nav.myacc {
     font-size: 1.25em;
 }
 
+.faq:hover {
+  font-weight: bold;
+}
+
 .return-home:hover {
   font-weight: bold;
 }
+
 .myAcc {
   padding: .5em 0 0 2em;
   font-size: 1.25em;
@@ -459,3 +469,5 @@ What is this even for??
 }
 
 /*# sourceMappingURL=lpstyle.css.map */
+
+

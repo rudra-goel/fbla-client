@@ -198,6 +198,8 @@ function App() {
          * The search to the middleman is immediatly made and whatever is returned is loaded onto the gloabl state of variables
          * This global state is done through the dispatch feature
          */
+        setPostDataBasicSearch({Name: document.getElementById("main-search-title").value})
+        
         dispatch(getLocationsBasicSearch(postDataOnBasicSearch))//dispatches the action
     }
 
@@ -414,7 +416,7 @@ function App() {
                             <label class='main-searchbar-title'>VIEWRADO</label>
                             <form onSubmit={handleSubmitBasicearch}>
                                 <div class='main-searchbar-input-and-button'>
-                                    <input class='main-searchbar' value={postDataOnBasicSearch.Name} onChange={(e) => setPostDataBasicSearch({ ...postDataOnBasicSearch, Name: e.target.value })} name="main-search-title" type='text' placeholder='Search Specific Destination' id='main-search-title'></input>
+                                    <input class='main-searchbar' name="main-search-title" type='text' placeholder='Search Specific Destination' id='main-search-title'></input>
                                     <button class='main-search-btn' type='submit' id='main-search-title'>
                                         <img src={searchBtn} alt="Search" width="35" height="35"></img>
                                     </button>
@@ -569,7 +571,29 @@ function App() {
 
                 <section class="contact-info">
                     <div class="container">
-                        <div class="contact-left">
+                        <table>
+                            <tr>
+                                <th>Contact Us</th>
+                                <td>contact.viewrado@gmail.com</td>
+                            </tr>
+                            <tr class="contact-right">
+                                <th>Contributors</th>
+                                <div class="contributor">
+                                    <td>Mimi Rai</td>
+                                    <td>Rudra Goel</td>
+                                </div>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+            </body>
+        </div>
+    )
+}
+
+
+/*
+<div class="contact-left">
                             <h5>Contact Us</h5>
                             <ul>
                                 <li>contact.viewrado@gmail.com</li>
@@ -582,12 +606,5 @@ function App() {
                                 <li>Rudra Goel</li>
                             </ul>
                         </div>
-
-                    </div>
-                </section>
-            </body>
-        </div>
-    )
-}
-
+*/
 export default App;
