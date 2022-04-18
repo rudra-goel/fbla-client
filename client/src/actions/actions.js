@@ -145,8 +145,8 @@ export const registerUser = (params, history) => async (dispatch) => {
         history('/myAccount')
 
     } catch (error) {
-        console.log(error.message)
-        console.log("error")
+        //console.log(error.message)
+        //console.log("error")
         window.alert("error")
     }
 }
