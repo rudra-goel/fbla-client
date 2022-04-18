@@ -51,12 +51,6 @@ function App() {
         password: '', 
         confpassword: ''
     })
-
-    if (password != confpassword) {
-        console.log("passwords aren't matching")
-        window.alert("passwords are not matching")
-    }
-    else {
         /**
          * Initialization of the dispatch function
          */
@@ -71,6 +65,7 @@ function App() {
          * The circular progress bar is then displayed to indicate to the user that loading state is activated
          */
         const [loading, setLoading] = useState(false);
+
         /**
          * This function is invoked when the user clicks the register button
          * It parses through the form data and dispatches the data by first calling the validate function
@@ -82,29 +77,31 @@ function App() {
              * This is standard convention accross React projects
              */
             event.preventDefault()
-        }
-        try {
-            if (password != confpassword) {
-                console.log("passwords aren't matching")
-                window.alert("passwords are not matching")
+
+            if (postData.password != postData.confpassword) {
+                console.log("Passwords aren't matching")
+                window.alert("Passwords are not matching")
+            } else {
+                try {
+                    /**
+                     * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
+                     */
+                    setLoading(true)
+                    /**
+                     * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
+                     * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
+                     */
+                    dispatch(registerUser(postData, history)) 
+                } catch (error) {
+                    console.log(error)
+                }
             }
 
-            /**
-             * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
-             */
-            setLoading(true)
-            /**
-             * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
-             * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
-             */
-            dispatch(registerUser(postData, history)) 
 
-           
-        } catch (error) {
-            console.log(error)
-            console.log("There is an error")        
+
         }
-    }
+        
+    
 
   return (
   <body>
