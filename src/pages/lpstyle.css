@@ -76,10 +76,6 @@ nav.top-left nav.myacc {
 	text-decoration:none;
 }
 
-.button:hover {
-  font-weight: bold;
-  background-color: var(--hover-color);
-}
 
 .navbar nav {
   display: -webkit-box;
