@@ -97,7 +97,8 @@ function App() {
 
            
         } catch (error) {
-            console.log(error)        
+            console.log(error)
+            console.log("There is an error")        
         }
     }
 
