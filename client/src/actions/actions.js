@@ -147,6 +147,7 @@ export const registerUser = (params, history) => async (dispatch) => {
     } catch (error) {
         console.log(error.message)
         console.log("error")
+        window.alert("error")
     }
 }
 /**
