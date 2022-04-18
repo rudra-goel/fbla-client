@@ -90,6 +90,7 @@ function App() {
             dispatch(registerUser(postData, history)) 
         } catch (error) {
             console.log(error)
+            console.log("error")
         }
     }
 
@@ -141,7 +142,7 @@ function App() {
                       </div>
                   </form>
                   {
-                      loading ? <div><CircularProgress /> We are setting up you account</div> : <div></div>
+                      loading ? <div><CircularProgress /> Your account is being set up</div> : <div></div>
                   }
               </div>
           </div>

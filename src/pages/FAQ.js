@@ -122,7 +122,7 @@ export default function FAQ() {
         {
             Question: "How can I learn more about advertising opportunities on ViewRado?",
             Answer:"ViewRado currently does not advertise locations in order to ensure locations are able to gain fairer representation."
-        }, 
+        }
         
     ])
     /**
