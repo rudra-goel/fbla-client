@@ -79,6 +79,10 @@ function App() {
         event.preventDefault()
 
         try {
+            if (password != confpassword) {
+                window.alert("passwords are not matching")
+            }
+
             /**
              * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
              */
