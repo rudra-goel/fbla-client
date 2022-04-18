@@ -138,7 +138,7 @@ function App() {
                           <input value = {postData.confpassword} onChange={(e) => setPostData({ ...postData, confpassword: e.target.value })} type="password" for = "password" id = "password" required></input>
                       </div>                      
                       <div class="btn-register">
-                          <button type = "submit" href = '/'>Register</button>
+                          <button type = "submit" href = '/'>Register Now</button>
                       </div>
                   </form>
                   {
