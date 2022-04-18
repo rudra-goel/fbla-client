@@ -100,7 +100,7 @@ nav.top-left nav.myacc {
   background-color: var(--primary-color);
 }
 
-.navbar nav a.login:hover {
+a.login:hover {
  font-weight: bold;
  background-color: var(--hover-color);
 }
