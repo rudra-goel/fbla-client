@@ -571,29 +571,7 @@ function App() {
 
                 <section class="contact-info">
                     <div class="container">
-                        <table>
-                            <tr>
-                                <th>Contact Us</th>
-                                <td>contact.viewrado@gmail.com</td>
-                            </tr>
-                            <tr class="contact-right">
-                                <th>Contributors</th>
-                                <div class="contributor">
-                                    <td>Mimi Rai</td>
-                                    <td>Rudra Goel</td>
-                                </div>
-                            </tr>
-                        </table>
-                    </div>
-                </section>
-            </body>
-        </div>
-    )
-}
-
-
-/*
-<div class="contact-left">
+                        <div class="contact-left">
                             <h5>Contact Us</h5>
                             <ul>
                                 <li>contact.viewrado@gmail.com</li>
@@ -606,5 +584,28 @@ function App() {
                                 <li>Rudra Goel</li>
                             </ul>
                         </div>
+                        
+                    </div>
+                </section>
+            </body>
+        </div>
+    )
+}
+
+
+/*
+<table>
+    <tr>
+        <th>Contact Us</th>
+        <td>contact.viewrado@gmail.com</td>
+    </tr>
+    <tr class="contact-right">
+        <th>Contributors</th>
+        <div class="contributor">
+            <td>Mimi Rai</td>
+            <td>Rudra Goel</td>
+        </div>
+    </tr>
+</table>
 */
 export default App;
