@@ -78,11 +78,11 @@ body {
   font-size: 1em;
 }
 
-.navbar nav .top-left .return-home:hover {
+.return-home:hover {
   font-weight: bold;
 }
 
-.navbar nav .top-left-faq .faq:hover {
+.faq:hover {
   font-weight: bold;
 }
 
