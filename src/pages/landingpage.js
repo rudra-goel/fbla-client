@@ -89,7 +89,8 @@ function App() {
      * We are loading a JSON Object that contains only the name of the location the user wishes to search for
      * By using the useState hook, we register the varibales into the components state 
      */
-    const [postDataOnBasicSearch, setPostDataBasicSearch] = useState({ Name: '' })
+
+    let postDataOnBasicSearch = {Name: ""} 
     /**
      * This variable is used as the range value that appears ont he screen when the user wishes to search for locations based on a certain distance from a zip code
      */
@@ -198,7 +199,7 @@ function App() {
          * The search to the middleman is immediatly made and whatever is returned is loaded onto the gloabl state of variables
          * This global state is done through the dispatch feature
          */
-        setPostDataBasicSearch({Name: document.getElementById("main-search-title").value})
+        postDataOnBasicSearch = {Name: document.getElementById("main-search-title").value}
         
         dispatch(getLocationsBasicSearch(postDataOnBasicSearch))//dispatches the action
     }
