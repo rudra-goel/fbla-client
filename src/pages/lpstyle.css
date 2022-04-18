@@ -114,11 +114,11 @@ a.login:hover {
     font-size: 1.25em;
 }
 
-a.faq:hover {
+.faq:hover {
   font-weight: bold;
 }
 
-a.return-home:hover {
+.return-home:hover {
   font-weight: bold;
 }
 
