@@ -52,36 +52,37 @@ function App() {
         confpassword: ''
     })
 
-    if (password == "123"){
-        console.log("Yes")
+    if (password != confpassword) {
+        console.log("passwords aren't matching")
+        window.alert("passwords are not matching")
     }
-
-    /**
-     * Initialization of the dispatch function
-     */
-    const dispatch = useDispatch();
-    /**
-     * Initialization of the useNavigate Hook
-     */
-    const history = useNavigate()
-    /**
-     * This is another React variable that is used for loading
-     * When the user clicks the register button, this loading variable is set to true
-     * The circular progress bar is then displayed to indicate to the user that loading state is activated
-     */
-    const [loading, setLoading] = useState(false);
-    /**
-     * This function is invoked when the user clicks the register button
-     * It parses through the form data and dispatches the data by first calling the validate function
-     * @param {HTML Object} event 
-     */
-    function handleSubmit(event) {
+    else {
         /**
-         * Used to prevent page reloading upon form submit
-         * This is standard convention accross React projects
+         * Initialization of the dispatch function
          */
-        event.preventDefault()
-
+        const dispatch = useDispatch();
+        /**
+         * Initialization of the useNavigate Hook
+         */
+        const history = useNavigate()
+        /**
+         * This is another React variable that is used for loading
+         * When the user clicks the register button, this loading variable is set to true
+         * The circular progress bar is then displayed to indicate to the user that loading state is activated
+         */
+        const [loading, setLoading] = useState(false);
+        /**
+         * This function is invoked when the user clicks the register button
+         * It parses through the form data and dispatches the data by first calling the validate function
+         * @param {HTML Object} event 
+         */
+        function handleSubmit(event) {
+            /**
+             * Used to prevent page reloading upon form submit
+             * This is standard convention accross React projects
+             */
+            event.preventDefault()
+        }
         try {
             if (password != confpassword) {
                 console.log("passwords aren't matching")
