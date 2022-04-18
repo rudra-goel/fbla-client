@@ -76,6 +76,16 @@ nav.top-left nav.myacc {
 	text-decoration:none;
 }
 
+.navbar .container .top-right nav .if-logged-in-navbar a.logout:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
+.navbar nav a.logout:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+ }
+
 .navbar nav {
   display: -webkit-box;
   display: -ms-flexbox;

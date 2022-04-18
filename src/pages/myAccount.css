@@ -46,10 +46,6 @@ body {
   background-color: var(--hover-color);
 }
 
-.navbar .container .top-right .if-logged-in-navbar a.logout:hover {
-  font-weight: bold;
-  background-color: var(--hover-color);
-}
 
 .navbar .logo span {
   color: var(--primary-color);
