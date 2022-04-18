@@ -80,11 +80,7 @@ function App() {
         event.preventDefault()
 
         try {
-            if (password != confpassword) {
-                console.log("passwords aren't matching")
-                window.alert("passwords are not matching")
-                getElementById(regresponse).innerHTML = "passwords are not matching";
-            }
+            
 
             /**
              * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
@@ -95,6 +91,11 @@ function App() {
              * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
              */
             dispatch(registerUser(postData, history)) 
+
+            if (password != confpassword) {
+                console.log("passwords aren't matching")
+                window.alert("passwords are not matching")
+            }
         } catch (error) {
             console.log(error)
             console.log("error")
