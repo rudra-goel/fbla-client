@@ -76,7 +76,7 @@ nav.top-left nav.myacc {
 	text-decoration:none;
 }
 
-.navbar .container .top-right nav .if-logged-in-navbar .logout:hover {
+.navbar .container .top-right nav .if-logged-in-navbar .logout button:hover {
   font-weight: bold;
   background-color: var(--hover-color);
 }
