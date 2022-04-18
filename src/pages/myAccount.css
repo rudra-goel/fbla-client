@@ -35,16 +35,21 @@ body {
 }
 
 .navbar .container .top-right nav .if-logged-in-navbar a.logout {
-    color: white;
-    padding: .5em .75em;
-    margin-right: 1em;
-    background-color: var(--primary-color);
-  }
+  color: white;
+  padding: .5em .75em;
+  margin-right: 1em;
+  background-color: var(--primary-color);
+}
   
-  .navbar .container .top-right nav .if-logged-in-navbar a.logout:hover {
-   font-weight: bold;
-   background-color: var(--hover-color);
-  }
+.navbar .container .top-right nav .if-logged-in-navbar a.logout:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
+
+.navbar .container .top-right .if-logged-in-navbar a.logout:hover {
+  font-weight: bold;
+  background-color: var(--hover-color);
+}
 
 .navbar .logo span {
   color: var(--primary-color);
@@ -78,11 +83,11 @@ body {
   font-size: 1em;
 }
 
-.return-home:hover {
+.navbar nav .container .logo .top-left .return-home:hover {
   font-weight: bold;
 }
 
-.faq:hover {
+.navbar nav .container .logo .top-left-faq .faq:hover {
   font-weight: bold;
 }
 
