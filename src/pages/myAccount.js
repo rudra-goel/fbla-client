@@ -92,10 +92,9 @@ function App() {
                         <a class="logo">View<span>Rado</span></a>
                         <div class="top-left">
                             <a class="return-home" href="/" >Home</a>
-                        </div>
-                        <div class="top-left-faq">
                             <a class = "faq" href = "/faqs" >FAQs</a>
                         </div>
+                        
                         <div class="myAcc">
                             {user?.result ? (
                                 <a class="myacc" href='/myAccount'>Account Page</a>
