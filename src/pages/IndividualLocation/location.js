@@ -12,7 +12,9 @@ import './location.css'
  * 
  * The second import is used to post a review when an authenticated user wishes to do so
  */
-import { likeLocation, postReview } from '../../actions/actions'
+import { likeLocation, postReview } from '../../Redux/actions'
+import { ref, getDownloadURL } from "firebase/storage"
+import { storage } from '../../Firebase/firebase-config'
 
 /**
  * Importing React to allow the functional component to be added to the React Router Dom
@@ -40,7 +42,7 @@ import { useNavigate, useLocation} from 'react-router-dom'
 /**
  * Dispatch is imported to manage the global state variables
  */
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 /**
  * useParams is used to get strings from the URL parameters
  */
@@ -49,7 +51,7 @@ import { useParams } from 'react-router-dom'
 /**
  * Image for the back button
  */
-import backbtn from  "../backButton.png"
+import backbtn from  "../Images/backButton.png"
 
 /**
  * React Component for the review card to be posted on each location
@@ -61,8 +63,8 @@ import ReviewCard from './ReviewCard'
  */
 import { FaStar } from "react-icons/fa"
 import { AiFillHeart } from "react-icons/ai"
-
-
+import { postLikedLocation } from "../../Firebase/firestore-query.js"
+ 
 
 function App(){
     /**
@@ -85,56 +87,41 @@ function App(){
      * We are then setting a user variable to that data using the useSatte hook provided by React
      */
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+    
+    const [image, setImage] = useState("")
+    
+    
+    
 
     /**
      * Initialization of the useLocation hook
      */
-    const window = useLocation()
+    // const window = useLocation()
     
     /**
      * Everytime the window object experiences a change, this useEffect hook will be invoked -> hence the dependency array
      * We are then setting the updated user with the updated information we are pulling from the local storage
      */
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem('profile')))
-    }, [window])
+    // useEffect(() => {
+    //     setUser(JSON.parse(localStorage.getItem('profile')))
+    // }, [window])
 
-    /**
-     * Here we are pulling all the locations from the local storage
-     * The next lines in essence will parse through the different possible kinds of the JSON data and format it properly into the details variable
-     */
-    let location
-    location = JSON.parse(localStorage.getItem('locations'))
 
+
+    const locations = JSON.parse(localStorage.getItem('locations'))
+
+
+    console.log("locations from individal details")
+    console.log(locations)
     let details
 
-    if (location.places && (location.places?._id || location.places.length===1 || location.places?.data)){
-
-        if (location.places?._id) details = location.places
-
-        else if (location.places.length===1) details = location.places[0]
-
-        else if (location.places?.data._id) details = location.places.data
-
-    } else{
-        /**
-         * This section is only invoked when there are multiple locations and we have to find the correct one to display
-         */
-        const ids = [...Array(location.places.length)]
-
-        for (let i = 0; i < ids.length; i++){
-            ids[i] = location.places[i]._id
-        }
-
-        for (let i = 0; i < ids.length; i++){
-            /**
-             * We are checking the ID from the params and seeing which one it is in the list of possible IDs
-             */
-            if (id == ids[i]){
-                details = location.places[i]
-            }
+    for (let i = 0; i < locations.length; i++){
+        if (locations[i].itemID === id){
+            details = locations[i]
+            break;
         }
     }
+    
 
     /**
      * Because the database has JSON data that is not stored with fields as one word, we cannot use dot notation to access the value of the fields with two words.
@@ -144,9 +131,10 @@ function App(){
      */
     let url
     for (const key in details){
-        if (typeof details[key] == 'string' && details[key].substring(0, 4) == 'http'){
-            url = details[key]
+        if(key == "Business URL"){
+            url = details[key];
         }
+        
     }
     let PriceMin
     for (const key in details){
@@ -179,17 +167,19 @@ function App(){
         }
     }
     intensity = intensity.toLowerCase()
-
+    getDownloadURL(ref(storage, `Images/${details.Categories}.jpg`))
+        .then((url) => {
+            setImage(url)
+        })
     /**
      * Using the state varibale system to track all of the reviews attached to one location
      * It is initially a JSON Object with te one field as an array that is already populated with the existing JSON objects of each review
      */
-    const [reviews, setReviews] = useState({listOfReviews: [...details.Reviews]})
+    const [reviews, setReviews] = useState({listOfReviews: details.Reviews})
 
     /**
      * Propper formatting of the base64 string of the image for the HTML5 to read
      */
-    const imageString = `data:image/jpeg;base64,${details.Base64String}`
 
     /**
      * This is a function invoked when the user wishes to logout
@@ -201,9 +191,20 @@ function App(){
      * We then set the local user State to null
      */
     const logout = () => {
-        dispatch({ type: "LOGOUT" })
-        history('/')
-        setUser(null)
+          /**
+         * The user profile details are removed through the global state of variables
+         * Through the dispatch actions
+         */
+           localStorage.removeItem('profile')
+           //dispatch(logout())
+           /**
+            * The user is forcefully redirected ot the landing page of the applications
+            */
+           history('/')
+           /**
+            * The local details of the user are set to null by uptading the user's details
+            */
+           setUser(null)
     }
     /**
      * The state variables are used for one review tracking as well
@@ -212,11 +213,12 @@ function App(){
      * This form of JSON is exactly posted to the database
      */
     const [review, setReview] = useState({
-        numStars:0, 
         NameOfReviewer:"",
         givenReview:"",
-        title:""
+        title:"",
+        userUUID: ""
     })
+    
 
     /**
      * Both the rating and the hover are used as state variables to track the user and the stars they award to the location
@@ -230,21 +232,28 @@ function App(){
      */
     const [hoverHeart, setHoverHeart] = useState(false)
     try {
-        const [hoverHeart, setHoverHeart] = useState(user?.result.likedLocations.includes(id) ? true : false)
+        const [hoverHeart, setHoverHeart] = useState(user.likedLocations.includes(id) ? true : false)
     } catch (error) {
         console.log(error)
     }
     
     
+    
     const handleReview = () => {
         try {
-            dispatch(postReview(details.Name, review))
+            
+            dispatch(postReview(details, review, user.uuid))
             reviews.listOfReviews.push(review)
             setReviews({listOfReviews: reviews.listOfReviews})
             
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const likeLocation = () => {
+        postLikedLocation(id)
+        setHoverHeart(true)
     }
 
     /**
@@ -282,6 +291,7 @@ function App(){
      * We calculate percentages by dividing the number of that star by the total number of reviewers
      */
     let starPercentages = [0, 0, 0, 0, 0]
+    //const totalReviews = 0;
     const totalReviews = reviews.listOfReviews.length
     likeCount.forEach((numStars, i) => {
         starPercentages[i] = (numStars/totalReviews)*100
@@ -290,7 +300,7 @@ function App(){
     
 
   return (
-      !location ? <CircularProgress /> : 
+      !locations ? <CircularProgress /> : 
     <body class="body">
         <div class="navbar">
             <div class="container">
@@ -299,8 +309,8 @@ function App(){
                         <div class = "top-left">
                                 <a class = "return-home" href = "/" >Home</a>
                                 <a class = "faq" href = "/faqs" >FAQs</a>
-                                {user?.token ? (
-                                    <a class="myacc" href='/myAccount'>Account Page</a>                                
+                                {user?.uuid ? (
+                                    <a class="myacc" href='/myAccount/savedLocations'>Account Page</a>                                
                             ) : (
                                 <div class="if-not-logged-in-navbar">
                                 </div>
@@ -309,9 +319,9 @@ function App(){
                         
                         <div class = "top-right">
 
-                            {user?.token ? (
+                            {user?.uuid ? (
                                 <div class="if-logged-in-navbar">
-                                    <label>Hello {user.result.name}!</label>
+                                    <label>Hello {user.Name}!</label>
                                     <button value = "logout" onClick = {logout}>Logout</button>
                                 </div>
                                 
@@ -334,9 +344,9 @@ function App(){
                 </a>
                 
                 <button class='heart' type='submit' >
-                    {!user?.result ? <label>Login to save locations!</label> : 
+                    {!user?.uuid ? <label>Login to save locations!</label> : 
                     <div class = "heart-button">
-                        <button class = "heart-button-like-location" onClick={likeLocation({locationId: details._id, userId: user.result._id})}>
+                        <button class = "heart-button-like-location" onClick={likeLocation}>
                             <AiFillHeart 
                                 size={40} 
                                 className = "heart-button"
@@ -355,7 +365,7 @@ function App(){
             <div class='main-hero'>
             
                 <div class="image-for-destination">
-                    <img class = "image" src = {imageString}></img>
+                    <img class = "image" src = {image}></img>
                 </div>
                 
 
@@ -400,7 +410,7 @@ function App(){
                     <div class="written-and-general-review">
 
                         <div class="user-writes-review">
-                            {user?.token ? (
+                            {user?.uuid ? (
                                 <div class="make-a-review">
                                     <div class="star">
                                         {[...Array(5)].map((star, i) => {
@@ -421,7 +431,7 @@ function App(){
                                         })}
                                     </div>
                                     <input type="text" value={review.title} class="title-of-review" placeholder='Review Title' onChange={(e)=>setReview({...review, title: e.target.value})}></input>
-                                    <textarea id="review" class = "writing-area" name="review-box" onChange = {(e) => setReview({...review, Stars: rating, NameOfReviewer: user.result.name, givenReview: e.target.value})} rows="5" cols="50"></textarea>
+                                    <textarea id="review" class = "writing-area" name="review-box" onChange = {(e) => setReview({...review, Stars: rating, NameOfReviewer: user.Name, givenReview: e.target.value, userUUID: user.uuid})} rows="5" cols="50"></textarea>
                                     <button type="submit" class="review-submit" onClick={ handleReview }>Post Review</button>
                                     
                                 </div>
@@ -487,6 +497,7 @@ function App(){
                         <h2>Top Reviews</h2> 
 
                         {   
+                            
                             reviews.listOfReviews.length !=0 ? (
                                 reviews.listOfReviews.map(reviewArgument => {
 

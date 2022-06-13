@@ -2,10 +2,10 @@
  * THIS FILE SERVES AS THE BASE OF THE APPLICATION
  * It only contains the routing for the different pages that are to be loaded
  */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes,  Route } from 'react-router-dom'//allows for the routes to be setup
 import { useDispatch } from 'react-redux' 
-import { getLocationsBasicSearch } from './actions/actions'
+import { getLocationsBasicSearch } from './Redux/actions'
 
 /**
  * The following imports delcare the necessary pages to be routuer to in the application
@@ -13,7 +13,12 @@ import { getLocationsBasicSearch } from './actions/actions'
  * It only contains a React Commponent that redirects the user to certain web pages
  */
 import Login from './pages/Authentication/login'
-import MyAccount from "./pages/myAccount"
+import ForgotPassword from './pages/Authentication/ForgotPassword'
+import MyAccount from "./pages/Account Page/MyAccount"
+import SavedLocations from "./pages/Account Page/SavedLocations"
+import Profile from "./pages/Account Page/Profile"
+import MapMyTrip from "./pages/Account Page/MapMyTrip"
+import MyReviews from "./pages/Account Page/MyReviews"
 import Register from './pages/Authentication/Register'
 import LandingPage from "./pages/landingpage"
 import Location from "./pages/IndividualLocation/location"
@@ -22,13 +27,11 @@ import FAQs from "./pages/FAQ"
 
 const App = () => {
     
-    const dispatch = useDispatch(); 
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))//this is how to access the user on the localstorage of the web'
 
-    useEffect(() => {
-        dispatch(getLocationsBasicSearch);
-    }, [dispatch]) 
+    
 
-    return <div>
+    return (<>
         <BrowserRouter>
             <Routes>
 
@@ -37,15 +40,22 @@ const App = () => {
 
 
                 <Route path="/login"  element={<Login />} />
+                <Route path="/resetPassword"  element={<ForgotPassword />} />
                 <Route path="/register"  element={<Register />}/>
                 
 
-                <Route path="/myAccount"  element={<MyAccount />} />
+                <Route path="myAccount"  element={<MyAccount />} >
+                    <Route path="mapMyTrip" element={<MapMyTrip />} />
+                    <Route path="savedLocations" element={<SavedLocations user={user}/>} />
+                    <Route path="profile" element={<Profile user={user} />} />
+                    <Route path="reviewHistory" element={<MyReviews user={user} />} />
+                </Route>
                 <Route path="/faqs"  element={<FAQs />} />
 
             </Routes>
         </BrowserRouter>
-    </div>
+        
+    </>)
 }
 
 export default App

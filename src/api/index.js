@@ -7,14 +7,15 @@
  */
 import axios from 'axios'
 
+import { getRandomLocations, queryByID, queryWithParams, queryByName } from '../Firebase/firestore-query.js'
 /**
  * The following server as the base URL to the backend server
  * Every call to the backend server will start with the following URL and will have additional strings passed through the URL as add-ons
  * 
  * The backend server is hoted on Heroku 
  */
-const url = 'https://view-rado.herokuapp.com/posts'
-const urlUsers = 'https://view-rado.herokuapp.com/users'
+const url = 'http://localhost:1337/posts'
+const urlUsers = 'http://localhost:1337/users'
 
 
 /**
@@ -25,7 +26,10 @@ const urlUsers = 'https://view-rado.herokuapp.com/users'
  * @param {JSON Object} params 
  * @returns JSON Object of one location as a result of the query
  */
-export const fetchLocationsBasicSearch = (params) => axios.post(url, params)
+export const fetchLocationsBasicSearch = async (params) => {
+    const data  = await queryByName(params)
+    return data
+}
 
 /**
  * When the user wishes to apply certain advanced filters to the query, this api is called
@@ -37,7 +41,17 @@ export const fetchLocationsBasicSearch = (params) => axios.post(url, params)
  * @param {Integer} page 
  * @returns JSON Object of many locations as a result of the query
  */
-export const fetchLocationsAdvancedSearch = (params, page) => axios.post(url+`/advanced?page=${page}`, params)
+export const fetchLocationsAdvancedSearch = async (params, page) => {
+    const data = await queryWithParams(params, page)
+    console.log(data)
+    return data
+}
+
+export const fetchLocationsRandomSearch = async (params) => {
+    const data = await getRandomLocations()
+    
+    return data
+}
 
 /**
  * When the user is at the FAQ page and they search questions, this api is called

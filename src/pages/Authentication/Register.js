@@ -27,12 +27,14 @@ import { useDispatch } from 'react-redux'
  * This is a prewritten function that is imported to register the user credentials 
  * This imported function serves as a middleman for the component and the api call to the database
  */
-import {registerUser} from '../../actions/actions'
+import {registerUser} from '../../Redux/actions'
 
 /**
  * This is a component preloaded from @material-ui/core that displays a circular progress bar for UX
  */
 import {  CircularProgress } from '@material-ui/core'
+
+import { createUser, queryUser } from "../../Firebase/firestore-query"
 
 
 /**
@@ -71,7 +73,7 @@ function App() {
          * It parses through the form data and dispatches the data by first calling the validate function
          * @param {HTML Object} event 
          */
-        function handleSubmit(event) {
+        async function handleSubmit(event) {
             /**
              * Used to prevent page reloading upon form submit
              * This is standard convention accross React projects
@@ -79,7 +81,7 @@ function App() {
             event.preventDefault()
 
             if (postData.password != postData.confpassword) {
-                console.log("Passwords aren't matching")
+                //console.log("Passwords aren't matching")
                 window.alert("Passwords are not matching")
             } else {
                 try {
@@ -87,11 +89,9 @@ function App() {
                      * Set the loading state to true to activate the circular loading wheel to indicate the process has started for registration with the database
                      */
                     setLoading(true)
-                    /**
-                     * The function to register the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
-                     * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
-                     */
-                    dispatch(registerUser(postData, history)) 
+                    const userCredentials = await createUser(postData.email, postData.password, postData.name)
+                    localStorage.setItem('profile', JSON.stringify(userCredentials))
+                    history('/')
                 } catch (error) {
                     console.log(error)
                 }

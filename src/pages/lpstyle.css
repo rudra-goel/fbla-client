@@ -33,7 +33,7 @@ body {
 /*Logo*/
 .navbar {
   background-size: 50px;
-  background-image: url('ViewRadoLogo.png');
+  background-image: url('Images/ViewRadoLogo.png');
   background-repeat: no-repeat;
   background-origin: content-box;
 } 
@@ -214,7 +214,7 @@ Search Bar
 
   background-size: 100% 150%;
   border-radius: 1em;
-  background-image: url('coloradobackground.jpg');
+  background-image: url('Images/coloradobackground.jpg');
   background-position: center;
 }
 
@@ -294,7 +294,7 @@ SEARCH FILTERS
           flex-direction: column;
   margin: 3em;
   padding: 1em;
-  height: 750px;
+  height: 900px;
   width: 350px;
   /*
   border: 2px solid #2c2b2b;
@@ -382,6 +382,10 @@ webkit-scrollbar changes the track, thumb, and shape of scrollbar so it's less f
 Rest of Search Filters
 */
 
+.search-star {
+  margin-bottom: 1em;
+}
+
 .search-criteria .input-criteria-container .search-location .location-search-slider .zip-input {
   margin-left: .5em;
   width: 100px;
@@ -455,7 +459,7 @@ What is this even for??
 */
 
 .checkbox-search-criteria .search-location .demographic .seasonal .cost .search-intensity {
-  margin-top: .5em;
+  margin-top: 1em;
   margin-bottom: .5em;
   height: 500px;
 }

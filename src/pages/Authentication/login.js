@@ -33,7 +33,9 @@ import {  CircularProgress, Grid } from '@material-ui/core'
  * This is a prewritten function that is imported to validate the user credentials 
  * This imported function serves as a middleman for the component and the api call to the database
  */
-import { checkUser } from "../../actions/actions"
+import { checkUser } from "../../Redux/actions"
+
+import { signInUser } from '../../Firebase/firestore-query.js'
 
 
 /**
@@ -84,7 +86,15 @@ function App() {
              * The function to authenticate the user is called where we pass in the data attempted and an object reference to the useNavigate Hook
              * The details of the authenticated user (token, name, email, etc.) are then piped to the global state of variables via dispatch function
              */
-            dispatch(checkUser(loginData, history))
+            const userCredentials = await signInUser(loginData.email, loginData.password)
+            if(userCredentials?.uuid){
+                localStorage.setItem('profile', JSON.stringify(userCredentials))
+                history('/')
+            } else{
+                window.alert('Complications with your credentials')
+                setLoading(false)
+            }
+
         } catch (error) {
             console.log(error)
         }
@@ -95,19 +105,16 @@ function App() {
         <div class="navbar">
             <div class="container">
                 <nav>
-
                     <a class="logo" href="/">View<span>Rado</span></a>
 
                     <div class = "top-left">
                             <a class = "return-home" href = "/">Home</a>
+                            <a class = "faq" href = "/faqs" >FAQs</a>
                     </div>
 
                     <div class = "top-right">
                             
                     </div>
-
-                    
-
                 </nav>
             </div>
         </div>
@@ -130,7 +137,8 @@ function App() {
                                 <button type = "submit" onClick = {loginUser} >Login</button>
                             </div>
                         </form>
-                        <a class = "register" href = "register">Don't have an account? Create one now!</a>
+                        <a class = "register" href = "register">Don't have an account? Create one now!</a><br></br>
+                        <a class = "register" href = "resetPassword">Forgot Password?</a>
                         {
                             loading ? <div><CircularProgress /> Verifying Credentials</div> : <div></div>
                         }

@@ -22,15 +22,16 @@ import { useDispatch } from 'react-redux'
 /**
  * Image used for the search button
  */
-import searchBtn from './SearchButton.png'
+import searchBtn from './Images/SearchButton.png'
 /**
  * Middleman Function used to send the search strign to the API and return the array of JSON objects back to the component
  */
-import { searchFAQ } from '../actions/actions'
+import { queryFAQs } from '../Firebase/firestore-query'
 /**
  * The child component of each FAQ card that will be innevitable loaded
  */
 import FAQCard from './FAQCard'
+
 /**
  * UX do display that the search has been performed to the user
  */
@@ -144,8 +145,9 @@ export default function FAQ() {
      */
     const handleSubmit = async () => {
         setLoading(true)
-        listOfFaqs = []
-        listOfFaqs = await searchFAQ(search)
+        
+        const listOfFaqs = await queryFAQs(search)
+        
         setLoading(false)
         setResults(listOfFaqs)
     }

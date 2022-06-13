@@ -1,0 +1,84 @@
+/*
+    This is the container div for each review card
+*/
+.my-review-container {
+    display: flex;
+    justify-content: flex-start;
+    
+    margin-top:1em;
+    margin-left: 1em;
+    padding:1em;
+    
+    width:75%;
+    
+    border: 1px solid black;
+    border-radius: 1em;
+    
+}
+.my-review-container:last-child {
+    margin-bottom:3em;
+}
+
+
+/*
+    For the left side of the review card
+    This is about the location on which the review was made
+*/
+.left-section {
+    display:flex;
+    flex:1;
+    align-items:center
+}
+.activity-image {
+    max-width: 50%;
+    max-height: auto;
+    border-radius:1em;
+}
+.location-details {
+    padding-left:2em;
+}
+.review-location-name {
+    font-weight: bold; 
+    font-size: 1.5em;
+    text-align: center;
+}
+.review-location-categories {
+    font-size: 1em;
+    font-style: italic;
+}
+.average-star {
+    padding: 1em 0 1em 0;
+}
+
+
+
+/*
+    For the middle of the review card
+    This is the line that separates the location details from the review details
+*/
+.line {
+    border: 1px dashed black; 
+}
+
+/*
+    For the right side of the review card
+    This is about the reviews for the location
+*/
+.review-details {
+    display:flex;
+    flex-direction: column;
+    padding-left: 1em;
+    flex:1;    
+}
+.written-review {
+    margin-top: 1em;
+}
+.review-title  {
+    font-size:1.5em;
+}
+.given-Review {
+    margin-top: 1em;
+}
+.givenReview span {
+    font-style: italic;
+}

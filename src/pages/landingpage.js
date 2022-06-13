@@ -43,14 +43,14 @@ import React, { useEffect } from 'react'
  * We would want to tuse this to track variables that every component would need 
  * For example: In order for certain actions, certain components would need to have the User Profile variable be tracked
  */
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 /**
  * The following are two methods that serve as middleman between the function and the API call to the backend server
  * The first method is to get locations on basic searches (searches being only for the names of the locations)
  * The second method is for searching locations based on advanced search filters (Such as Activity Type, Intensity, etc.)
  * They essentially parse through the data and ensure, that in the event of a DBMS failure, the webpage is not crashed
  */
-import { getLocationsBasicSearch, getLocationsAdvancedSearch } from '../actions/actions'
+import { getLocationsBasicSearch, getLocationsAdvancedSearch, getLocationsRandomSearch, logout } from '../Redux/actions'
 /**
  * THis is another React component used to render all of the location card tiles
  * Essentially, this component is anothe RFC that takes in data and renders more HTML onto the webpage
@@ -62,11 +62,11 @@ import LocationCardContainer from './LocationCard/LocationCardContainer'
  * It takes in data on the current page of the website, and it renders out more tiles based on the page number 
  * It returns HTML components so it is visible on the webpage
  */
-import Pagination from './Pagination'
+import Pagination from './LocationCard/Pagination'
 /**
  * This is a SVG image what is next to the search bar so users click it when they want to invoke a search
  */
-import searchBtn from './SearchButton.png'
+import searchBtn from './Images/SearchButton.png'
 
 /**
  * This function is used to assist in pagination
@@ -108,7 +108,8 @@ function App() {
      * This is used for pagination and we pass this data into the GET requests to the backend server
      * If the user is on page 2 for example, we only load locations 4, 5, and 6 that appear in the database 
      */
-    const page = query.get('page') || 1
+    const page = useSelector((state) => state.currentPage)
+
     /**
      * Initialization o the useNavigate Hook
      */
@@ -148,21 +149,26 @@ function App() {
     "National Parks", "Pro Sports", "Rodeos and County Fairs",
     "Scenic Railways", "Spas", "State Parks", "Tours", "Yoga and Fitness"]
 
-    let chbxActivities = []
-    let ZIPFilterArray = []
-    let CityArray = []
-    let IntensityArray = []
-    let audienceArray = []
-    let priceMinMaxArray = []
+    
 
-    let [postDataOnAdvancedSearch, setPostDataOnAdvancedSearch] = useState({
-        Checkbox: chbxActivities,
-        Zip: ZIPFilterArray,
-        City: CityArray,
-        Intensity: IntensityArray,
-        Audience: audienceArray,
-        PriceRange: priceMinMaxArray
-    })
+    // let [postDataOnAdvancedSearch, setPostDataOnAdvancedSearch] = useState({
+    //     Checkbox: [-1],
+    //     Zip: [-1],
+    //     City: [-1],
+    //     Intensity: [-1],
+    //     Audience: [-1],
+    //     PriceRange: [-1]
+    // })
+    let postDataOnAdvancedSearch = {
+        Checkbox: [-1],
+        Stars: [-1],
+        Zip: [-1],
+        City: [-1],
+        Intensity: [-1],
+        Audience: [-1],
+        PriceRange: [-1]
+    }
+
 
     /**
      * This is a default setting used for the query of the different activity types
@@ -170,22 +176,19 @@ function App() {
      *  -- { '$exists': true } --
      * That is MongoDB specific in that it will search for items that have that field within each document --> ignoring all the other undesired query fields
      */
-    chbxActivities.push({ '$exists': true })
-    ZIPFilterArray.push({ '$exists': true })
-    CityArray.push({ '$exists': true })
-    IntensityArray.push({ '$exists': true })
-    audienceArray.push({ '$exists': true })
-    priceMinMaxArray.push({ '$exists': true })
+    
 
     /**
      * The Middleman function call is made where we pass the data of the advanced search parameters
      * This middleman function calls the API and loads what the GET request returns into the REDUX global manager
      * That is then dispatched to the global state of variables so that every component of the application can access the locations that match the criteria
      */
-    dispatch(getLocationsAdvancedSearch(postDataOnAdvancedSearch, page))
+
+    
+    dispatch(getLocationsRandomSearch())
 
     /**
-     * This function, similar to above, is responsible for searching locations only based on a simple search 
+     * This function, similar to above, is responsible fosr searching locations only based on a simple search 
      * A simple ssearch is defined as a search that only searches for the name of locations
      * @param {HTML Object} event 
      */
@@ -218,24 +221,17 @@ function App() {
          * Similar to above in that we are creating arrays for all the different search options
          * Essentially we are resetting the search options to be an empty query string
          */
-        chbxActivities = []
-        ZIPFilterArray = []
-        CityArray = []
-        IntensityArray = []
-        audienceArray = []
-        priceMinMaxArray = []
-        /**
-         * We are now resetting the query string by updating the state variable for the advanced search options
-         */
-        postDataOnAdvancedSearch = {
-            Checkbox: chbxActivities,
-            Zip: ZIPFilterArray,
-            City: CityArray,
-            Activity: IntensityArray,
-            Audience: audienceArray,
-            PriceRange: priceMinMaxArray
+        let chbxActivities = []
+        let StarArray = []
+        let ZIPFilterArray = []
+        let CityArray = []
+        let IntensityArray = []
+        let audienceArray = []
+        let priceMinMaxArray = []
 
-        }
+        let minPrice = 0;
+        let maxPrice = 0;
+        
 
         /**
          * The following lines of code all follow the same structure and purpose
@@ -254,18 +250,18 @@ function App() {
             }
         })
 
-        if (counter == 0) { chbxActivities.push({ $exists: true }) }
+        if (counter == 0) { chbxActivities.push(-1) }
 
         if (document.getElementById("radio1").checked) {
             ZIPFilterArray.push(rangeVal)
             ZIPFilterArray.push((document.getElementById("ZIPinput").value))
-            CityArray.push({ $exists: true })
+            
         } else if (document.getElementById("radio2").checked) {
-            ZIPFilterArray.push({ $exists: true })
+            ZIPFilterArray.push(-1)
             CityArray.push((document.getElementById("city-input-box").value))
         } else {
-            CityArray.push({ $exists: true })
-            ZIPFilterArray.push({ $exists: true })
+            CityArray.push(-1)
+            ZIPFilterArray.push(-1)
         }
 
         const demographic = ["adult", "family"]
@@ -277,7 +273,7 @@ function App() {
             }
         })
         if (demCounter == 0) {
-            audienceArray.push({ $exists: true })
+            audienceArray.push(-1)
         }
 
         const intensities = ["intensityL", "intensityM", "intensityH"]
@@ -289,39 +285,52 @@ function App() {
             }
         })
         if (intensityCounter === 0) {
-            IntensityArray.push({ $exists: true })
+            IntensityArray.push(-1)
         }
         if (document.getElementById("pricemin").value) {
-            priceMinMaxArray.push(document.getElementById("pricemin").value)
+            minPrice = document.getElementById("pricemin").value
         }
         if (document.getElementById("pricemax").value) {
-            priceMinMaxArray.push(document.getElementById("pricemax").value)
+            maxPrice = document.getElementById("pricemax").value
+        }
+        if(document.getElementById("search-stars").value){
+            StarArray.push(document.getElementById("search-stars").value)
+        } else {
+            StarArray.push(-1)
         }
         /**
          * After all of the radio buttons and advanced filters have been checked, the state varibale of postDataOnAdvancedSearch is updated accordingly
          * That vairbale is then passed as an arguemtn to the middleman function to query the database through a GET request
          * Whatever locations are retruned are added to the global state of variables so other functions can later access them
          */
-        setPostDataOnAdvancedSearch({
+        postDataOnAdvancedSearch = {
             Checkbox: chbxActivities,
+            Stars: StarArray,
             Zip: ZIPFilterArray,
             City: CityArray,
             Intensity: IntensityArray,
             Audience: audienceArray,
-            PriceRange: priceMinMaxArray
-        })
+            PriceRange: {
+                PriceMin:minPrice,
+                PriceMax:maxPrice
+            }
+        }
+        
+        console.log("NEW ADVANCED MARKER")
         dispatch(getLocationsAdvancedSearch(postDataOnAdvancedSearch, page))
     }
     /**
      * This function is used to logout the user
      * IF the user clicks the logout button, this function is invoked
      */
-    const logout = () => {
+    const logoutUser = () => {
+        
         /**
          * The user profile details are removed through the global state of variables
          * Through the dispatch actions
          */
-        dispatch({ type: "LOGOUT" })
+        localStorage.removeItem('profile')
+        //dispatch(logout())
         /**
          * The user is forcefully redirected ot the landing page of the applications
          */
@@ -381,18 +390,18 @@ function App() {
                                 <a class = "faq" href = "/faqs" >FAQs</a>
                             </div>
                             <div class="myAcc">
-                                {user?.result ? (
-                                    <a class="myacc" href='/myAccount'>Account Page</a>
+                                {user?.uuid ? (
+                                    <a class="myacc" href='/myAccount/savedLocations'>Account Page</a>
                                 ) : (
                                     <div></div>
                                 )}
                             </div>
                             <div class="top-right">
 
-                                {user?.token ? (
+                                {user?.uuid ? (
                                     <div class="if-logged-in-navbar">
-                                        <label>Hello {user.result.name}!</label>
-                                        <button class="logout" value="logout" onClick={logout}>Logout</button>
+                                        <label>Hello {user.Name}!</label>
+                                        <button class="logout" value="logout" onClick={logoutUser}>Logout</button>
                                     </div>
 
                                 ) : (
@@ -496,6 +505,12 @@ function App() {
                                                 <label for="Yoga and Fitness">Yoga and Fitness</label><br></br>
                                             </div>
                                         </div>
+                                        
+                                        <div class="search-star">
+                                            <label>Filter by Average Rating</label><br></br>
+                                            <input type="number" id="search-stars" name="search-stars" min="1" max="5" />   Minimum Average Stars
+                                            
+                                        </div>
 
                                         <div class="search-intensity">
                                             <label class="intensity">Filter by Activity Intensity Level</label><br></br>
@@ -560,9 +575,9 @@ function App() {
 
 
                             </form>
-                            <div class="pagination-bar">
-                                <Pagination pageNum={page} query={postDataOnAdvancedSearch} />
-                            </div>
+                            {/* <div class="pagination-bar">
+                                <Pagination pageNum={page} />
+                            </div> */}
                         </div>
                         <div class='location-card'>
                             <LocationCardContainer />

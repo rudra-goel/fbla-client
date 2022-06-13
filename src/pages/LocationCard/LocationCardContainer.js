@@ -7,6 +7,8 @@
  * ---------> that component is invoked with the details passed to it as props
  */
 import LocationCard from './LocationCard'
+
+import Pagination from "./Pagination.js"
 /**
  * UseSelector is used to pull the data from the global state management library
  * We are in essence pulling the posts that are put onto the client side
@@ -20,7 +22,7 @@ import {  CircularProgress } from '@material-ui/core'
 /**
  * Creating this file as a react functional component by importing React
  */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 function App() {
     /**
@@ -36,36 +38,46 @@ function App() {
      * 
      * 
      */
-    const locations = useSelector((state) => state.posts)//this is the access point to the global state of variables that exists within each session f the application
-    
-    /**
-     * We now set the locations recieved through to local storage on the client's side
-     */
-    localStorage.setItem("locations",JSON.stringify(locations))
+    const locationsFromStore = useSelector((state) => state.Locations)//this is the access point to the global state of variables that exists within each session f the application
+    const [locations, setLocations] = useState(locationsFromStore)
+    useEffect(() => {
+        setLocations(locationsFromStore)
+    }, [locationsFromStore])
 
-    /**
-     * Because fo the different formatting of the data returned, the following if-then-else statements check to see all the possible cases
-     * And returns the component as necessary
-     */
-    if (locations.places?._id){
-        return(
-            <LocationCard key = {locations.places._id} location = {locations.places} />
-        )
-    } else if (locations.places?.data?._id){
-        return(
-            <LocationCard key = {locations.places.data._id} location = {locations.places.data} />
-        )
-    }
-    if (locations?.places){
-        return !(locations.places.length) ? <CircularProgress className = "circular-progress" /> : (
-            locations.places.map((response) => (
-                <LocationCard key = {response.__id} location = {response} />
-            ))
-        )
-    }
-    return (
-        <CircularProgress className = "circular-progress" />
+    
+    //loading state would be here
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(4);
+
+    localStorage.setItem('locations', JSON.stringify(locations))
+    
+    //get current locations
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentLocations = locationsFromStore.slice(indexOfFirstPost, indexOfLastPost);
+    
+
+    //changes pages
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+    
+    return !(currentLocations.length) ? <CircularProgress className="progress" /> : (
+        <div>
+            <div class="pagination-bar">
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={locations.length}
+                    paginate={paginate}
+                />
+            </div>
+            {
+                currentLocations.map((oneLocation, i) => {
+                    return <LocationCard key = {i} location={oneLocation} />
+                })
+            }
+        </div>
     )
+    
+    
 }
 
 export default App;
