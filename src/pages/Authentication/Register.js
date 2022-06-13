@@ -105,25 +105,24 @@ function App() {
 
   return (
   <body>
-      <section class = "navbar">
-          <div class = "navbar">
-              <div class="container">
-                  <nav>
-                      <a class="logo" href="/">View<span>Rado</span></a>
+        <div class = "navbar">
+            <div class="container">
+                <nav>
+                    <a class="logo" href="/">View<span>Rado</span></a>
 
-                      <div class = "top-left">
-                              <a class = "return-home" href = "/">Home</a>
-                      </div>
+                    <div class = "top-left">
+                            <a class = "return-home" href = "/">Home</a>
+                    </div>
+    
+                    <div class = "top-right">
+                            <a class = "login" href = "login">Login</a>
+                    </div>
+    
+                    
+                </nav>
+            </div>
+        </div>
       
-                      <div class = "top-right">
-                              <a class = "login" href = "login">Login</a>
-                      </div>
-      
-                      
-                  </nav>
-              </div>
-          </div>
-      </section>
 
       <section class="hero">
           <div class="container">
