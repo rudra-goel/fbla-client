@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import "./Pagination.css"
 
 
 
@@ -11,10 +12,10 @@ const Paginate = ({ postsPerPage, totalPosts, paginate }) => {
     }
   
     return (
-      <div>
+      <div class="paginate-container">
 
         {pageNumbers.map(number => (
-          <button key = {number} onClick={() => paginate(number)} >
+          <button key = {number} onClick={() => paginate(number)} class="pagination-button">
             {number}
           </button>
         ))}

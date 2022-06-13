@@ -7,6 +7,7 @@
  * ---------> that component is invoked with the details passed to it as props
  */
 import LocationCard from './LocationCard'
+import './LocationCard.css'
 
 import Pagination from "./Pagination.js"
 /**
@@ -14,6 +15,9 @@ import Pagination from "./Pagination.js"
  * We are in essence pulling the posts that are put onto the client side
  */
 import { useSelector } from 'react-redux'
+import { storage } from '../../Firebase/firebase-config'
+import { ref, getDownloadURL } from "firebase/storage"
+
 
 /**
  * UX of the circular progress bar
@@ -25,6 +29,7 @@ import {  CircularProgress } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
 
 function App() {
+    const [image, setImage] = useState('')
     /**
      * This is the nexus point where we are pulling the data of the returned locations from the state management system
      * Here is a flow of sequence
@@ -59,6 +64,29 @@ function App() {
 
     //changes pages
     const paginate = pageNumber => setCurrentPage(pageNumber);
+    getDownloadURL(ref(storage, `Images/No-Results.png`))
+        .then((url) => {
+            
+            setImage(url)
+        })
+    
+
+    if(currentLocations.length && currentLocations[0] === "NO RESULTS"){
+
+        return <div class="no-results-container">
+            <img class = "no-results-image" src={image} />
+            <br></br>
+            <label class="no-results">No results were found for that search</label>
+        </div>
+    } else if (currentLocations.length && currentLocations[0] === "NO RESULTS - ADVANCED"){
+        return <div class="no-results-container">
+            <img class = "no-results-image" src={image} />
+            <br></br>
+            <label class="no-results">No Results Were Found For That Search</label><br></br>
+            <label class="no-results">Try Refining Your Search Filters</label>
+
+        </div>
+    }
     
     return !(currentLocations.length) ? <CircularProgress className="progress" /> : (
         <div>

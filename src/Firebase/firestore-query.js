@@ -145,6 +145,10 @@ const queryByName = async(req, res) => {
         })
     console.log('RETURN')
     console.log(ret)
+
+    if (ret.length === 0){
+        return ["NO RESULTS"]
+    }
     return ret
 }
 
@@ -221,6 +225,16 @@ const queryWithParams = async(params, page) => {
     }
     
     console.log(matchedResults.length)
+    let newArray = []
+    if (matchedResults.length > 20){
+        for(let i = 0; i < 20; i++){
+            newArray.push(matchedResults[i])
+        }
+        return newArray
+    } else if (matchedResults.length === 0){ 
+        return ["NO RESULTS - ADVANCED"]
+    }
+    
     return matchedResults
 }
 
