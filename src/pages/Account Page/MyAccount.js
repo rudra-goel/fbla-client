@@ -127,6 +127,7 @@ function App() {
             <div class="subNav">
                 <SubNavbar />
             </div>
+            <div id="modal" />
             <Outlet />
             
         </div>

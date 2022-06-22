@@ -166,7 +166,7 @@ function App() {
         City: [-1],
         Intensity: [-1],
         Audience: [-1],
-        PriceRange: [-1]
+        PriceRange:    [-1]
     }
 
 

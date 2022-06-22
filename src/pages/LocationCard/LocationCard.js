@@ -14,7 +14,7 @@
  import './LocationCard.css'
  
  
- function App({ location }) {
+ function App({ location, enabled }) {
      const [image, setImage] = useState('')
      
 
@@ -27,6 +27,25 @@
      /**
       * The HTML of the component is then declared as followed and returned to be displayed on the maing application
       */
+
+     if (enabled === false ){
+        return (
+            <div>
+             <div class="list-locations-for-trip">
+                     <div class="item">
+                         <img class="activity-img-for-trip" id="location-image" src={image} alt="Loading Image" ></img>
+                         <div class = "middle-item">
+                             <label class='name'>{location.Name}</label>
+                             <label class='phone'>{location.Phone}</label>
+                             <label class='location'>{location.City}, {location.Sate} - {location.Zip}</label>
+                             <label class='categories'>Activity Type: {location.Categories}</label>
+                             <label class='categories'>{location.BusinessURL}</label>
+                         </div>
+                     </div>                       
+             </div>        
+            </div>
+         )
+     }
      return (
         <div>
          <div class="list-locations">

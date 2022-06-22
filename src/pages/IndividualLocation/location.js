@@ -58,6 +58,8 @@ import backbtn from  "../Images/backButton.png"
  */
 import ReviewCard from './ReviewCard'
 
+import AddToTrip from "./AddToTrip"
+
 /**
  * React Icons imported for better UX
  */
@@ -297,6 +299,13 @@ function App(){
         starPercentages[i] = (numStars/totalReviews)*100
         starPercentages[i] = Math.round(starPercentages[i] * 10) / 10
     })
+    const [isOpen, setIsOpen] = useState(false)
+    const handleAddToTrip = () => {
+        setIsOpen(true)
+    }
+    const closeModal = () => {
+        setIsOpen(false)
+    }
     
 
   return (
@@ -337,13 +346,15 @@ function App(){
                     </nav>
             </div>
         </div>
+        <AddToTrip open={isOpen} close={closeModal}/>
+        <div id="modal-add-trip" />
         <section class='hero'>
             <div class='heart-and-back-btn'>
                 <a href='/'>
                     <img src={backbtn} alt="Logo" width="20" height ="25"></img>
                 </a>
                 
-                <button class='heart' type='submit' >
+                <div class='heart' type='submit' >
                     {!user?.uuid ? <label>Login to save locations!</label> : 
                     <div class = "heart-button">
                         <button class = "heart-button-like-location" onClick={likeLocation}>
@@ -357,10 +368,20 @@ function App(){
                         </button>
                     </div>
                     }
-                    
-                </button>
-                
+                </div>
+                <div class="add-to-trip">
+                    {
+                        user?.uuid ? (
+                            <button class="add-to-trip-btn" onClick={handleAddToTrip}>
+                                Add to My Trip!
+                            </button>
+                        ) : (
+                            <div></div>
+                        )
+                    }
+                </div>
             </div>
+            
             
             <div class='main-hero'>
             

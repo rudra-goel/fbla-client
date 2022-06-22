@@ -1,0 +1,27 @@
+.trip-link-container {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+}
+
+.trip-subnav-button {
+    display:inline-block;
+    font-size: 1.3em;
+    padding:0.35em 1.2em;
+    border:0.2em solid black;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.3em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color: var(--lightgray-color);
+    background-color: var(--hover-color);
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.trip-subnav-button:hover {
+    color: var(--hover-color);
+    background-color: var(--lightgray-color)
+}

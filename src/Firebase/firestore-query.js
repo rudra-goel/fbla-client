@@ -400,6 +400,82 @@ const updateUserEmail = async (email, password, updatedEmail, userUUID) => {
     })
 }
 
+const createNewTrip = async (name, start, end, totalPeople, uuid) => {
+    const collectionRef = collection(db, "Trips")
+    const dates = getDatesInRange(start, end)
+    let locationsOnTrip = []
+    dates.map((date) => {
+        const objToPush = {
+            Date: date,
+            LocationsForToday: []
+        }
+        locationsOnTrip.push(objToPush)
+    })
+    try {
+        const insertedObject = {
+            Name: name, 
+            startDate: start,
+            EndDate: end,
+            LocationsOnTrip: locationsOnTrip,
+            TotalPeople: totalPeople,
+            UUID: uuid
+        }
+        const tripRef = await addDoc(collectionRef, insertedObject)
+        return insertedObject;
+    } catch (error) {
+        window.alert(error)
+    }
+}
+
+const getMyTrips = async (uuid) => {
+    const tripCollectionRef = collection(db, "Trips")
+    const queryRef = query(tripCollectionRef, where("UUID", "==", uuid))
+    let ret = []
+    await getDocs(queryRef)
+        .then((snapshot) => {
+            snapshot.docs.forEach((location) => {
+                
+                ret.push(location.data())
+            })
+        })
+    if (ret.length === 0){
+        return ["NO RESULTS"]
+    } else {
+
+        return ret
+    }
+}
+
+const updateATrip = async (tripToUpdate) => {
+    const collectionRef = collection(db, "Trips")
+    const queryRef = query(collectionRef, where("Name", "==", tripToUpdate.Name))
+    const docRef = await getDocs(queryRef)
+
+    await updateDoc(docRef, {
+        LocationsOnTrip: tripToUpdate.LocationsOnTrip
+    })
+
+    return "Success"
+}
+
+function getDatesInRange(startDate, endDate) {
+    const date = new Date(Date.parse(startDate));
+    const endDateObj = new Date(Date.parse(endDate))
+    const dates = [];
+  
+    while (date <= endDateObj) {
+        let month = date.getUTCMonth() + 1; //months from 1-12
+        let day = date.getUTCDate();
+        let year = date.getUTCFullYear();
+
+        let newdate = year + "-" + month + "-" + day;  
+      dates.push(newdate);
+      date.setDate(date.getDate() + 1);
+    }
+  
+    return dates;
+  }
+
 function randomNumber(min, max) { 
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -420,4 +496,4 @@ async function arrayMatch(arr1, arr2) {
 export { getRandomLocations, queryLocationByID, queryWithParams, queryByName, 
         createUser, signInUser, queryUser, postLikedLocation, getFavoriteLocations, 
         postReviewToLocation, getMyReviews, updateUserEmail, updateUserPassword, 
-        queryFAQs, forgotPassword}
+        queryFAQs, forgotPassword, createNewTrip, getMyTrips, updateATrip}

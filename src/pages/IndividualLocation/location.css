@@ -40,7 +40,7 @@ section.hero .heart-and-back-btn {
   margin-left: 2.5em;
   vertical-align: middle;
 }
-section.hero .heart-and-back-btn button {
+.heart-button-like-location {
   border: 0px;
   background-color: transparent;
 }

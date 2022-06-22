@@ -1,0 +1,18 @@
+.create-new-trip-container {
+    position: fixed;
+    top:30%;
+    left:40%;
+    /* transfrom: translate(-50%, -50%); */
+    background-color: gray;
+    padding: 50px;
+    
+}
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, .4);
+    
+}

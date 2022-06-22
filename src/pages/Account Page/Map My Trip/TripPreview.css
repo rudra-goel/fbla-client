@@ -1,0 +1,21 @@
+.trip-information-container {
+    display: flex;
+    border: 1px solid black;
+    width: 65%;
+    border: radius 1em;
+    margin-top: 1em;
+    text-decoration: none;
+}
+.trip-preview-container a {
+    text-decoration: none;
+    color: black;
+}
+.trip-name-container {
+    align-items: center;
+    width: 25%;
+}
+.trip-dates {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
