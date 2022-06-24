@@ -1,0 +1,12 @@
+.hero-map-and-location {
+    display: flex;
+}
+
+.left-side-location-cards {
+    width: 50%;
+}
+
+.right-side-google-map{
+    min-height: 750px;
+    width: 45%
+}

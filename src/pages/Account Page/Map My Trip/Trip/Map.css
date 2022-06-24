@@ -1,0 +1,13 @@
+.map-container {
+    height: 95%;
+    width: 100%;
+}
+.map-name {
+    text-align: center;
+    margin-bottom: 1em
+}
+
+.trip-map-name {
+    font-size:2.5em;
+    
+}

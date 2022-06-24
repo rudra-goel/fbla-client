@@ -19,9 +19,7 @@ import SavedLocations from "./pages/Account Page/SavedLocations"
 import Profile from "./pages/Account Page/Profile"
 import MapMyTrip from "./pages/Account Page/Map My Trip/MapMyTrip"
 import Trip from "./pages/Account Page/Map My Trip/Trip/Trip"
-import Calendar from "./pages/Account Page/Map My Trip/Trip/Calendar/Calendar"
-import GoogleMap from "./pages/Account Page/Map My Trip/Trip/Google Maps/Map"
-import LocationsByDay from "./pages/Account Page/Map My Trip/Trip/Locations By Day/LocationsByDay"
+import TripDayOverview from "./pages/Account Page/Map My Trip/Trip/TripDayOverview"
 import MyReviews from "./pages/Account Page/MyReviews"
 import Register from './pages/Authentication/Register'
 import LandingPage from "./pages/landingpage"
@@ -53,11 +51,8 @@ const App = () => {
                     <Route path="savedLocations" element={<SavedLocations user={user}/>} />
                     <Route path="profile" element={<Profile user={user} />} />
                     <Route path="reviewHistory" element={<MyReviews user={user} />} />
-                    <Route path="trip/:tripName" element={<Trip />} >
-                        <Route path="locationsByDay" element = {<LocationsByDay />} />
-                        <Route path="maps" element = {<GoogleMap />} />
-                        <Route path="calendar" element = {<Calendar />} />
-                    </Route>
+                    <Route path="trip/:tripName" element={<Trip />} />
+                    <Route path="trip/:trip/date/:date" element={<TripDayOverview />} />
                 </Route>
                 <Route path="/faqs"  element={<FAQs />} />
 

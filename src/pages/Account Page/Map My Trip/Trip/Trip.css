@@ -1,4 +1,35 @@
-.back-button {
-    height: 50px;
-    width: auto;
+.trip-info-container {
+    margin-left: 2em;
+}
+.name-and-dates {
+    text-align: center;
+}
+.trip-name {
+    margin: 1em 0 .5em 0;
+}
+.trip-name-label {
+    font-size:4em;
+    font-weight: bold;
+}
+.trip-dates {
+    margin-bottom: 1em;
+}
+.trip-dates-label {
+    font-size:2em;
+    font-style: italic;
+}
+
+.day-card-container {
+    width: 35%;
+}
+.calendar-container {
+    width:55%;
+    margin-right: 4em;
+}
+
+.trip-hero {
+    min-height: 750px;
+    gap: 1em;
+    display: flex;
+    justify-content:space-between;
 }

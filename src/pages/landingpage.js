@@ -1,3 +1,4 @@
+//changes!
 /**
  * This is the landing page of the website
  * On every URL hit to www.viewrado.com/ --> this page is rendered

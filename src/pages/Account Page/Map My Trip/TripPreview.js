@@ -22,7 +22,7 @@ export default function TripPreview({ trip }) {
 
   return (
     <div class="trip-preview-container">
-        <a href={`trip/${trip.Name}/locationsByDay`}>
+        <a href={`trip/${trip.Name}/`}>
             <div class="trip-information-container">
                 <div class="trip-name-container">
                     <h3 class="trip-name">{trip.Name}</h3>      

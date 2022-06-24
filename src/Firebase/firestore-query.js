@@ -449,7 +449,15 @@ const getMyTrips = async (uuid) => {
 const updateATrip = async (tripToUpdate) => {
     const collectionRef = collection(db, "Trips")
     const queryRef = query(collectionRef, where("Name", "==", tripToUpdate.Name))
-    const docRef = await getDocs(queryRef)
+    let docID = []
+    await getDocs(queryRef)
+        .then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                docID = doc.id
+            })
+        })
+    const docRef = doc(db, "Trips", docID)
+    
 
     await updateDoc(docRef, {
         LocationsOnTrip: tripToUpdate.LocationsOnTrip

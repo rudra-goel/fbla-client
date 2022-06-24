@@ -1,0 +1,42 @@
+.day-container {
+    
+    border: 1px solid gray;
+    border-radius:.5em;
+    display: flex;
+    flex-direction:row;
+    margin-bottom: 1em;
+    padding: .5em;
+}
+.left-section-day {
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    text-align: center;
+
+}
+
+.day-label {
+    
+    font-size:2.5em;
+}
+
+.right-section-day {
+    width:60%;
+    display:flex;
+    flex-direction: column;
+
+}
+.planned-locations-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.ordered-list {
+    margin-left: 1em;
+}
+
+.line-trip {
+    border: 1px dashed black;
+}
