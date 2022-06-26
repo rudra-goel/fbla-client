@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { updateUserPassword, updateUserEmail } from "../../Firebase/firestore-query"
+import "./Profile.css";
 
 export default function Profile({ user }) {
   const [oldPass, setOldPass] = useState("")
@@ -30,25 +31,32 @@ export default function Profile({ user }) {
   return (
     <div>
       <br></br>
+      <h1> Profile Information</h1>
       <div class="current-account-info">
-        <label>Name: {user.Name}</label><br></br>
-        <label>Email: {user.email}</label>
+        <label><b>Name: </b> {user.Name}</label><br></br>
+        <label><b>Email: </b> {user.email}</label>
       </div>
+
+      <h1>Update Account Credentials</h1>
       <div class="update-account-container">
-        <h2>------------------Update Account Credentails------------------</h2>
         <div class="oldPass-container">
-          <label>Old Password:</label>
+          <p>Please input your old password to update either your email or your password.</p>
+          <label><b>Old Password: </b></label>
           <input type="password" value={oldPass} onChange={(e) => setOldPass(e.target.value)} />
         </div>
+
         <div class="update-email">
           <h3>Update Email</h3>
-          <input type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} />
-          <button onClick={updateEmailAttempt}>Update</button>
+          <label><b>New Email: </b></label>
+          <input type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} /> <br></br>
+          <button onClick={updateEmailAttempt} class="updateButton">Update</button>
         </div>
+        
         <div class="update-password">
           <h3>Update Password</h3>
-          <input type="password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
-          <button onClick={updatePassAttempt}>Update</button>
+          <label><b>New Password: </b></label>
+          <input type="password" value={newPass} onChange={(e) => setNewPass(e.target.value)} /> <br></br>
+          <button onClick={updatePassAttempt} class="updateButton">Update</button>
         </div>
       </div>
     </div>

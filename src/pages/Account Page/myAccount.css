@@ -26,8 +26,11 @@ body {
   box-shadow: 0 0 .5em 0 var(--mediumgray-color);
 }
 
+/* Subnavbar features */
 .subNav {
   padding-top: 6rem;
+  text-align: center;
+  grid-column-start: 3;
 }
 
 .navbar .logo {

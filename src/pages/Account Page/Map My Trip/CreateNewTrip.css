@@ -1,18 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+input {
+    width:75%;
+    background-color: var(--lightgray-color);
+    border: 0.15em solid var(--hover-color);
+    color: var(--hover-color);
+    margin: 0.5em 0em;
+}
+
 .create-new-trip-container {
-    position: fixed;
-    top:30%;
-    left:40%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1em;
+    grid-row-gap: 2em;
+    grid-column-gap: 0.25em;
+
+    justify-content: center;
+    position: relative;
+    align-self: center;
+    text-align: center;
+    
     /* transfrom: translate(-50%, -50%); */
-    background-color: gray;
-    padding: 50px;
+    background-color: var(--mediumgray-color);
+    padding: 5em;
+    margin: 0em 2em;
+
+    border-radius: 3vw;
     
 }
+
+/* These buttons follow the grid pattern */
+.create-button {
+    grid-column: 2;   
+}
+.exit-button {
+    grid-column: 3;
+}
+
+/* This stylizes the buttons */
+.create-button, .exit-button {
+    position: relative;
+    left: 15%;
+    width: 70%;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    color: white;
+    
+    
+    background-color: var(--primary-color);
+    padding: 0.25em;
+    border-radius: 2vw;
+    border: 0.25em solid var(--hover-color)
+
+}
+
+/* This changes the color of the button when hovered over */
+.create-button:hover, .exit-button:hover {
+    background-color: var(--hover-color);
+    font-weight: bold;
+}
+
+/* This dims the rest of the screen */
 .overlay {
     position:fixed;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgb (0, 0, 0, 5);
     
+}
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+    .create-new-trip-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 1em;
+        grid-row-gap: 2em;
+        grid-column-gap: 0.5em;
+    
+        justify-content: center;
+        position: relative;
+        align-self: center;
+        text-align: center;
+        
+        /* transfrom: translate(-50%, -50%); */
+        background-color: var(--mediumgray-color);
+        padding: 2em;
+        margin: 0em 5em;
+    
+        border-radius: 3vw;
+        
+    }
+
+    /* You HAVE to explicitly specify the grid columns for these because if not, the grid pattern will be followed above, 
+    causing there to be 3 columns instead of only 1 */
+    .create-button {
+        grid-column: 1;
+    }
+    .exit-button {
+        grid-column: 1;
+    }
 }

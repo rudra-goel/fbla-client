@@ -27,31 +27,32 @@ export default function CreateNewTrip({ open, close }) {
   return ReactDom.createPortal(
     <>
         <div class="overlay" />
+        <div class="big-container">
+            <div class="create-new-trip-container">
+                <div>
+                    <label><b>Trip Name: </b></label><br></br>
+                    <input type="text" name="trip-name"  value={ name } onChange={(e) => setName(e.target.value)}></input>
+                </div>
+                
+                <div>
+                    <label><b>Start Date: </b></label><br></br>
+                    <input type="date" name="trip-date-start" value={ start } onChange={(e) => setStart(e.target.value)}></input>
+                </div>
+                
+                <div>
+                    <label><b>End Date: </b></label><br></br>
+                    <input type="date" name="trip-date-end" value={ end } onChange={(e) => setEnd(e.target.value)}></input>
+                </div>
 
-        <div class="create-new-trip-container">
-            <div>
-                <label>Trip Name: </label><br></br>
-                <input type="text" name="trip-name"  value={ name } onChange={(e) => setName(e.target.value)}></input>
+                <div>
+                    <label><b>Total People: </b></label><br></br>
+                    <input type="number" name="trip-people-number" value={ totalPeople } onChange={(e) => setTotalPeople(e.target.value)} ></input>
+                </div>
+                <button type="submit" onClick={makeNewTrip} class="create-button">Create</button>
+                <button onClick={close} class="exit-button">Exit</button>
             </div>
-            
-            <div>
-                <label>Start Date: </label><br></br>
-                <input type="date" name="trip-date-start" value={ start } onChange={(e) => setStart(e.target.value)}></input>
-            </div>
-            
-            <div>
-                <label>End Date: </label><br></br>
-                <input type="date" name="trip-date-end" value={ end } onChange={(e) => setEnd(e.target.value)}></input>
-            </div>
-
-            <div>
-                <label>Total People: </label><br></br>
-                <input type="number" name="trip-people-number" value={ totalPeople } onChange={(e) => setTotalPeople(e.target.value)} ></input>
-            </div>
-            <button type="submit" onClick={makeNewTrip}>Create</button>
-            <button onClick={close}>Exit</button>
-            
         </div>
+        
     </>,
     document.getElementById('modal')
   )

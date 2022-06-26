@@ -77,7 +77,23 @@ export default function TripDayOverview() {
             }
           </div>
           <div class="right-side-google-map">
-            <Map />
+            
+          {
+              hasLocations ? (
+                <>
+                  {
+                    !locations ? (
+                      <CircularProgress />
+                      ) : (
+                      <Map listOfLocations={locations} />
+                    )
+                  }
+                </>
+              ) : (
+                <h2>Schedule Locations to View Maps</h2>
+              )
+            }
+
           </div>
         </div>
     </div>

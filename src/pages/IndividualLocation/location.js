@@ -384,13 +384,13 @@ function App(){
             
             
             <div class='main-hero'>
-            
-                <div class="image-for-destination">
+                
+                <div class=".image-for-destination ">
                     <img class = "image" src = {image}></img>
                 </div>
                 
 
-                <div class='destination-info'>
+                <div class='destination-info '>
 
                     <div class='destination-name'>
                         <label class='destination-name'>{details.Name}</label>
@@ -442,7 +442,7 @@ function App(){
                                                 <input class = "star-radio" type="radio" name = "rating" value = {ratingValue} onClick={() => setRating(ratingValue)}></input>
                                                 <FaStar 
                                                     className="star" 
-                                                    color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} 
+                                                    color={ratingValue <= (hover || rating) ? "#f4e525" : "#e4e5e9"} 
                                                     size={40} 
                                                     onMouseEnter={() => setHover(ratingValue)}
                                                     onMouseLeave={() => setHover(null)}

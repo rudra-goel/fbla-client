@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-package.json/
+.package.json
+#"start": "react-scripts --openssl-legacy-provider start",
 
 # testing
 /coverage

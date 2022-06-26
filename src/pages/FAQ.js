@@ -208,28 +208,33 @@ export default function FAQ() {
             </div>
         </div>
 
-        <div class="faq-title">
-            <h1>Welcome to Frequently Asked Questions</h1>
-        </div>
 
-        <div class="user-input-faq">
-            <input type="text" class="faq-input" placeholder="Search FAQs" onChange={(e) => setSearch({Search: e.target.value})}></input>
-            <button class='main-search-btn' type='submit' id='main-search-title' onClick={ handleSubmit }>
-                <img src={searchBtn} alt="Search" width="45" height="45" ></img>
-            </button>
+        <div class = "faqPage">
+            <div class="faq-title">
+                <h1>Welcome to Frequently Asked Questions</h1>
+            </div>
+
+            <div class="user-input-faq">
+                <input type="text" class="faq-input" placeholder="Search FAQs" onChange={(e) => setSearch({Search: e.target.value})}></input>
+                <button class='main-search-btn' type='submit' id='main-search-title' onClick={ handleSubmit }>
+                    <img src={searchBtn} alt="Search" width="45" height="45" ></img>
+                </button>
+            </div>
+            
+            <div class="faqs">
+                {
+                    loading ? (
+                        <CircularProgress />
+                        ) : (
+                            results.map((question, i) => {
+                                return <FAQCard faq={ question } index={ i } toggleFAQ = { toggleFAQ } />
+                            })
+                        )
+                        
+                }
+            </div>
         </div>
-        <div class="faqs">
-            {
-                loading ? (
-                    <CircularProgress />
-                    ) : (
-                        results.map((question, i) => {
-                            return <FAQCard faq={ question } index={ i } toggleFAQ = { toggleFAQ } />
-                        })
-                    )
-                    
-            }
-        </div>
+        
     </div>
   )
 }

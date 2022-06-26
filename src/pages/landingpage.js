@@ -576,6 +576,7 @@ function App() {
 
 
                             </form>
+                            {/*what is this??*/}
                             {/* <div class="pagination-bar">
                                 <Pagination pageNum={page} />
                             </div> */}

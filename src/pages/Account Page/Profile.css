@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+
+
+body {
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  display: grid;
+  grid-gap: 1em;
+
+  /*
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+    */
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    padding-top: 1em;
+}
+
+h3 {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/*
+This changes the form to have more stylized input boxes
+*/
+input{
+    width: 50%;
+    padding: 0 0.5em;
+    margin: 0 0.5em;
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    font-size: 1.15em;
+    font: bolder;
+    background-color: white;
+    border-radius: 1vw;
+    border-color: var(--primary-color);
+}
+
+input:focus {
+    border-color: black;
+}
+
+/*
+This formats the website to have boxes around different sections of the profile
+
+*/
+.current-account-info, .oldPass-container, .update-email, .update-password{
+    font-size: 1.5em;
+    font: bolder;
+    line-height: 3em;
+    grid-template-columns: repeat(4, 1fr);
+    /*breaks the grid into 4 columns */
+    grid-column: 1, 4;
+    text-align: left;
+    background-color: var(--lightgray-color);
+    border-radius: 2vw;
+    /* vw is a unit that takes a percentage of the viewport's width */
+    margin: 1% 5%;
+    /* margin ads the space outside of the padding - excludes the background color */
+    padding: 2.5% 5%;
+}
+
+/* Changes the Update buttons to match the style of the website */
+.updateButton {
+    font-size: 1em;
+    font: bolder;
+    color: white;
+    background-color: var(--primary-color);
+    border-color: var(--hover-color);
+    border-radius: 1vw;
+    padding: 0.5em;
+    margin: 1em 0em;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    border-color: black;
+}
+

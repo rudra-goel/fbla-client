@@ -1,68 +1,127 @@
-.main {
-    display: flex;
-    flex-direction: column;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
 
-.user-input-faq {
-    display: flex;
-    gap: 1em;
-    margin-top:1em;
-    justify-content: center;
+body {
+  background: white;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: grid;
 }
+
+/* creates a CSS grid for the FAQs page */
+.faqPage {
+    display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 1em;
+	align-items: center;
+}
+
+/*stylizes the header */
 .faq-title {
-    /*margin-top:6em;*/
-    width: 100%;
-    max-width: 1000px;
-    margin: auto ;
-    padding-top:5em;
-    text-align: center;
+	grid-column: span 4;
+	text-align: center;
+	margin-top: 5em;
 }
 
-.faq-input {
-    width: 100%;
-    max-width: 800px;
-    border: 3px solid #283c64;
-    margin-left: 1em;
-    padding: 5px;
-    height: 40px;
-    font-size: 2em;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: black;
+/*stylizes the search bar at the top of the FAQ page */
+.user-input-faq {
+	grid-column: span 4;
+	text-align: center;
 }
 
-
+/*stylizes the individual faq cards */
 .faqs {
-	width: 100%;
-	max-width: 768px;
-	margin: left 0 auto;
-	padding: 15px;
+	grid-column: 2/span 2;
+	width: 100;
+	padding: 1em;
 }
 
+
+/* stylizes just the search bar */
+.faq-input {
+	width: 75%;
+    border: 0.15em solid var(--primary-color);
+	border-radius: 4vw;
+
+	margin: 1em 0.5em;
+    padding: 0.5em;
+
+    font-size: 2em;
+    color: var(--primary-color);
+
+	background-color: white;
+}
+
+.faq-input:focus {
+	background-color: var(--lightgray-color);
+	border-color: var(--hover-color);
+}
+
+/* Stylizes the search button */
+.main-search-btn {
+	align-self: center;
+	text-align: center;
+	justify-items: center;
+	border: 0.35em solid var(--primary-color);
+	border-radius: 2vw;
+
+	background-color: var(--lightgray-color);
+	margin: 1em 0.5em;
+	padding: 1em;
+}
+
+.main-search-btn:hover {
+	border-color: var(--hover-color);
+	background-color: var(--mediumgray-color);
+}
+
+
+
+/* Stylizes a single individual FAQ card */
 .faqs .faq {
-	margin: 15px;
-	padding: 15px;
-	background-color: #FFF;
-	border-radius: 8px;
+	margin: 1.5em 1em;
+	padding: 1em;
+
+	background-color: white;
+	border-radius: 1vw;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Indicates which card the user's mouse is over */
+.faqs .faq:hover {
+	background-color: var(--lightgray-color);
+	font-weight: normal;
+}
+
+/* Stylizes the FAQ card questions at the top of the card */
 .faqs .faq .faq-question {
 	position: relative;
-	font-size: 20px;
-	padding-right: 80px;
+	font-size: 1.15em;
+	color: var(--primary-color);
+	padding-right: 5em;
 
 	transition: all 0.4s ease;
 }
 
+/* Creates the arrows on each FAQ card */
 .faqs .faq .faq-question::after {
 	content: '';
 	position: absolute;
 	top: 50%;
 	right: 0px;
 	transform: translateY(-50%);
-	width: 30px;
-	height: 30px;
+	width: 2em;
+	height: 1.5em;
 
 	background-image: url('./Images/arrow.svg');
 	background-position: center;
@@ -72,6 +131,7 @@
 	transition: all 0.4s ease-out;
 }
 
+/* Hides the FAQ answer when the card is closed */
 .faqs .faq .faq-answer {
 	opacity: 0;
 	max-height: 0;
@@ -79,15 +139,57 @@
 	transition: all 0.4s ease-out;
 }
 
-.faqs .faq.open .faq-question {
-	margin-bottom: 15px;
+/* When the FAQ card is open, the card will darken */
+.faqs .faq.open {
+	background-color: var(--lightgray-color);
 }
 
+/* Creates a space between the FAQ question and answer when the card opens up */
+.faqs .faq.open .faq-question {
+	margin-bottom: 1em;
+	font-weight: bolder;
+}
+
+/* Flips the arrow around when the FAQ card opens */
 .faqs .faq.open .faq-question::after {
 	transform: translateY(-50%) rotate(180deg);
 }
 
+/* Shows the FAQ answer when the FAQ card is open */
 .faqs .faq.open .faq-answer {
-	max-height: 1000px;
+	max-height: 100em;
 	opacity: 1;
+}
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+	.faqPage {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 1em;
+		align-items: center;
+	}
+	
+	/*stylizes the header */
+	.faq-title {
+		grid-column: 1;
+		text-align: center;
+		margin-top: 5em;
+	}
+	
+	/*stylizes the search bar at the top of the FAQ page */
+	.user-input-faq {
+		grid-column: 1;
+		text-align: center;
+	}
+	
+	/*stylizes the individual faq cards */
+	.faqs {
+		grid-column: 1;
+		width: 100;
+		padding: 1em;
+	}
+	
+
 }

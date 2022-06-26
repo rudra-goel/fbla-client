@@ -18,13 +18,27 @@ body {
   font-family: 'Poppins', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
+/*using css grid in order to make the website look more uniform 
+Location cards will be divide into three main parts: 
+the top row will consist of the back button, the heart button, and the add to trip
+the middle row will consist of two columns - the left column will contain the image and the right column will contain the in-depth details of the location 
+the bottom row will consist of the review section with 2 columns - the left column will be the ability to post reviews and the right column will be other reviews already posted on the location
+*/
+/*
+.information {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 2em;
+  
+} 
+*/
 section.hero .heart-and-back-btn {
   display: -webkit-box;
   display: -ms-flexbox;

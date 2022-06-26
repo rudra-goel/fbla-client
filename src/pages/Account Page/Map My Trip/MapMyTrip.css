@@ -1,4 +1,55 @@
-.map-my-trip-container {
-    margin-left: 1em;
-    margin-top: 1em;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
+
+body {
+    background: white;
+    font-family: 'Poppins', sans-serif;
+    display: grid;
+}
+
+/* Creates a design for the entire content of the page */
+.map-my-trip-container {
+    grid-template-columns: 2fr 2fr 1fr; /*might change to repeat(5, 1fr)*/
+    margin: 1em;
+}
+
+/* Designs the "Create a New Trip" button */
+.new-trip-button {
+    background-color: var(--lightgray-color);
+    color: var(--primary-color);
+    font-weight: bolder;
+    font-size: 1.75em;
+    text-align: center;
+
+    padding: 0.5em;
+    margin: 1em;
+
+    border-color:var(--primary-color);
+    border-radius: 1vw;
+    border: 0.15em solid;
+}
+
+/* Changes the design of the button when hovered over */
+.new-trip-button:hover {
+    background-color: var(--mediumgray-color);
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+    transition: all 0.2s;
+}
+
+/* Centers the button in the middle of the screen */
+.create-new-trip-button {
+    text-align: center;
+    margin-top: 2em;
+}
+

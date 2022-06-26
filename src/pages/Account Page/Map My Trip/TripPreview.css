@@ -1,21 +1,112 @@
-.trip-information-container {
-    display: flex;
-    border: 1px solid black;
-    width: 65%;
-    border: radius 1em;
-    margin-top: 1em;
-    text-decoration: none;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
+
+body {
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  display: grid;
+  grid: auto-flow;
+  
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: start;
+    padding: 0.25em 1em;
+}
+
+/* This creates a grid display
+**NOTE: the grid display only works if it's in the class name 1 outside of the other classes you want to group (if that makes any sense)
+For example, creating this grid display would not work on .trip-preview-container, which is the class holding .trip-information-container
+*/
+.trip-information-container {
+    display: grid;
+    grid: auto-flow;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-auto-rows: minmax(5em, auto);
+
+    background-color: var(--lightgray-color);
+    border-radius: 3vw;
+
+    grid-column-gap: 3em;
+    margin-bottom: 3em;
+    padding: 2em 1em;
+}
+
+/* When the user hovers over a certain trip, the card changes color to indicate to the user */
+.trip-information-container:hover {
+    background-color: var(--mediumgray-color);
+    color: var(--hover-color);
+    font-weight: bolder;
+    transition: all 0.2s;
+}
+
+/* Hides the link */
 .trip-preview-container a {
     text-decoration: none;
-    color: black;
+    color: var(--primary-color);
 }
+
+/* These are formatted into the CSS grid format */
 .trip-name-container {
-    align-items: center;
-    width: 25%;
+    grid-column: 1;
 }
+
 .trip-dates {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+    grid-column: 2;
+    align-self: center;
+}
+
+.active-inactive {
+    align-self: center;
+    font-weight: bold;
+}
+
+/* If the trip is active, it will be bolded */
+.active {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5em;
+    border-radius: 1vw;
+}
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+    .trip-preview-container {
+        display: grid;
+        grid: auto-flow;
+        grid-column-gap: 1em;
+        background-color: var(--lightgray-color);
+        margin-bottom: 3em;
+        border-radius: 5vw;
+    }
+    .trip-name-container {
+        grid-column: 1/5;
+        grid-row: 1;
+    }
+    h2 {
+        text-align: center;
+        padding: 0.25em;
+    }
+    .trip-dates {
+        grid-column: 1/5;
+        grid-row: 2;
+        padding: 0em 5em;
+        line-height: 5em;
+    }
+    .active-inactive {
+        grid-column: 1/5;
+        grid-row: 3;
+        text-align: center;
+    }
 }

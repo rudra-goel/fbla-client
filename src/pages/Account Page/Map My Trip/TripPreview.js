@@ -25,24 +25,25 @@ export default function TripPreview({ trip }) {
         <a href={`trip/${trip.Name}/`}>
             <div class="trip-information-container">
                 <div class="trip-name-container">
-                    <h3 class="trip-name">{trip.Name}</h3>      
+                    <h2 class="trip-name">{trip.Name}</h2>      
                 </div>
-                <div class="line" />
+
                 <div class="trip-dates">
-                    <label class="start-date">Trip Starts: {startDate.toDateString()}</label>
-                    <label class="end-date">Trip Ends: {endDate.toDateString()}</label>
+                    <label class="start-date"><b>Trip Starts: </b> {startDate.toDateString()}</label> <br></br>
+                    <label class="end-date"><b>Trip Ends: </b>{endDate.toDateString()}</label>
                 </div>
-                <div class="line" />
+
                 <div class="active-inactive">
                     {
                         during ? (
                             <label class="active">Active Trip</label>
                             ) : (
-                                <label class="inactive">Trip Inactive</label>
+                                <label class="inactive">Inactive Trip</label>
                                 )
-                            }
+                    }
                 </div>
             </div>
+
         </a>
     </div>
   )

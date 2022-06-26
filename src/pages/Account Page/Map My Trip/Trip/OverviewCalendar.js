@@ -7,7 +7,7 @@ import getDay from "date-fns/getDay"
 import "react-big-calendar/lib/css/react-big-calendar.css" 
 import { getFavoriteLocations } from "../../../../Firebase/firestore-query"
 
-import "./Calendar.css"
+import "./OverviewCalendar.css"
 import { useEffect } from 'react'
 
 

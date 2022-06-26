@@ -52,16 +52,16 @@ export default function MapMyTrip() {
   }
   return (
     <div class="map-my-trip-container">
-      <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
-        <button>Create a New Trip</button>
-      </div>
       <CreateNewTrip open={isOpen} close = {closeModal}/>
-      
-        {
-          myTrips.length===0 ? (
-            
-            <CircularProgress />
-          ) : (
+      {
+        myTrips.length===0 ? (
+          
+          <CircularProgress />
+        ) : (
+          <div>
+            <div>
+              <h1>Current Trips</h1>
+            </div>
             <div class="my-trips"> 
               {
                 myTrips.map((trip) => {
@@ -71,8 +71,14 @@ export default function MapMyTrip() {
                 })
               }
             </div>
-          )
-        }
+          </div>
+        )
+      }
+
+      
+      <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
+        <button class="new-trip-button">Create a New Trip</button>
       </div>
+    </div>
   )
 }
