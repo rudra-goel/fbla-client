@@ -86,7 +86,7 @@ body {
   padding: .5em 0 .25em 0;
 }
 
-.hero .enter-credentials {
+.hero .enter-reg-credentials {
   -webkit-box-shadow: 0 2px 4px 0 #857d7d;
           box-shadow: 0 2px 4px 0 #857d7d;
   -webkit-box-sizing: border-box;
@@ -99,7 +99,7 @@ body {
   border-radius: 1em;
 }
 
-.hero .enter-credentials .btn-register {
+.hero .enter-reg-credentials .btn-register {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,23 +110,23 @@ body {
 
 }
 
-.hero .enter-credentials input {
+.hero .enter-reg-credentials input {
   border: 2px solid #555;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 2em;
 }
 
-.hero .enter-credentials div {
+.hero .enter-reg-credentials div {
   padding: .5em;
 }
 
-.hero .enter-credentials div label {
+.hero .enter-reg-credentials div label {
   font-size: 1.5em;
   padding-right: .5em;
 }
-.hero .enter-credentials button {
-  background-color: var(--secondary-color);
+.hero .enter-reg-credentials button {
+  background-color: var(--primary-color);
   border-radius: 8px;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -157,7 +157,7 @@ body {
       touch-action: manipulation;
 }
 
-.hero .enter-credentials:hover {
+.hero .enter-reg-credentials:hover {
   -webkit-box-shadow: 0 4px 8px 0 #857d7d;
           box-shadow: 0 4px 8px 0 #857d7d;
 }

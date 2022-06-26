@@ -127,7 +127,7 @@ function App() {
       <section class="hero">
           <div class="container">
               <h1 class = "register">Register</h1>
-              <div class="enter-credentials">
+              <div class="enter-reg-credentials">
                   <form onSubmit = {handleSubmit}>
                       <div class="name">
                           <label for="name">Name</label>
