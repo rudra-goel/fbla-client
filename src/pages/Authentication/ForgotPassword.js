@@ -87,7 +87,7 @@
                                  <button type = "submit" onClick = {sendEmail} >Reset</button>
                              </div>
                          </form>
-                         <a class = "register" href = "register">Don't have an account? Create one now!</a><br></br>
+                         <a class = "register-forgot" href = "register">Don't have an account? Create one now!</a><br></br>
                          
                      </div>
                      

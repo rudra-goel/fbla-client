@@ -51,8 +51,21 @@
       font-family:Arial;
       font-size:1em;
       padding:.5em .75em;
-    
       text-decoration:none;
+  }
+
+  .if-not-logged-in-navbar a{
+    background-color: var(--primary-color);
+    border-radius:20px;
+    border:1px solid var(--primary-color);
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:1em;
+    padding:.5em .75em;
+    margin-right:1em;
+    text-decoration:none;
   }
   
   
@@ -63,21 +76,21 @@
     align-items: center;
   }
   
-  .navbar nav a {
+  .navbar nav a.myacc a.return-home a.faq {
     text-decoration: none;
     color: black;
   }
   
-  .navbar nav a.login {
-    color: white;
-    padding: .5em .75em;
-    margin-right: 1em;
-    background-color: var(--primary-color);
-  }
+
   
   a.login:hover {
    font-weight: bold;
    background-color: var(--hover-color);
+  }
+
+  a.register-nav:hover{
+    font-weight: bold;
+    background-color: var(--hover-color);
   }
   
   .navbar nav .top-left {
@@ -85,6 +98,8 @@
     
   }
   .top-left a {
+    text-decoration: none;
+    color: black;
     padding: .5em 0 0 2em;
       font-size: 1.25em;
   }
@@ -108,6 +123,6 @@
   
   .navbar nav .top-right {
     margin-left: auto;
-    padding-top: 1em;
+    /*padding-top: 1em;*/
     padding-right: 2em;
   }

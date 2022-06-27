@@ -58,7 +58,7 @@ export default function DesktopNavbar({ loggedIn }) {
                         loggedIn ? <></> : (
                           <div class="if-not-logged-in-navbar">
                             <a class="login" href="/login">Login</a>
-                            <a class = "register" href = "/register">Register</a>
+                            <a class = "register-nav" href = "/register">Register</a>
                           </div>
                         )
                       }
