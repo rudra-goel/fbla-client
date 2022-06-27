@@ -58,6 +58,8 @@ import { getLocationsBasicSearch, getLocationsAdvancedSearch, getLocationsRandom
  * The PARENT to this RFC is this current file
  */
 import LocationCardContainer from './LocationCard/LocationCardContainer'
+
+import NavigationBar from './Navigation Bars/NavigationBar'
 /**
  * Similar to above, this is another RFC that is used for pagination of the location tiles
  * It takes in data on the current page of the website, and it renders out more tiles based on the page number 
@@ -320,27 +322,27 @@ function App() {
         console.log("NEW ADVANCED MARKER")
         dispatch(getLocationsAdvancedSearch(postDataOnAdvancedSearch, page))
     }
-    /**
-     * This function is used to logout the user
-     * IF the user clicks the logout button, this function is invoked
-     */
-    const logoutUser = () => {
+    // /**
+    //  * This function is used to logout the user
+    //  * IF the user clicks the logout button, this function is invoked
+    //  */
+    // const logoutUser = () => {
         
-        /**
-         * The user profile details are removed through the global state of variables
-         * Through the dispatch actions
-         */
-        localStorage.removeItem('profile')
-        //dispatch(logout())
-        /**
-         * The user is forcefully redirected ot the landing page of the applications
-         */
-        history('/')
-        /**
-         * The local details of the user are set to null by uptading the user's details
-         */
-        setUser(null)
-    }
+    //     /**
+    //      * The user profile details are removed through the global state of variables
+    //      * Through the dispatch actions
+    //      */
+    //     localStorage.removeItem('profile')
+    //     //dispatch(logout())
+    //     /**
+    //      * The user is forcefully redirected ot the landing page of the applications
+    //      */
+    //     history('/')
+    //     /**
+    //      * The local details of the user are set to null by uptading the user's details
+    //      */
+    //     setUser(null)
+    // }
     /**
      * This function is used to manage the progress slider bar for the ZIP filter
      * Everytime a movement is detected on the ranger, this function is invoked
@@ -379,45 +381,7 @@ function App() {
     return (
         <div onL>
             <body>
-                <div class="navbar">
-                    <div class="container">
-                        <nav>
-                            <div class="logoimg">
-                            </div>
-                            <a class="logo" >View<span>Rado</span></a>
-
-                            <div class="top-left">
-                                <a class="return-home" href="/" >Home</a>
-                                <a class = "faq" href = "/faqs" >FAQs</a>
-                            </div>
-                            <div class="myAcc">
-                                {user?.uuid ? (
-                                    <a class="myacc" href='/myAccount/savedLocations'>Account Page</a>
-                                ) : (
-                                    <div></div>
-                                )}
-                            </div>
-                            <div class="top-right">
-
-                                {user?.uuid ? (
-                                    <div class="if-logged-in-navbar">
-                                        <label>Hello {user.Name}!</label>
-                                        <button class="logout" value="logout" onClick={logoutUser}>Logout</button>
-                                    </div>
-
-                                ) : (
-                                    <div class="if-not-logged-in-navbar">
-                                        <a class="login" href="/login">Login</a>
-                                        <a class = "register" href = "/register">Register</a>
-                                    </div>
-                                )}
-
-                            </div>
-
-                        </nav>
-                    </div>
-                </div>
-
+                <NavigationBar />
                 <section class="hero">
 
                     <div class="search-bar">

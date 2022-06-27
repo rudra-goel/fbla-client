@@ -32,6 +32,8 @@ import { queryFAQs } from '../Firebase/firestore-query'
  */
 import FAQCard from './FAQCard'
 
+import NavigationBar from "./Navigation Bars/NavigationBar"
+
 /**
  * UX do display that the search has been performed to the user
  */
@@ -174,41 +176,7 @@ export default function FAQ() {
     
   return (
     <div class="main">
-      <div class="navbar">
-            <div class="container">
-                <nav>
-                    <a class="logo">View<span>Rado</span></a>
-                    <div class = "top-left">
-                            <a class = "return-home" href = "/" >Home</a>
-                            {user?.uuid ? (
-                                <a class="myacc" href='/myAccount'>Account Page</a>                                
-                        ) : (
-                            <div class="if-not-logged-in-navbar">
-                            </div>
-                        )}
-                    </div>
-                        
-                    <div class = "top-right">
-
-                        {user?.uuid ? (
-                            <div class="if-logged-in-navbar">
-                                <label>Hello {user.Name}!</label>
-                                <button value = "logout" onClick = {logout}>Logout</button>
-                            </div>
-                            
-                        ) : (
-                            <div class="if-not-logged-in-navbar">
-                                <a class = "login" href = "/login">Login</a>
-                                <a class = "register" href = "/register">Register</a>
-                            </div>
-                        )}
-                        
-                    </div>        
-                </nav>
-            </div>
-        </div>
-
-
+        <NavigationBar />
         <div class = "faqPage">
             <div class="faq-title">
                 <h1>Welcome to Frequently Asked Questions</h1>

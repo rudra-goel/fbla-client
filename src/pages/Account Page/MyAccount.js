@@ -32,6 +32,7 @@ import LocationCardContainer from '../LocationCard/LocationCardContainer'
  */
 import { getLocationsByFavorites } from '../../Redux/actions.js'
 
+import NavigationBar from "../Navigation Bars/NavigationBar"
 
 import { BrowserRouter, Routes,  Route, Outlet } from 'react-router-dom'//allows for the routes to be setup
 import SubNavbar from "./SubNavbar"
@@ -90,40 +91,7 @@ function App() {
 
     return (
         <div>
-            <div class="navbar">
-                <div class="container">
-                    <nav>
-                        <a class="logo">View<span>Rado</span></a>
-                        <div class="top-left">
-                            <a class="return-home" href="/" >Home</a>
-                            <a class = "faq" href = "/faqs" >FAQs</a>
-                        </div>
-                        
-                        <div class="myAcc">
-                            {user?.uuid ? (
-                                <a class="myacc" href='/myAccount'>Account Page</a>
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
-
-                        <div class="top-right">
-
-                            {user?.uuid ? (
-                                <div class="if-logged-in-navbar">
-                                    <label>Hello {user.Name}!</label>
-                                    <button value="logout" onClick={logout}>Logout</button>
-                                </div>
-
-                            ) : (
-                                <div></div>
-                            )}
-
-                        </div>
-
-                    </nav>
-                </div>
-            </div>
+            <NavigationBar /> 
             <div class="subNav">
                 <SubNavbar />
             </div>

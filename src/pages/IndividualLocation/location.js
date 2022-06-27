@@ -57,6 +57,7 @@ import backbtn from  "../Images/backButton.png"
  * React Component for the review card to be posted on each location
  */
 import ReviewCard from './ReviewCard'
+import NavigationBar from "../Navigation Bars/NavigationBar"
 
 import AddToTrip from "./AddToTrip"
 
@@ -311,7 +312,8 @@ function App(){
   return (
       !locations ? <CircularProgress /> : 
     <body class="body">
-        <div class="navbar">
+        <NavigationBar />
+        {/* <div class="navbar">
             <div class="container">
             <nav>
                         <a class="logo">View<span>Rado</span></a>
@@ -345,7 +347,7 @@ function App(){
 
                     </nav>
             </div>
-        </div>
+        </div> */}
         <AddToTrip open={isOpen} close={closeModal}/>
         <div id="modal-add-trip" />
         <section class='hero'>

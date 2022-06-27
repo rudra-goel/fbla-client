@@ -18,65 +18,6 @@ body {
 }
 
 
-/*NAVBAR WILL BE UPDATED LATER ON */
-.navbar {
-  padding: .5em 1em .75em 1.5em;
-  background-color: white;
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  box-shadow: 0 0 .5em 0 var(--mediumgray-color);
-}
-
-.navbar .logo {
-  text-decoration: none;
-  padding-top: .4em;
-  color: black;
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
-.navbar .logo span {
-  color: var(--primary-color);
-}
-
-.navbar nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.navbar nav a {
-  text-decoration: none;
-  color: black;
-}
-
-.navbar nav a.register {
-  background-color: var(--primary-color);
-  color: white;
-  padding: .5em .75em;
-  border-radius: 2vw;
-}
-
-.navbar nav a.register:hover {
-  font-weight: bold;
-  background-color: var(--hover-color);
-}
-
-.navbar nav .top-left {
-  padding: 1em 0 0 3em;
-  font-size: 1em;
-}
-
-.navbar nav .top-left:hover {
-  font-weight: bold;
-}
-
-.navbar nav .top-right {
-  margin-left: auto;
-  padding-top: 1em;
-  padding-right: 2em;
-}
 
 /* REGISTER PAGE */
 

@@ -14,6 +14,8 @@
 
  import { forgotPassword } from "../../Firebase/firestore-query"
 
+
+ import NavigationBar from "../Navigation Bars/NavigationBar"
  /**
   * This is a component preloaded from @material-ui/core that displays a circular progress bar for UX
   */
@@ -66,22 +68,7 @@
  
    return (
      <body>
-         <div class="navbar">
-             <div class="container">
-                 <nav>
-                     <a class="logo" href="/">View<span>Rado</span></a>
- 
-                     <div class = "top-left">
-                             <a class = "return-home" href = "/">Home</a>
-                             <a class = "faq" href = "/faqs" >FAQs</a>
-                     </div>
- 
-                     <div class = "top-right">
-                             
-                     </div>
-                 </nav>
-             </div>
-         </div>
+         <NavigationBar atLogin={true}/>
  
  
          <section class = "hero-forgot" >

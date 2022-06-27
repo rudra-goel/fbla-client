@@ -29,6 +29,8 @@ import { useDispatch } from 'react-redux'
  */
 import {registerUser} from '../../Redux/actions'
 
+
+import NavigationBar from "../Navigation Bars/NavigationBar"
 /**
  * This is a component preloaded from @material-ui/core that displays a circular progress bar for UX
  */
@@ -105,25 +107,7 @@ function App() {
 
   return (
   <body>
-        <div class = "navbar">
-            <div class="container">
-                <nav>
-                    <a class="logo" href="/">View<span>Rado</span></a>
-
-                    <div class = "top-left">
-                            <a class = "return-home" href = "/">Home</a>
-                    </div>
-    
-                    <div class = "top-right">
-                            <a class = "login" href = "login">Login</a>
-                    </div>
-    
-                    
-                </nav>
-            </div>
-        </div>
-      
-
+    <NavigationBar atLogin={true}/>
       <section class="hero-register">
           <h1 class = "register">Register</h1>
           <div class="container">
