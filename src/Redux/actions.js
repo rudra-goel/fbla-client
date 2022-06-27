@@ -6,7 +6,7 @@
  */
 import * as api from '../api'
 
-import { getFavoriteLocations, postReviewToLocation } from '../Firebase/firestore-query.js';
+import { getFavoriteLocations, postReviewToLocation, deleteSavedLocation } from '../Firebase/firestore-query.js';
 
 /**
  * This file parses through the data passed by the frontend
@@ -194,7 +194,7 @@ export const getLocationsByFavorites = (locationID) => async (dispatch) => {
     try {
 
         const data = await getFavoriteLocations(locationID)
-
+        console.log("favorite locations action ran")
         dispatch({type:"QUERY_LOCATIONS", payload:data})
 
     } catch (error) {
@@ -220,7 +220,7 @@ export const getLocationsBasicSearch  = (params) => async (dispatch) => { //the 
         const data = await api.fetchLocationsBasicSearch(params);
 
         dispatch({ type: "QUERY_LOCATIONS", payload : data })
-
+        
     } catch (error) {
         console.log(error)
     }
@@ -228,4 +228,42 @@ export const getLocationsBasicSearch  = (params) => async (dispatch) => { //the 
 
 export const logout = () => (dispatch) => {
     dispatch({type:"LOGOUT"})
+}
+
+export const deleteLocationsFromSaved = (locationID) => async (dispatch) => {
+
+    let locations = JSON.parse(localStorage.getItem("locations"))
+    
+    let index = 0
+    for(let i = 0; i < locations.length; i++){
+        if (locations[i].itemID === locationID) {
+            index = i
+            break
+        }
+    }
+    let newLocations = []
+    let newLocationID = []
+    let user = JSON.parse(localStorage.getItem("profile"))
+
+    for(let i = 0; i < locations.length; i++){
+        if(i!==index) {
+            newLocations.push(locations[i])
+            newLocationID.push(locations[i].itemID)
+        }
+    }
+    
+    console.log("Inside actions")
+    
+    localStorage.setItem("locations", JSON.stringify(newLocations))
+    const newUser = {
+        ...user,
+        likedLocations: newLocationID
+    }
+    localStorage.setItem("profile", JSON.stringify(newUser))
+    console.log(newLocations)
+
+    await deleteSavedLocation(newLocations)
+
+    dispatch({ type: "DELETE_FROM_SAVED", payload : newLocations })
+    
 }

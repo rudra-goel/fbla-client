@@ -40,13 +40,17 @@ export default function MapMyTrip() {
   if (myTrips.length && myTrips[0] === "NO RESULTS"){
     return (
       <div class="map-my-trip-container">
-        <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
-          <button>Create a New Trip</button>
-        </div>
-        <CreateNewTrip open={isOpen} close = {closeModal}/>
         <div>
+          <h1>Current Trips</h1>
+        </div> <br></br>
+        <div class="no-results">
             <label class="no-results">You have no trips!</label>
         </div>
+        <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
+          <button class="new-trip-button">Create a New Trip</button>
+        </div>
+        <CreateNewTrip open={isOpen} close = {closeModal}/>
+        
         </div>
     )
   }
@@ -62,6 +66,10 @@ export default function MapMyTrip() {
             <div>
               <h1>Current Trips</h1>
             </div>
+            <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
+              <button class="new-trip-button">Create a New Trip</button>
+            </div>
+
             <div class="my-trips"> 
               {
                 myTrips.map((trip) => {
@@ -76,9 +84,7 @@ export default function MapMyTrip() {
       }
 
       
-      <div class="create-new-trip-button" onClick={() => setIsOpen(true)}>
-        <button class="new-trip-button">Create a New Trip</button>
-      </div>
+      
     </div>
   )
 }

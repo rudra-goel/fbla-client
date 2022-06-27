@@ -27,12 +27,13 @@ export default function Trip() {
     <div class="trip-info-container">
       <div class="name-and-dates">
         <div class="trip-name">
-          <label class="trip-name-label">{myTrip.Name}</label>
+          <div class="trip-name-label">{myTrip.Name}</div>
         </div>
         <div class="trip-dates">
-          <label class="trip-dates-label">Dates: {start.toDateString()} --- {end.toDateString()}</label>
+          <label class="trip-dates-label">{start.toDateString()} - {end.toDateString()}</label>
         </div>
       </div>  
+
       <div class="trip-hero">
         <div class="day-card-container">
           {

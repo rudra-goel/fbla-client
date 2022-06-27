@@ -124,26 +124,26 @@ function App() {
         </div>
       
 
-      <section class="hero">
+      <section class="hero-register">
+          <h1 class = "register">Register</h1>
           <div class="container">
-              <h1 class = "register">Register</h1>
-              <div class="enter-reg-credentials">
+              <div class="enter-credentials">
                   <form onSubmit = {handleSubmit}>
                       <div class="name">
-                          <label for="name">Name</label>
-                          <input value = {postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} type="text" for = "name" id = "name" required></input>
+                          <label for="name" class="name-label">Name</label>
+                          <input class="name-input" value = {postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} type="text" for = "name" id = "name" required></input>
                       </div>
                       <div class="email">
-                          <label for="email">Email</label>
-                          <input value = {postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} type="email" for = "email" id = "email" required></input>
+                          <label for="email" class="email-label">Email</label>
+                          <input class="email-input" value = {postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} type="email" for = "email" id = "email" required></input>
                       </div>
                       <div class="password">
-                          <label for="password">Password</label>
-                          <input value = {postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} type="password" for = "password" id = "password" required></input>
+                          <label for="password" class="password-label">Password</label>
+                          <input class="password-input" value = {postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} type="password" for = "password" id = "password" required></input>
                       </div>
-                      <div class="password">
-                          <label for="password">Confirm Password</label>
-                          <input value = {postData.confpassword} onChange={(e) => setPostData({ ...postData, confpassword: e.target.value })} type="password" for = "password" id = "password" required></input>
+                      <div class="password-confirm">
+                          <label for="password" class="confirm-label">Confirm Password</label>
+                          <input class="confirm-input" value = {postData.confpassword} onChange={(e) => setPostData({ ...postData, confpassword: e.target.value })} type="password" for = "password" id = "password" required></input>
                       </div>                      
                       <div class="btn-register">
                           <button type = "submit" href = '/'>Register</button>

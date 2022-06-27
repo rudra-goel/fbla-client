@@ -1,13 +1,57 @@
-.map-container {
-    height: 95%;
-    width: 100%;
-}
-.map-name {
-    text-align: center;
-    margin-bottom: 1em
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
 
-.trip-map-name {
-    font-size:2.5em;
-    
+body {
+  background: white;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.map-name {
+    text-align: center;
+    font-size:2em;
+    color: var(--hover-color);
+}
+
+/* This creates a grid for the entire right side of the trip day overview page */
+.trip-dist-dur {
+    font-size: 1.15em;
+    color: var(--hover-color);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 0.5em;
+    margin: 1.5em;
+}
+
+.calculate-route-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    color: white;
+
+    background-color: var(--primary-color);
+    border: 0.15em solid var(--hover-color);
+    border-radius: 2vw;
+    padding: 0.5em;
+    margin: 0.25em 7.5em;
+}
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+    .trip-dist-dur {
+        align-items: center;
+        text-align: center;
+    }
 }

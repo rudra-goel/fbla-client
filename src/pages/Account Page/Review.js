@@ -54,42 +54,30 @@ function Review({ individualReview, number }) {
                         
                         return (
                             <FaStar 
-                            color={ratingValue <= location.Stars ? "#ffc107" : "#e4e5e9"} 
+                            color={ratingValue <= location.Stars ? "#f4e525" : "#e4e5e9"} 
                             size={25}
                             />
                             )
                     })}
+                    </div>
                 </div>
             </div>
-            </div>
-
         </div>
-
-
-
-
-
-        <div class="line"></div>
-
-
-
-
-
 
 
         <div class="review-details">
             {/* <label>---------------------Details of the given review---------------------</label> */}
             <div class = "nameOfReviewer">
                 <CgProfile size={30} />
-                <p1 class = "name">{individualReview.NameOfReviewer}</p1>
+                <p1 class = "reviewer-name">{individualReview.NameOfReviewer}</p1>
             </div>
-            <div class = "stars">
+            <div class = "given-stars">
                 {[...Array(5)].map((star, i) => {
                     const ratingValue = i+1;
 
                     return (
                         <FaStar 
-                            color={ratingValue <= individualReview.Stars ? "#ffc107" : "#e4e5e9"} 
+                            color={ratingValue <= individualReview.Stars ? "#f4e525" : "#e4e5e9"} 
                             size={25}
                         />
                     )
@@ -103,7 +91,7 @@ function Review({ individualReview, number }) {
 
                 <div class="given-Review">
 
-                    <p1 class = "givenReview">Given Review : <span>{individualReview.givenReview}</span></p1>
+                    <p1 class = "givenReview"><b>Given Review:  </b><span>{individualReview.givenReview}</span></p1>
                 </div>
             </div>
         </div>        

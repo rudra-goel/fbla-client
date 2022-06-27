@@ -113,10 +113,9 @@ export default function Map({ listOfLocations }) {
             <label class="trip-map-name">Trip Maps</label>
           </div>
           <div class="trip-dist-dur">
-            <label class="distance">Total Distance: {metresToMiles()}</label> 
-            <br></br>
-            <label class="distance">Total Duration: {secondsToAppropriate()}</label> 
-            <button onClick={calculateRoute}>Calculate My Route</button>
+            <label class="distance"><b>Total Distance:  </b>{metresToMiles()}</label> 
+            <label class="distance"><b>Total Duration:  </b>{secondsToAppropriate()}</label> 
+            <button onClick={calculateRoute} class="calculate-route-btn">Calculate My Route</button>
           </div>
           <GoogleMap 
             center={position} 

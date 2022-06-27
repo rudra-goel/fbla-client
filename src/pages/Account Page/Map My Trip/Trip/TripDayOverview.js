@@ -55,6 +55,7 @@ export default function TripDayOverview() {
             <label class="trip-dates-label">{dateRead.toDateString()}</label>
           </div>
         </div> 
+
         <div class="hero-map-and-location">
 
           <div class="left-side-location-cards">
@@ -66,7 +67,7 @@ export default function TripDayOverview() {
                       <CircularProgress />
                       ) : (
                       locations.map((location) => {
-                        return <LocationCard location={location} enabled={false} />
+                        return <LocationCard location={location} enabled={true} />
                       })
                     )
                   }

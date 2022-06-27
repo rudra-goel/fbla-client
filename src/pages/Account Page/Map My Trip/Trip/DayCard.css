@@ -1,42 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Stylizes the day card and creates a grid */
 .day-container {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 1em;
+
+    background-color: white;
+    border: 0.25em solid var(--primary-color);
+    border-radius: 2vw;
     
-    border: 1px solid gray;
-    border-radius:.5em;
-    display: flex;
-    flex-direction:row;
-    margin-bottom: 1em;
-    padding: .5em;
-}
-.left-section-day {
-    
-    display:flex;
-    justify-content: center;
+    padding: 1em;
+    margin: 1em 0.5em;
     align-items: center;
-    width: 40%;
-    text-align: center;
-
 }
 
-.day-label {
-    
-    font-size:2.5em;
-}
-
-.right-section-day {
-    width:60%;
-    display:flex;
-    flex-direction: column;
+/* When the card is hovered over, the card changes style */
+.day-container:hover {
+    background-color: var(--lightgray-color);
+    border-color: var(--hover-color);
 
 }
-.planned-locations-text {
-    text-align: center;
+.day-container:hover .left-section-day {
     font-weight: bold;
-    font-size: 1.3em;
-}
-.ordered-list {
-    margin-left: 1em;
 }
 
+/* Stylizes and formats the day on the card */
+.left-section-day {
+    grid-column: 1/3;
+    text-align: center;
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+/* Formats the locations on each day card */
+.right-section-day {
+    grid-column: 3/6;
+    text-align: left;
+    padding: 0.5em;
+}
+
+/* Stylizes the text with all the locations */
+.planned-locations-text {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: var(--hover-color);
+}
+.unordered-list {
+    font-size: 1.05em;
+}
+
+/*
 .line-trip {
     border: 1px dashed black;
 }
+*/

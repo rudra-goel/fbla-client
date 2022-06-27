@@ -5,6 +5,7 @@ import { getMyTrips, updateATrip } from '../../Firebase/firestore-query'
 import "./AddToTrip.css"
 
 export default function AddToTrip({ open, close }) {
+
   const [myTrips, setMyTrips] = useState([])
   const [selectedTrip, setSelectedTrip] = useState()
   const [added, setAdded] = useState(false)
@@ -12,11 +13,14 @@ export default function AddToTrip({ open, close }) {
   console.log(id)
   
   useEffect(() => {
-    getMyTrips(user.uuid)
-      .then((trips) => {
-        setMyTrips(trips)
-        setSelectedTrip(myTrips[0])
-      })
+    if (user?.uuid){
+
+      getMyTrips(user.uuid)
+        .then((trips) => {
+          setMyTrips(trips)
+          setSelectedTrip(myTrips[0])
+        })
+    }
   }, [])
   const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -65,6 +69,7 @@ export default function AddToTrip({ open, close }) {
         <div class="overlay" />
         <div class="add-new-location-to-trip">
             <select class="trip-select" id="trip-name-select" onChange={handleNameSelect}>
+              <option>Select a Trip</option>
               {
                 myTrips.map((trip) => {
                   return (
@@ -74,6 +79,7 @@ export default function AddToTrip({ open, close }) {
               }
             </select>
             <select id="trip-date-select" class="trip-select">
+              
               {
                 selectedTrip?.LocationsOnTrip.map((day) => {
                   const date = new Date(Date.parse(day.Date))
@@ -84,7 +90,7 @@ export default function AddToTrip({ open, close }) {
               }
             </select>
 
-            <button onClick={handleAddToTrip}>Create</button>
+            <button onClick={handleAddToTrip}>Add to Trip</button>
             <button onClick={close}>Exit</button>
             <br></br>
             {

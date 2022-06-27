@@ -24,20 +24,19 @@ export default function DayCard({ day }) {
         <div class="left-section-day">
           <label class="day-label">{date.toDateString().split(' ').slice(1, 3).join(' ')}</label>
         </div>
-        <div class="line-trip" />
         <div class="right-section-day">
-          <label class="planned-locations-text">Planned Locations</label>
+          <label class="planned-locations-text">Planned Locations</label> <br></br>
             {
               !locations ? <label>You did not add locations for this day</label> : (
-                <ol class="ordered-list">
+                <div class="unordered-list">
                   {
                     locations.map((location, index) => {
                       return (
-                        <li key={index}>{location.Name}</li>
+                        <div key={index}>• {location.Name}</div>
                         )
                       })
                     }
-                </ol>
+                </div>
               )
             }
         </div>

@@ -1,6 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* This is the container div for each review card */
+.my-review-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 columns: left-image; middle-location ; right-review */
+    grid-column-gap: 1em;
+    margin: 2em 1em;
+
+    background-color: white;
+    border: 0.25em solid var(--primary-color);
+    border-radius: 2vw;
+}
+
+.my-review-container:hover {
+    background-color: var(--lightgray-color);
+}
+
+/* previously flex layout */
 /*
-    This is the container div for each review card
-*/
 .my-review-container {
     display: flex;
     justify-content: flex-start;
@@ -15,8 +50,12 @@
     border-radius: 1em;
     
 }
+*/
+
+
+/* adds extra space on the bottom of the screen */
 .my-review-container:last-child {
-    margin-bottom:3em;
+    margin-bottom:5em;
 }
 
 
@@ -25,29 +64,52 @@
     This is about the location on which the review was made
 */
 .left-section {
-    display:flex;
-    flex:1;
-    align-items:center
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    justify-items: center;
+    align-items: center;
 }
+
+/* Stylizes the image */
 .activity-image {
-    max-width: 50%;
+    grid-column: 1;
+    max-width: 80%;
     max-height: auto;
+    margin: 0.75em 0.25em;
+
+    border: 0.15em solid var(--primary-color);
     border-radius:1em;
 }
+
+/* Stylizes the details of the location */
 .location-details {
-    padding-left:2em;
+    text-align: left;
+    padding: 0.5em 0.75em;
+    margin: 0.25em 0.75em;
 }
+
+/* Name of location */
 .review-location-name {
     font-weight: bold; 
+    color: var(--primary-color);
     font-size: 1.5em;
-    text-align: center;
+    text-align: left;
 }
+/* Activity Type */
 .review-location-categories {
     font-size: 1em;
     font-style: italic;
 }
+/*Average Star of the location */
 .average-star {
-    padding: 1em 0 1em 0;
+    padding: 1em 0em;
+    margin: 0.25em 0em;
+}
+
+.stars {
+    margin-top: 0.5em;
 }
 
 
@@ -56,29 +118,113 @@
     For the middle of the review card
     This is the line that separates the location details from the review details
 */
+/*
 .line {
-    border: 1px dashed black; 
+    border: 0.15em solid var(--mediumgray-color); 
 }
+*/
+
+
 
 /*
     For the right side of the review card
     This is about the reviews for the location
 */
 .review-details {
-    display:flex;
-    flex-direction: column;
-    padding-left: 1em;
-    flex:1;    
+    grid-column: 3/5;
+    padding: 0.5em 0.75em;
+    margin: 1em 0.25em;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    align-items: center;
+
 }
+
+/* Stylizes the name of the reviewer */
+.nameOfReviewer {
+    grid-column: 1;
+    color: var(--primary-color);
+    font-weight: bold;
+
+}
+
+/*Places the stars in correct location*/
+.given-stars {
+    grid-column: 2;
+
+}
+
+
+/* Stylizes the review given by the user */
 .written-review {
-    margin-top: 1em;
+    grid-column: 1/3;
+    align-items: start;
+    padding-right: 0.5em;
 }
+
 .review-title  {
-    font-size:1.5em;
+    font-size:1.25em;
+    font-weight: bold;
+    color: var(--hover-color);
 }
 .given-Review {
     margin-top: 1em;
 }
 .givenReview span {
     font-style: italic;
+}
+
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+    /*
+    For the left side of the review card
+    This is about the location on which the review was made
+    */
+    .left-section {
+        grid-column: 1/5;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        justify-items: center;
+        align-items: center;
+    }
+
+    /* Stylizes the image */
+    .activity-image {
+        grid-column: 1;
+        max-width: 90%;
+        max-height: auto;
+        margin-top: 1.5em;
+    }
+
+
+    /*
+    For the right side of the review card
+    This is about the reviews for the location
+    */
+    .review-details {
+        grid-column: 1/5;
+        padding: 0.5em 0.75em;
+        margin: 1em 0.25em;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        align-items: center;
+
+    }
+
+    /* Places the name of the reviewer */
+    .nameOfReviewer {
+    grid-column: 1/3;
+    }
+
+    /*Places the stars in correct location*/
+    .given-stars {
+    grid-column: 1/3;
+    }
 }

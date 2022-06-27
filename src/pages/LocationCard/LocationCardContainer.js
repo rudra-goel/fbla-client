@@ -14,10 +14,11 @@ import Pagination from "./Pagination.js"
  * UseSelector is used to pull the data from the global state management library
  * We are in essence pulling the posts that are put onto the client side
  */
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { storage } from '../../Firebase/firebase-config'
 import { ref, getDownloadURL } from "firebase/storage"
-
+import { deleteLocationsFromSaved } from "../../Redux/actions"
+import {store} from "../../index.js"
 
 /**
  * UX of the circular progress bar
@@ -28,7 +29,9 @@ import {  CircularProgress } from '@material-ui/core'
  */
 import React, { useState, useEffect } from 'react'
 
-function App() {
+function App( { isSaved } ) {
+    const dispatch = useDispatch()
+    
     const [image, setImage] = useState('')
     /**
      * This is the nexus point where we are pulling the data of the returned locations from the state management system
@@ -43,12 +46,15 @@ function App() {
      * 
      * 
      */
-    const locationsFromStore = useSelector((state) => state.Locations)//this is the access point to the global state of variables that exists within each session f the application
-    const [locations, setLocations] = useState(locationsFromStore)
-    useEffect(() => {
-        setLocations(locationsFromStore)
-    }, [locationsFromStore])
-
+    
+    
+     let locationsFromStore = useSelector((state) => state.Locations)//this is the access point to the global state of variables that exists within each session f the application
+     console.log("locationsFromStore")
+     console.log(locationsFromStore)
+     const [locations, setLocations] = useState(locationsFromStore)
+     useEffect(() => {
+         setLocations(locationsFromStore)
+     }, [locationsFromStore])
     
     //loading state would be here
     const [currentPage, setCurrentPage] = useState(1);
@@ -60,9 +66,15 @@ function App() {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentLocations = locationsFromStore.slice(indexOfFirstPost, indexOfLastPost);
-    
+    console.log("currentLocations");
+    console.log(currentLocations);
+    const deleteSavedLocation = (id) => {
+       
+        dispatch(deleteLocationsFromSaved(id))
+    }
 
     //changes pages
+    
     const paginate = pageNumber => setCurrentPage(pageNumber);
     getDownloadURL(ref(storage, `Images/No-Results.png`))
         .then((url) => {
@@ -70,7 +82,7 @@ function App() {
             setImage(url)
         })
     
-
+    
     if(currentLocations.length && currentLocations[0] === "NO RESULTS"){
 
         return <div class="no-results-container">
@@ -90,6 +102,11 @@ function App() {
     
     return !(currentLocations.length) ? <CircularProgress className="progress" /> : (
         <div>
+            {
+                currentLocations.map((oneLocation, i) => {
+                    return <LocationCard key = {i} location={oneLocation} isSaved={isSaved} deleteLocation={deleteSavedLocation}/>
+                })
+            }
             <div class="pagination-bar">
                 <Pagination
                     postsPerPage={postsPerPage}
@@ -97,11 +114,6 @@ function App() {
                     paginate={paginate}
                 />
             </div>
-            {
-                currentLocations.map((oneLocation, i) => {
-                    return <LocationCard key = {i} location={oneLocation} />
-                })
-            }
         </div>
     )
     

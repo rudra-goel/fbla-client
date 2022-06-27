@@ -1,5 +1,5 @@
 import { db, auth } from "./firebase-config.js";
-import { collection, query, where, getDocs, limit, addDoc, getDoc, doc, updateDoc } from "firebase/firestore"
+import { collection, query, where, getDocs, limit, addDoc, getDoc, doc, updateDoc, deleteDoc } from "firebase/firestore"
 import {queryByActivityType, queryByCity, queryByIntensity, queryByMaxPrice, queryByMinPrice, queryByZIP, queryByAudience, queryByStars} from "./AdvancedSeach-query.js"
 import _ from "lodash"
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signout, getAuth, updateEmail, updatePassword, EmailAuthProvider, sendPasswordResetEmail } from "firebase/auth"
@@ -466,6 +466,19 @@ const updateATrip = async (tripToUpdate) => {
     return "Success"
 }
 
+const deleteSavedLocation = async (newLocations) => {
+    const user = JSON.parse(localStorage.getItem('profile'))
+    const userDocID= await queryUserID(user.uuid)
+    const docRef = doc(db, "Users", userDocID)
+    let locationID = []
+    newLocations.forEach((location) => {
+        locationID.push(location.itemID)
+    })
+    await updateDoc(docRef, {
+        likedLocations: locationID
+    })
+}
+
 function getDatesInRange(startDate, endDate) {
     const date = new Date(Date.parse(startDate));
     const endDateObj = new Date(Date.parse(endDate))
@@ -504,4 +517,4 @@ async function arrayMatch(arr1, arr2) {
 export { getRandomLocations, queryLocationByID, queryWithParams, queryByName, 
         createUser, signInUser, queryUser, postLikedLocation, getFavoriteLocations, 
         postReviewToLocation, getMyReviews, updateUserEmail, updateUserPassword, 
-        queryFAQs, forgotPassword, createNewTrip, getMyTrips, updateATrip}
+        queryFAQs, forgotPassword, createNewTrip, getMyTrips, updateATrip, deleteSavedLocation}

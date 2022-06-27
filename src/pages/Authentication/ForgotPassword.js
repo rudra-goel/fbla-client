@@ -5,7 +5,7 @@
  * The first Import statment is the styling of the webpage
  */
 
- import './login.css'
+ import './ForgotPassword.css'
 
  /**
   * The useState is a react hook that manages the variables wihtin this component -> it is imported through React
@@ -84,19 +84,19 @@
          </div>
  
  
-         <section class = "hero" >
+         <section class = "hero-forgot" >
              <div class="specificformat">
                  <div class = "container">
                      <h1>Reset Password</h1>
                      <div class = "enter-credentials">
                          <form >
-                             <div class="credential">
-                                 <label for = "username">Email</label>
-                                 <input value = {email} onChange = {(e) => setEmail(e.target.value)} type = "text" id = "name" name = "name" required></input>        
+                             <div class="forgot-cred">
+                                 <label for = "username" class="forgot-email">Email</label>
+                                 <input class="forgot-email-input" value = {email} onChange = {(e) => setEmail(e.target.value)} type = "text" id = "name" name = "name" required></input>        
                             </div>
                              
  
-                             <div class="btn-login">
+                             <div class="btn-reset">
                                  <button type = "submit" onClick = {sendEmail} >Reset</button>
                              </div>
                          </form>

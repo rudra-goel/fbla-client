@@ -53,3 +53,11 @@ body {
     margin-top: 2em;
 }
 
+/* If the user, doesn't have any trips, then the message will appear
+This stylizes that message */
+.no-results {
+    font-size: 1.15em;
+    text-align: center;
+    font-weight: bold;
+    color: var(--hover-color);
+}

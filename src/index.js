@@ -7,7 +7,7 @@ import {reducer} from './Redux/reducers.js'
 
 import App from './App';
 
-const store = createStore(reducer, compose(applyMiddleware(thunk))) // this is the store/global state of varibales being initialized
+export const store = createStore(reducer, compose(applyMiddleware(thunk))) // this is the store/global state of varibales being initialized
 
 ReactDOM.render(<Provider store = {store}> <App /> </Provider>, document.getElementById('root'));//we wrapped out ap component in a provider which has the global state or the store of variables
 

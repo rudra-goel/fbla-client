@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
 :root {
   --primary-color: #283c64;
   --secondary-color: #f4e525;
@@ -9,8 +13,8 @@
 
 body {
   background: white;
-  margin: 0;
-  font-family: 'Mulish', sans-serif;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar {
@@ -72,79 +76,124 @@ body {
   padding-right: 2em;
 }
 
-
-.register{
-  
-  /* position: absolute; */
-  left: 50%;
-  text-align: center;
-  /* background-color: var(--secondary-color); */
-  color: black;
-  padding: .5em .75em;
-  border-radius: 2em;
-} 
-
-.createAcc a.register:hover {
-  font-weight: bold;
-  background-color: var(--hover-color);
+/*Login Page */
+.hero-login {
+  height: 50em;
 }
 
-.hero .specificformat{
-  padding: 1em;
-  margin-bottom: 3em;
-  height: 30em;
-}
-
-.hero .container h1 {
-  margin: 0em;
+.hero-login .specificformat .container h1 {
+  margin: 2em 0em .5em 0em;
   font-size: 3em;
   text-align: center;
   color: var(--primary-color);
-  padding: .5em 0 .25em 0;
+  padding: 0.5em 1em;
 }
 
-.hero .container .enter-credentials {
-  /*
-  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
-          box-shadow: 0 2px 4px 0 #857d7d;
-  */
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: auto;
-  height: 50%;
-  width: 65%;
+
+
+.enter-credentials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5em;
   padding: 1em;
   text-align: center;
   border-radius: 1em;
+  justify-content: center;
+
 }
 
-.hero .enter-credentials .credential {
-  padding: .5em;
+/* Creates another grid inside of the "enter-credentials" grid */
+.credentialEmail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 1/5; /*expands an entire row in the "enter-credentials" grid */
+  margin-top: 1em;
+}
+
+/* Creates another grid inside of the "enter-credentials" grid */
+.credentialPass {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 1/5;
+}
+
+/* inside of the ".credentialEmail" and ".credentialPass" grids, the label and the inputs are stylized below */
+.credEmail, .credPassword {
+  grid-column: 1;
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: bolder;
   font-size: 1.5em;
+  padding: 0.5em 1em;
 }
 
-.hero .enter-credentials .credential label {
-  padding-right: .5em;
+/* changes the input boxes */
+.email-input, .password-input {
+  grid-column: 2/5;
+
+  width: 85%;
+  font-size: 1.15em;
+  padding: 1.25em 1em ;
+
+  background-color: white;
+  border: 0.25em solid var(--primary-color);
+  border-radius: 2vw;
+
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
-.hero .container .enter-credentials input {
-  border: 2px solid #555;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  height: 2em;
+/* When the user clicks on the inputs for either the email or the password, the box changes color */
+.email-input:focus, .password-input:focus {
+  background-color: var(--lightgray-color);
+  border-color: var(--hover-color);
 }
 
-.hero .container .enter-credentials .btn-login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 1em 2em 0 0;
+/* "Login" button placed in the grid */
+.btn-login {
+  grid-column: 4/5;
 }
 
-.hero .container .enter-credentials button {
+/* Stylizes the "Login" button */
+.hero-login .container .enter-credentials button {
+  background-color: var(--primary-color);
+  border: 0.25em solid var(--hover-color);
+  border-radius: 1vw;
+  padding: 0.5em;
+
+  text-align: center;
+
+  height: 100%;
+  width: 75%;
+
+  color: white;
+  font-size: 1.15em;
+}
+
+/*When the "Login" button is hovered over, the button changes style */
+.hero-login .container .enter-credentials button:hover {
+  background-color: var(--hover-color);
+  border-color: black;
+  font-weight: bolder;
+  font-size: 1.2em;
+  transition: all 0.15s;
+}
+
+/* Create an account and forgot password */
+.register {
+  grid-column: 2/4;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.15em;
+  padding: .25em .75em;
+} 
+.register:hover {
+  color: var(--hover-color);
+}
+
+
+/*
+.hero-login .container .enter-credentials button {
   background-color: var(--primary-color);
   border-radius: 8px;
   border-style: none;
@@ -177,18 +226,41 @@ body {
       touch-action: manipulation;
 }
 
-.hero .container .enter-credentials .btn-login :hover {
+*/
+.hero-login .container .enter-credentials .btn-login :hover {
   font-weight: bold;
   background-color: var(--hover-color);
 }
 
 /*
-.hero .enter-credentials:hover {
+.hero-login .enter-credentials:hover {
   -webkit-box-shadow: 0 4px 8px 0 #857d7d;
           box-shadow: 0 4px 8px 0 #857d7d;
 }
 */
 
+
+/* Creates a box around the form */
+.hero-login .enter-credentials {
+  -webkit-box-shadow: 0 2px 4px 0 #857d7d;
+          box-shadow: 0 2px 4px 0 #857d7d;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: auto;
+  height: auto;
+  width: 65%;
+  padding: 1em;
+  text-align: center;
+  border-radius: 1em;
+}
+
+/* When the user hovers over the form box, the shadow darkens */
+.hero-login .enter-credentials:hover {
+  -webkit-box-shadow: 0 4px 8px 0 #857d7d;
+          box-shadow: 0 4px 8px 0 #857d7d;
+}
+
+/*FOOTER*/
 .contact-info .container {
   margin-bottom: 0;
   display: -webkit-box;
@@ -220,3 +292,55 @@ body {
   padding: 1em 0 1em 0;
 }
 /*# sourceMappingURL=login.css.map */
+
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+  .enter-credentials {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.5em;
+    padding: 1em;
+    text-align: center;
+    border-radius: 1em;
+  }
+  
+  /* Creates another grid inside of the "enter-credentials" grid for both the email and password */
+  .credentialEmail, .credentialPass {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 1/5; /*expands an entire row in the "enter-credentials" grid */
+    margin-top: 1em;
+  }
+  
+  /* inside of the ".credentialEmail" and ".credentialPass" grids, the label and the inputs are stylized below */
+  .credEmail, .credPassword {
+    grid-column: 2/3;
+    text-align: center;
+    padding: 0em 0.75em;
+  }
+  
+  /* changes the input boxes */
+  .email-input, .password-input {
+    grid-column: 1/4;
+    width: auto; 
+    /*instead of doing a percentage for the width, 
+    using "auto" value and margins will better format without have to center the input explicitly */
+    margin: 0em 2.5em;
+  }
+
+  .btn-login {
+    grid-column: 1/5;
+  }
+
+  .register {
+    grid-column: 2/4;
+  } 
+
+
+  /* Stylizes the "Login" button */
+  .hero-login .container .enter-credentials button {
+    width: 50%;
+  }
+}

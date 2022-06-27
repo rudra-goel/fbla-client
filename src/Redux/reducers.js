@@ -11,7 +11,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-
+    
     switch (action.type) {
         case "QUERY_LOCATIONS":
             return {
@@ -21,6 +21,14 @@ const reducer = (state = initialState, action) => {
                 LocationInDetail:state.LocationInDetail, 
                 numPages: action.payload.length / 4, 
                 currentPage: 1
+            }
+        case "DELETE_FROM_SAVED":
+            console.log("DELETE_FROM_SAVED")
+            console.log(state)
+            Object.assign(state.Locations, action.payload)
+            return{
+                ...state,
+                Locations: action.payload
             }
         case "FETCH_FAQS":
             return {

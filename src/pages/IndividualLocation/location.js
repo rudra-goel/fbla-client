@@ -123,6 +123,8 @@ function App(){
             break;
         }
     }
+
+    console.log(details)
     
 
     /**
@@ -306,8 +308,6 @@ function App(){
     const closeModal = () => {
         setIsOpen(false)
     }
-    
-
   return (
       !locations ? <CircularProgress /> : 
     <body class="body">

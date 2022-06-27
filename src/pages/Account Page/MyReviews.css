@@ -1,3 +1,26 @@
-.review-section-title {
-    margin-left: 1em;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
+
+body {
+  background: white;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.review-section-title {
+    margin: 0.5em;
+    text-align: center;
+    color: var(--primary-color);
+    padding: 0.5em 1em;
+  }
+  

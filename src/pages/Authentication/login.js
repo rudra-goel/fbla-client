@@ -120,23 +120,23 @@ function App() {
         </div>
 
 
-        <section class = "hero" >
+        <section class = "hero-login" >
             <div class="specificformat">
                 <div class = "container">
                     <h1>Login</h1>
                     <div class = "enter-credentials">
-                        <form >
-                            <div class="credential">
-                                <label for = "username">Email</label>
-                                <input value = {loginData.email} onChange = {(e) => setLoginData({...loginData, email: e.target.value})} type = "text" id = "name" name = "name" required></input>                            </div>
-                            <div class="credential">
-                                <label for = "password">Password</label>
-                                <input value = {loginData.password} onChange = {(e) => setLoginData({...loginData, password: e.target.value})} type = "password" id = "password" name = "password" required></input>                            </div>
+                       
+                            <div class="credentialEmail">
+                                <label for = "username" class="credEmail">Email</label>
+                                <input value = {loginData.email} onChange = {(e) => setLoginData({...loginData, email: e.target.value})} type = "text" id = "name" name = "name" required class="email-input"></input>                            </div>
+                            <div class="credentialPass">
+                                <label for = "password" class="credPassword">Password</label>
+                                <input value = {loginData.password} onChange = {(e) => setLoginData({...loginData, password: e.target.value})} type = "password" id = "password" name = "password" required class="password-input"></input>                            </div>
 
                             <div class="btn-login">
                                 <button type = "submit" onClick = {loginUser} >Login</button>
                             </div>
-                        </form>
+                      
                         <a class = "register" href = "register">Don't have an account? Create one now!</a><br></br>
                         <a class = "register" href = "resetPassword">Forgot Password?</a>
                         {

@@ -1,21 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-@import url("http://fonts.googleapis.com/css?family=Oswald");
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 :root {
   --primary-color: #283c64;
   --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
 
 body {
   background: white;
-  margin: 0;
-  font-family: 'Oswald';
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
 }
 
+
+/*NAVBAR WILL BE UPDATED LATER ON */
 .navbar {
-  padding: .5em 1em .5em 1.5em;
+  padding: .5em 1em .75em 1.5em;
   background-color: white;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 0 .5em 0 var(--mediumgray-color);
 }
 
 .navbar .logo {
@@ -27,7 +37,7 @@ body {
 }
 
 .navbar .logo span {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .navbar nav {
@@ -41,17 +51,16 @@ body {
   color: black;
 }
 
-.navbar nav a.login {
-  background-color: var(--secondary-color);
+.navbar nav a.register {
+  background-color: var(--primary-color);
   color: white;
   padding: .5em .75em;
-  
-  border-radius: 2em;
+  border-radius: 2vw;
 }
 
-
-.navbar nav a.login:hover {
+.navbar nav a.register:hover {
   font-weight: bold;
+  background-color: var(--hover-color);
 }
 
 .navbar nav .top-left {
@@ -66,27 +75,134 @@ body {
 .navbar nav .top-right {
   margin-left: auto;
   padding-top: 1em;
-  padding-right: 5em;
+  padding-right: 2em;
 }
 
-.hero {
-  padding: 1em;
-  margin-bottom: 3em;
-  justify-content: center;
-}
-.hero .container{
-  width: 1500px;
+/* REGISTER PAGE */
+
+.hero-register {
+  height: min-content;
 }
 
-.hero h1 {
-  margin: 0em;
+/* This formats the title of the page: Register */
+.hero-register h1 {
+  margin: 2em 0em 0.5em 0em;
   font-size: 3em;
   text-align: center;
-  color: var(--secondary-color);
-  padding: .5em 0 .25em 0;
+  color: var(--primary-color);
+  padding: 0.5em 1em;
 }
 
-.hero .enter-reg-credentials {
+
+
+
+/*
+Technically there are 2 grids here: one for "enter-credentials" and "form" inside of the first grid.
+However, the last line makes the "form" grid the cover all the rows in the "enter-credentials" grid.
+The reason that there are 2 grids is because form is containing the rest of the <div> classes but is underneath "enter-credentials"
+This should still work like the "Login" and "Forgot Password" pages, but the difference is the "grid-gap" is applied twice (not too noticable)
+*/
+.enter-credentials form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5em;
+  padding: 1.5em 1em;
+  text-align: center;
+  border-radius: 1em;
+  justify-content: center;
+  grid-column: 1/5;
+  padding: 1em;
+}
+
+/* This formats all the inputs to fill up all 4 columns in their rows (pushing each input into a new row) */
+.name, .email, .password, .password-confirm {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column: 1/5;
+
+  align-items: center;
+
+}
+
+/* This formats all the labels in the form */
+.name-label, .email-label, .password-label, .confirm-label {
+  grid-column: 1;
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: bolder;
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+}
+
+/* changes the input boxes */
+.name-input, .email-input, .password-input, .confirm-input {
+  grid-column: 2/5;
+  height: 2em;
+  width: 85%;
+  font-size: 1.15em;
+  padding: 1.25em 1em ;
+  margin: 1em 0em;
+
+  background-color: white;
+  border: 0.2em solid var(--primary-color);
+  border-radius: 2vw;
+
+  color: var(--primary-color);
+  font-weight: bold;
+
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  
+}
+
+/* When the user clicks on the inputs, the box changes color */
+.name-input:focus, .email-input:focus, .password-input:focus, .confirm-input:hover {
+  background-color: var(--lightgray-color);
+  border-color: var(--hover-color);
+}
+
+/* Register button correctly placed */
+.btn-register {
+  grid-column: 2/4;
+  width: 75%;
+  text-align: center;
+  margin: 1em;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+/* Stylizes the "Reggister" button */
+.hero-register .container .enter-credentials button {
+  background-color: var(--primary-color);
+  border: 0.25em solid var(--hover-color);
+  border-radius: 2vw;
+  padding: 0.75em 0.5em;
+
+  text-align: center;
+
+  height: 100%;
+  width: 75%;
+
+  color: white;
+  font-size: 1.25em;
+}
+
+/*When the "Register" button is hovered over, the button changes style */
+.hero-register .container .enter-credentials button:hover {
+  background-color: var(--hover-color);
+  border-color: black;
+  font-weight: bolder;
+  font-size: 1.2em;
+  transition: all 0.15s;
+}
+
+/* Creates a box around the form */
+.hero-register .enter-credentials {
   -webkit-box-shadow: 0 2px 4px 0 #857d7d;
           box-shadow: 0 2px 4px 0 #857d7d;
   -webkit-box-sizing: border-box;
@@ -99,69 +215,16 @@ body {
   border-radius: 1em;
 }
 
-.hero .enter-reg-credentials .btn-register {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  padding-right: 3em;
-
-}
-
-.hero .enter-reg-credentials input {
-  border: 2px solid #555;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  height: 2em;
-}
-
-.hero .enter-reg-credentials div {
-  padding: .5em;
-}
-
-.hero .enter-reg-credentials div label {
-  font-size: 1.5em;
-  padding-right: .5em;
-}
-.hero .enter-reg-credentials button {
-  background-color: var(--primary-color);
-  border-radius: 8px;
-  border-style: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  height: 40px;
-  width: 80px;
-  line-height: 20px;
-  list-style: none;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  -webkit-transition: color 100ms;
-  transition: color 100ms;
-  vertical-align: baseline;
-  -moz-user-select: none;
-   -ms-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-}
-
-.hero .enter-reg-credentials:hover {
+/* When the user hovers over the form box, the shadow darkens */
+.hero-register .enter-credentials:hover {
   -webkit-box-shadow: 0 4px 8px 0 #857d7d;
           box-shadow: 0 4px 8px 0 #857d7d;
 }
 
+
+
+
+/* FOOTER */
 .contact-info .container {
   margin-bottom: 0;
   display: -webkit-box;
@@ -193,3 +256,55 @@ body {
   padding: 1em 0 1em 0;
 }
 /*# sourceMappingURL=register.css.map */
+
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+  .enter-credentials form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.5em;
+    padding: 1em;
+    text-align: center;
+    border-radius: 1em;
+    justify-content: center;
+    grid-column: 1/5;
+    padding: 1em;
+  }
+  
+  /* Creates another grid inside of the "enter-credentials" grid for the inputs: name, email, password, and confirmation */
+  .name, .email, .password, .password-confirm {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 1/5; /*expands an entire row in the "enter-credentials" grid */
+    margin: 1.5em 0em;
+  }
+  
+  /* inside of the input grids, the label and the inputs are stylized below */
+  .name-label, .email-label, .password-label, .confirm-label {
+    grid-column: 2/3;
+    text-align: center;
+    padding: 0em 0.75em;
+    margin: 0.5em 0em;
+  }
+  
+  /* changes the input boxes */
+  .name-input, .email-input, .password-input, .confirm-input {
+    grid-column: 1/4;
+    width: auto; 
+    /*instead of doing a percentage for the width, 
+    using "auto" value and margins will better format without have to center the input explicitly */
+    margin: 0em 5em;
+  }
+
+  .btn-register {
+    grid-column: 2/4;
+  }
+
+  /* Stylizes the "Register" button */
+  .hero-register .container .enter-credentials button {
+    width: 80%;
+  }
+
+}

@@ -20,9 +20,7 @@ export default function MyReviews({ user }) {
 
   return (
     <div>
-      <br></br>
       <h1 class="review-section-title">My Previous Reviews</h1>
-      <br></br>
       {
         !loading ? (
         reviews.map((review, i) => {
