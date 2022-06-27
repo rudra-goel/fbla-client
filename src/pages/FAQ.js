@@ -180,7 +180,7 @@ export default function FAQ() {
                     <a class="logo">View<span>Rado</span></a>
                     <div class = "top-left">
                             <a class = "return-home" href = "/" >Home</a>
-                            {user?.token ? (
+                            {user?.uuid ? (
                                 <a class="myacc" href='/myAccount'>Account Page</a>                                
                         ) : (
                             <div class="if-not-logged-in-navbar">
@@ -190,9 +190,9 @@ export default function FAQ() {
                         
                     <div class = "top-right">
 
-                        {user?.token ? (
+                        {user?.uuid ? (
                             <div class="if-logged-in-navbar">
-                                <label>Hello {user.result.name}!</label>
+                                <label>Hello {user.Name}!</label>
                                 <button value = "logout" onClick = {logout}>Logout</button>
                             </div>
                             
