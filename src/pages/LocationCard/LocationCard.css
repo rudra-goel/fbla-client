@@ -32,8 +32,20 @@ These include the cards in the home page, saved locations page, and in the map m
   margin: 2em 0.5em;
 }
 
+/* This is specific to the saved location page location cards because these cards contain a delete button */
 .list-locations {
   margin: 2em;
+}
+.delete-btn {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: end;
+
+  padding: 0em 2em;
+  margin: 1em;
+}
+.trash-can {
+  grid-column: 5;
 }
 
 /* When the user hovers over the location card, the card changes color */
@@ -157,3 +169,23 @@ THIS ONLY APPLIES TO THE CARDS IN THE HOME PAGE AND IN THE SAVED LOCATIONS PAGE
   max-height: auto;
 }
 /*# sourceMappingURL=LocationCard.css.map */
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+  .activity-img-for-trip, .activity-img{
+    grid-column: 1/6;
+  }
+
+  /* Location card details */
+  .middle-item-details {
+  grid-column: 1/6;
+  margin: 1em;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1.25em;
+  }
+
+}

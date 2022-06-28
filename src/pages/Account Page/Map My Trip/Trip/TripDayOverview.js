@@ -67,7 +67,7 @@ export default function TripDayOverview() {
                       <CircularProgress />
                       ) : (
                       locations.map((location) => {
-                        return <LocationCard location={location} enabled={true} />
+                        return <LocationCard location={location} enabled={false} />
                       })
                     )
                   }

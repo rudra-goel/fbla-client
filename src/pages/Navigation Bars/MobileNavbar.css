@@ -1,0 +1,56 @@
+.nav-mobile-container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    transition: .5s ease;
+}
+.mobile-navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    /* transition: 500ms ease; */
+}
+.mobile-navbar a {
+    text-decoration: none;
+    color: black;
+    padding-top: .5em;
+}
+.mobile-navbar a:hover{
+    text-decoration: underline;
+}
+.hamburger {
+    padding-top:1em;
+    padding-right: 1em;
+    position: absolute;
+    right: 0;
+    cursor:pointer;
+}
+
+.logoimg-mobile {
+    height: 75px;
+    width: 75px;
+    background-size: 75px;
+    background-image: url('../Images/ViewRadoLogo.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+.logo-mobile {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.logo-mobile span {
+    color: var(--primary-color);
+}
+
+.login-register-btns{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}

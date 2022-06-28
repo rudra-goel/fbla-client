@@ -48,7 +48,11 @@
                 My Saved Locations
             </h1>
              <div class="likedLocations">
-                 {likedIds?.length != 0 ? <LocationCardContainer isSaved={true} /> : <div> <br></br><h1>You don't have any liked locations</h1></div>}
+                 {likedIds?.length != 0 ? <LocationCardContainer isSaved={true} /> :
+                  <div> 
+                    <div class="no-liked-locations">You don't have any liked locations</div>
+                    <a class="home-page-btn" href='../../'> Start Saving Locations! </a>
+                    </div>}
              </div>
          </div>
      );

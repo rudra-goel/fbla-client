@@ -1,29 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
+}
+
+body {
+  background: white;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Entire Review card */
 .review-container {
-    padding: 1em;
-    border-bottom: 2px dashed black;
-    
-    margin-top: 1em;
-    margin-bottom: 1em;
-    
-}
-.review-container:last-child {
-    border-bottom: none;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    padding: 1em;    
+    margin: 0.5em;
 }
 
+
+/*Name of Review */
 .nameOfReviewer {
     display: flex;
-    gap: .3em;
-    padding-bottom: .5em;
-    font-size: 1.3em;
-    
+    font-size: 1em;
+    color: var(--primary-color);
 }
-.title {
-    padding-bottom: .5em;
-    font-weight: bold;
-    font-size: 1.5em;
+.nameOfReviewer .name {
+    padding-left: 0.25em;
 }
 
-.stars {
+/*Title of the Review */
+.title {
+    padding: 0.5em;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: var(--hover-color);
+    text-align: center;
+}
+
+/* Stars given to the location */
+.reviewer-given-stars {
+    text-align: center;
     padding-bottom: 1em;
 }
+
+/* The description of the review given */
+.theReview {
+    padding: 1em;
+}
+

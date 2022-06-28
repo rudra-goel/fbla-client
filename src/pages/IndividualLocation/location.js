@@ -52,6 +52,7 @@ import { useParams } from 'react-router-dom'
  * Image for the back button
  */
 import backbtn from  "../Images/backButton.png"
+import backbtnhover from  "../Images/backButtonHover.png"
 
 /**
  * React Component for the review card to be posted on each location
@@ -350,10 +351,11 @@ function App(){
         </div> */}
         <AddToTrip open={isOpen} close={closeModal}/>
         <div id="modal-add-trip" />
-        <section class='hero'>
+        <div class='hero'>
             <div class='heart-and-back-btn'>
-                <a href='/'>
-                    <img src={backbtn} alt="Logo" width="20" height ="25"></img>
+                
+                <a href='/' class="back-button">
+                    <img src={backbtn} alt="Logo" width="20" height ="30"></img>
                 </a>
                 
                 <div class='heart' type='submit' >
@@ -363,7 +365,7 @@ function App(){
                             <AiFillHeart 
                                 size={40} 
                                 className = "heart-button"
-                                color={hoverHeart ? "#f91a68" : "#000000"}
+                                color={hoverHeart ? "#1b2d42" : "#283c64"}
                                 onMouseEnter={() => setHoverHeart(true)}
                                 onMouseLeave={() => setHoverHeart(false)}
                             />
@@ -387,8 +389,8 @@ function App(){
             
             <div class='main-hero'>
                 
-                <div class=".image-for-destination ">
-                    <img class = "image" src = {image}></img>
+                <div class="image-for-destination ">
+                    <img class = "image-destination" src = {image}></img>
                 </div>
                 
 
@@ -402,125 +404,124 @@ function App(){
                         <label class='destination-description'>{!details.Description ? <div><p>Description not found!</p><p> Contact us to be the first to input a description</p></div> : details.Description}</label>
                     </div>
                     <div class='contact-and-location'>
-                        <label>Reach out to them at: </label>
-                        <label>{details.Phone}</label><br></br>
+                        <label><b>Reach out to them at:</b> {details.Phone}</label><br></br>
                         <div class="location-address">
-                            <label class='location'>Located at {details.Address} {details.City}, {details.Sate} - {details.Zip}</label>
+                            <label class='location'><b>Location:</b> {details.Address} {details.City}, {details.Sate} - {details.Zip}</label>
                         </div>
                     </div>
                     <div class='criteria-of-destination'>
-                        <h5>Criteria of Destination</h5>
-                        <ul>
-                            <li>Categories: {details.Categories}</li>
-                            <li>{indoorOutdoor} Activity</li>
-                            <li>Price Range: {!PriceMin && !PriceMax ? <p>Not Applicable</p>: <label>{PriceMin} - {PriceMax}</label>}</li>
-                            <li>Most suitable for {!suitableFor ? <p>All Ages</p> : suitableFor}</li>
-                            <li>Most find this location with a {intensity} intensity</li>
+                        <h3>Details of Destination</h3>
+                        <ul class="destination-descriptions">
+                            <li><b>Categories: </b>{details.Categories}</li>
+                            <li><b>Activity: </b>{indoorOutdoor} </li>
+                            <li><b>Price Range: </b>{!PriceMin && !PriceMax ? <div>Not Applicable</div>: <label>{PriceMin} - {PriceMax}</label>}</li>
+                            <li><b>Most suitable for: </b>{!suitableFor ? <div>All Ages</div> : suitableFor}</li>
+                            <li>Most find this location with a {intensity} intensity.</li>
 
                         </ul>
+                        <div class='link-to-website'>
+                            <b>Visit the Website:</b>
+                            <a href={url} target = "_blank">{!url ? <p>Url Not available</p> : url}</a>
+                        </div>
                     </div>
                     
-                    <div class='link-to-website'>
-                        <a href={url} target = "_blank">Visit Webste : {!url ? <p>Url Not avaliable</p> : url}</a>
-                        
-                    </div>
+                    
                     
                 </div>
 
             </div>
             <div class="review-section">
-                    <h1>Reviews</h1>
-                    <div class="written-and-general-review">
+                <h1 class="review-section-title">Reviews</h1>
+                <div class="written-and-general-review">
+                    <div class="user-writes-review">
+                        { user?.uuid ?  (
+                            <div class="make-a-review">
+                                <div class="reviewer-star">
+                                    {[...Array(5)].map((star, i) => {
+                                        const ratingValue = i+1;
 
-                        <div class="user-writes-review">
-                            {user?.uuid ? (
-                                <div class="make-a-review">
-                                    <div class="star">
-                                        {[...Array(5)].map((star, i) => {
-                                            const ratingValue = i+1;
-
-                                            return (
-                                            <label>
-                                                <input class = "star-radio" type="radio" name = "rating" value = {ratingValue} onClick={() => setRating(ratingValue)}></input>
-                                                <FaStar 
-                                                    className="star" 
-                                                    color={ratingValue <= (hover || rating) ? "#f4e525" : "#e4e5e9"} 
-                                                    size={40} 
-                                                    onMouseEnter={() => setHover(ratingValue)}
-                                                    onMouseLeave={() => setHover(null)}
-                                                />
-                                            </label>
-                                            )
-                                        })}
-                                    </div>
-                                    <input type="text" value={review.title} class="title-of-review" placeholder='Review Title' onChange={(e)=>setReview({...review, title: e.target.value})}></input>
-                                    <textarea id="review" class = "writing-area" name="review-box" onChange = {(e) => setReview({...review, Stars: rating, NameOfReviewer: user.Name, givenReview: e.target.value, userUUID: user.uuid})} rows="5" cols="50"></textarea>
-                                    <button type="submit" class="review-submit" onClick={ handleReview }>Post Review</button>
-                                    
+                                        return (
+                                        <label>
+                                            <input class = "star-radio" type="radio" name = "rating" value = {ratingValue} onClick={() => setRating(ratingValue)}></input>
+                                            <FaStar 
+                                                className="star" 
+                                                color={ratingValue <= (hover || rating) ? "#f4e525" : "#e4e5e9"} 
+                                                size={40} 
+                                                onMouseEnter={() => setHover(ratingValue)}
+                                                onMouseLeave={() => setHover(null)}
+                                            />
+                                        </label>
+                                        )
+                                    })}
                                 </div>
-                                ) : (
-                                    <div class='if-not-logged-in-review'>
-                                        <p1>Register or login to post a review</p1>
-                                    </div>
-                            )}
-                        </div>
-                        <div class="general-review">
-                            
-                            <h2>Overall Ratings: { reviews.listOfReviews.length } </h2>
-                            {
-                                totalReviews === 0 ? 
-                                <div class="distributions-not-available">
-                                    <p1 class="distributions-not-available">Overall distributions not available because there are no reviews</p1>
-                                 </div>
-                                 : (
-
-                                    <table class="review-distributions">
-                                        <tr>
-                                            <th>5</th>
-                                            <th>
-                                                <progress class="progress-slider-review"  value={starPercentages[4]} max={100}></progress>
-                                            </th>
-                                            <th>{`${starPercentages[4]}%`}</th>
-                                        </tr>
-                                        <tr>
-                                            <th>4</th>
-                                            <th>
-                                                <progress class="progress-slider-review" value={starPercentages[3]} max={100}></progress>
-                                            </th>
-                                            <th>{`${starPercentages[3]}%`}</th>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th>
-                                                <progress class="progress-slider-review" value={starPercentages[2]} max={100}></progress>
-                                            </th>
-                                            <th>{`${starPercentages[2]}%`}</th>
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th>
-                                                <progress class="progress-slider-review" value={starPercentages[1]} max={100}></progress>
-                                            </th>
-                                            <th>{`${starPercentages[1]}%`}</th>
-                                        </tr>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>
-                                                <progress class="progress-slider-review" value={starPercentages[0]} max={100}></progress>
-                                            </th>
-                                            <th>{`${starPercentages[0]}%`}</th>
-                                        </tr>
-                                        
-                                    </table>
-                                )
-                            }
-                        </div>
+                                <input type="text" value={review.title} class="title-of-review" placeholder='Review Title' onChange={(e)=>setReview({...review, title: e.target.value})}></input>
+                                <textarea id="review" class = "writing-area" name="review-box" onChange = {(e) => setReview({...review, Stars: rating, NameOfReviewer: user.Name, givenReview: e.target.value, userUUID: user.uuid})} rows="5" cols="50"></textarea>
+                                <button type="submit" class="review-submit" onClick={ handleReview }>Post Review</button>
+                                
+                            </div>
+                            ) : (
+                                <div class='if-not-logged-in-review'>
+                                    <p1>Register or login to post a review</p1>
+                                </div>
+                        )}
                     </div>
-                    <div class="written-reviews">
-                        <h2>Top Reviews</h2> 
+                    <div class="general-review">
+                        
+                        <h2>Overall Ratings: { reviews.listOfReviews.length } </h2>
+                        {
+                            totalReviews === 0 ? 
+                            <div class="distributions-not-available">
+                                <p1 class="distributions-not-available">Overall distributions not available because there are no reviews.</p1>
+                                </div>
+                                : (
 
-                        {   
-                            
+                                <table class="review-distributions">
+                                    <tr class="review-distributions-row">
+                                        <th class="review-num">5</th>
+                                        <th>
+                                            <progress class="progress-slider-review"  value={starPercentages[4]} max={100}></progress>
+                                        </th>
+                                        <th class="review-percent">{`${starPercentages[4]}%`}</th>
+                                    </tr>
+                                    <tr class="review-distributions-row">
+                                        <th class="review-num">4</th>
+                                        <th>
+                                            <progress class="progress-slider-review" value={starPercentages[3]} max={100}></progress>
+                                        </th>
+                                        <th class="review-percent">{`${starPercentages[3]}%`}</th>
+                                    </tr>
+                                    <tr class="review-distributions-row">
+                                        <th class="review-num">3</th>
+                                        <th>
+                                            <progress class="progress-slider-review" value={starPercentages[2]} max={100}></progress>
+                                        </th>
+                                        <th class="review-percent">{`${starPercentages[2]}%`}</th>
+                                    </tr>
+                                    <tr class="review-distributions-row">
+                                        <th class="review-num">2</th>
+                                        <th>
+                                            <progress class="progress-slider-review" value={starPercentages[1]} max={100}></progress>
+                                        </th>
+                                        <th class="review-percent">{`${starPercentages[1]}%`}</th>
+                                    </tr>
+                                    <tr class="review-distributions-row">
+                                        <th class="review-num">1</th>
+                                        <th>
+                                            <progress class="progress-slider-review" value={starPercentages[0]} max={100}></progress>
+                                        </th>
+                                        <th class="review-percent">{`${starPercentages[0]}%`}</th>
+                                    </tr>
+                                    
+                                </table>
+                            )
+                        }
+                    </div>
+                </div>
+                <div class="written-reviews">
+                    <h2>Top Reviews</h2> 
+                    
+                    <div class="review-info">
+                        {        
                             reviews.listOfReviews.length !=0 ? (
                                 reviews.listOfReviews.map(reviewArgument => {
 
@@ -528,7 +529,9 @@ function App(){
                                     console.log(reviewArgument)
 
                                     return (
+                                        <div class="individual-review"> 
                                         <ReviewCard review = {reviewArgument} />
+                                        </div>
                                     )
                                 })
 
@@ -536,9 +539,10 @@ function App(){
                                 <p1>Be the First to Review!</p1>
                             )
                         }
-                    </div>
+                    </div>    
+                </div>
             </div>
-        </section>
+        </div>
 
         <section class='contact-info'>
             <div class="container">

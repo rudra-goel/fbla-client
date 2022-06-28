@@ -74,8 +74,10 @@
             <div class="delete-btn">
                 {
                 isSaved ? (
-                    <div onClick={deleteLocationFunc}>
-                        <MdDelete size={40} />
+                    <div class="trash-can" onClick={deleteLocationFunc}>
+                        <MdDelete 
+                        color={"#283c64"}
+                        size={40} />
                     </div>
                 ) : <></>
                 }

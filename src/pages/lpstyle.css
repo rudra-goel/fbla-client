@@ -21,6 +21,7 @@ body {
 .circular-progress{
   font-weight: bold;
 }
+
 .hero {
   margin-top: 4.5em;
   display: -webkit-box;
@@ -28,12 +29,18 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
+  -ms-flex-direction: row;
           flex-direction: row;
-  overflow: hidden; /*stupid horizontal scrollbar */
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
+          overflow: hidden; /*stupid horizontal scrollbar */
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
           justify-content: flex-start;
+        }
+
+@media(max-width:1000px){
+  .hero{
+    margin-top:3em;
+  }
 }
 
 section.hero {

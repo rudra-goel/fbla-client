@@ -28,32 +28,34 @@ import { CgProfile } from "react-icons/cg"
 function App({ review }){
   return (
       <div class="review-container">
-          <div class="title">
-            <p1>{ review.title }</p1>
-            
-          </div>
-         
-          <div class = "stars">
-            {[...Array(5)].map((star, i) => {
-                const ratingValue = i+1;
+        <div class = "nameOfReviewer">
+            <CgProfile 
+              size={20}
+            />
+          <div class = "name">{review.NameOfReviewer}</div>
+        </div>
 
-                return (
-                    <FaStar 
-                        color={ratingValue <= review.Stars ? "#ffc107" : "#e4e5e9"} 
-                        size={25}
-                    />
-                )
-            })}
-          </div>
-          <div class = "nameOfReviewer">
-              <CgProfile 
-                size={30}
-              />
-            <p1 class = "name">{review.NameOfReviewer}</p1>
-          </div>
-          <div class="theReview">
-            <p1 class = "givenReview">{review.givenReview}</p1>
-          </div>
+        <div class="title">
+          <p1>{ review.title }</p1>
+          
+        </div>
+        
+        <div class = "reviewer-given-stars">
+          {[...Array(5)].map((star, i) => {
+              const ratingValue = i+1;
+
+              return (
+                  <FaStar 
+                      color={ratingValue <= review.Stars ? "#f4e525" : "#e4e5e9"} 
+                      size={25}
+                  />
+              )
+          })}
+        </div>
+        
+        <div class="theReview">
+          <p1 class = "givenReview">{review.givenReview}</p1>
+        </div>
 
       </div>
     );

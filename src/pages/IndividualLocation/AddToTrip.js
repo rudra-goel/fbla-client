@@ -68,33 +68,36 @@ export default function AddToTrip({ open, close }) {
     <>
         <div class="overlay" />
         <div class="add-new-location-to-trip">
+            <div class="trip-select-name">Select a Trip: </div>
             <select class="trip-select" id="trip-name-select" onChange={handleNameSelect}>
-              <option>Select a Trip</option>
+              <option>Trip Name</option>
               {
                 myTrips.map((trip) => {
                   return (
-                    <option value={trip.Name}>{trip.Name}</option>
+                    <option class="name-trip" value={trip.Name}>{trip.Name}</option>
                   )
                 })
               }
             </select>
+
+            <div class="trip-date-name">Select a Date: </div> 
             <select id="trip-date-select" class="trip-select">
               
               {
                 selectedTrip?.LocationsOnTrip.map((day) => {
                   const date = new Date(Date.parse(day.Date))
                   return (
-                    <option value={day.Date}>{date.toDateString()}</option>
+                    <option class="name-date" value={day.Date}>{date.toDateString()}</option>
                   )
                 })
               }
             </select>
 
-            <button onClick={handleAddToTrip}>Add to Trip</button>
-            <button onClick={close}>Exit</button>
+            <button class="add-btn" onClick={handleAddToTrip}>Add</button>
+            <button class="exit-btn" onClick={close}>Exit</button>
             <br></br>
             {
-              added ? <label>Location Successfully added</label> : <div></div>
+              added ? <label>Location Successfully Added</label> : <div></div>
             }
         </div>
 

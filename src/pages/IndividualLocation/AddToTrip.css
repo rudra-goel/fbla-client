@@ -1,12 +1,19 @@
-.add-new-location-to-trip {
-    position: fixed;
-    top:30%;
-    left:40%;
-    /* transfrom: translate(-50%, -50%); */
-    background-color: gray;
-    padding: 50px;
-    
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+:root {
+  --primary-color: #283c64;
+  --secondary-color: #f4e525;
+  --hover-color: #1b2d42;
+  --lightgray-color: #f1f1f1;
+  --mediumgray-color: #d1d1d1;
 }
+
+/* This dims the rest of the screen 
+Also in "CreateNewTrip.css
+*/
 .overlay {
     position:fixed;
     top:0;
@@ -15,4 +22,146 @@
     bottom:0;
     background-color: rgba(0, 0, 0, .4);
     
+}
+
+
+.add-new-location-to-trip {
+    position: fixed;
+    display: grid;
+    padding: 1em;
+    margin: 1em 0.5em;
+    top: 50%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 2em;
+    grid-column-gap: 0.25em;
+
+    justify-content: center;
+    position: relative;
+    align-self: center;
+    text-align: center;
+    
+    /* transfrom: translate(-50%, -50%); */
+    background-color: var(--mediumgray-color);
+    padding: 5em;
+    margin: 0em 2em;
+    border-radius: 3vw;
+}
+
+
+/*Stylizing the names */
+.trip-select-name, .trip-date-name {
+    grid-column: 1;
+    padding: 0.5em;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Stylizing the drop-down menus */
+.trip-select {
+    grid-column: 2/4;
+    background-color: white;
+    border: 0.25em solid var(--primary-color);
+    border-radius: 2vw;
+    font-family: 'Poppins';
+    font-size: 1.15em;
+    font-weight: bold;
+    color: var(--primary-color);
+
+    padding: 0.25em 1em;
+
+    appearance: none;
+}
+
+.trip-select:hover, .trip-select:focus {
+    background-color: var(--lightgray-color);
+    border-color: var(--hover-color);
+    color: var(--hover-color);
+    transition: all 0.15s;
+}
+
+.name-trip, .name-date {
+    background-color: var(--lightgray-color);
+    border-radius: 0 0 1vw 1vw;
+
+    font-size: 1.05em;
+    font-weight: bold;
+    color: var(--hover-color);
+}
+
+
+/* Placing the buttons correctly on the grid */
+.add-btn {
+    grid-column: 1;
+    margin: 1em 0.5em;
+}
+.exit-btn {
+    grid-column: 3;
+    margin: 1em 0.5em;
+}
+
+/* Stylizing the buttons */
+.add-btn, .exit-btn {
+    position: relative;
+    left: 15%;
+    width: 70%;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    color: white;
+    
+    
+    background-color: var(--primary-color);
+    padding: 0.25em;
+    border-radius: 2vw;
+    border: 0.25em solid var(--hover-color)
+
+}
+
+/* This changes the color of the button when hovered over */
+.add-btn:hover, .exit-btn:hover {
+    background-color: var(--hover-color);
+    font-weight: bold;
+}
+
+
+/* This changes the display depending on the screen size (approximately 850px)*/ 
+@media (max-width:55em) {
+    .add-new-location-to-trip {
+        
+        padding: 1em;
+        grid-row-gap: 2em;
+        grid-column-gap: 0.5em;
+    
+        justify-content: center;
+        position: relative;
+        align-self: center;
+        text-align: center;
+    }
+    /*Formatting the names */
+    .trip-select-name, .trip-date-name {
+        grid-column: 2;
+        text-align: center;
+        margin-bottom: 0em;
+        padding-bottom: 0em;
+    }
+    
+    /* Formatting the dropdown menus */
+    /* Stylizing the drop-down menus */
+    .trip-select {
+        grid-column: 1/4;
+        margin: 0em 4em 2em 4em;
+    }
+
+    .add-btn {
+        grid-column: 2;
+        margin: 0em 0.5em;
+    }
+    .exit-btn {
+        grid-column: 2;
+        margin: 0em 0.5em;
+    }
+
 }
