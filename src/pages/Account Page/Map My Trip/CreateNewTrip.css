@@ -11,12 +11,14 @@
   --mediumgray-color: #d1d1d1;
 }
 
-input {
+.create-trip-input {
     width:75%;
     background-color: var(--lightgray-color);
     border: 0.15em solid var(--hover-color);
     color: var(--hover-color);
     margin: 0.5em 0em;
+    font-size:2em;
+    border-radius: 15px;
 }
 
 .create-new-trip-container {

@@ -29,6 +29,23 @@
     right: 0;
     cursor:pointer;
 }
+.myacc-mobile {
+    margin-bottom: .5em;
+}
+
+.logout-mobile {
+    margin-top: 1em;
+    background-color: var(--primary-color);
+    border-radius:20px;
+    border:1px solid var(--primary-color);
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:1em;
+    padding:.5em .75em;
+    text-decoration:none;
+}
 
 .logoimg-mobile {
     height: 75px;

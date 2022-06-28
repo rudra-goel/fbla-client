@@ -42,20 +42,20 @@ export default function Profile({ user }) {
         <div class="oldPass-container">
           <p>Please input your old password to update either your email or your password.</p>
           <label><b>Old Password: </b></label>
-          <input type="password" value={oldPass} onChange={(e) => setOldPass(e.target.value)} />
+          <input class="update-prof-input" type="password" value={oldPass} onChange={(e) => setOldPass(e.target.value)} />
         </div>
 
         <div class="update-email">
           <h3>Update Email</h3>
           <label><b>New Email: </b></label>
-          <input type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} /> <br></br>
+          <input class="update-prof-input" type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} /> <br></br>
           <button onClick={updateEmailAttempt} class="updateButton">Update</button>
         </div>
         
         <div class="update-password">
           <h3>Update Password</h3>
           <label><b>New Password: </b></label>
-          <input type="password" value={newPass} onChange={(e) => setNewPass(e.target.value)} /> <br></br>
+          <input class="update-prof-input" type="password" value={newPass} onChange={(e) => setNewPass(e.target.value)} /> <br></br>
           <button onClick={updatePassAttempt} class="updateButton">Update</button>
         </div>
       </div>

@@ -43,4 +43,5 @@
     background-color: var(--hover-color);
     border: 0.2em solid black;
     font: bold;
+    transition: all 0.25s ease;
 }

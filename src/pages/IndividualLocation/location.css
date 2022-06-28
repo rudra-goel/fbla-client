@@ -459,6 +459,14 @@ th {
   border-color: var(--mediumgray-color);
   transition: all 0.2s;
 }
+
+.first-to-review {
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
 /* CONTACT INFO */
 .contact-info .container h5 {
   font-size: 1.5em;
@@ -476,15 +484,6 @@ th {
 .contact-info .container div li {
   list-style: none;
   padding: 1em 0 1em 0;
-}
-
-
-/* NAVBAR */
-.navbar nav .return-home:hover {
-  font-weight: bold;
-}
-.navbar nav .myacc:hover {
-  font-weight: bold;
 }
 
 

@@ -69,20 +69,21 @@ body {
 
 /* Stylizes the search button */
 .main-search-btn {
-	align-self: center;
+	align-items: center;
 	text-align: center;
 	justify-items: center;
-	border: 0.35em solid var(--primary-color);
-	border-radius: 2vw;
+	border: 0.35em solid var(--hover-color);
+	border-radius: 4vw;
 
-	background-color: var(--lightgray-color);
-	margin: 1em 0.5em;
-	padding: 1em;
+	background-color: var(--primary-color);
+	margin: 0.5em;
+	padding: 1.25em;
 }
 
 .main-search-btn:hover {
-	border-color: var(--hover-color);
-	background-color: var(--mediumgray-color);
+	border-color: black;
+	background-color: var(--hover-color);
+	transition: all 0.25s;
 }
 
 

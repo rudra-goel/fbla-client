@@ -55,6 +55,18 @@ const getRandomLocations = async () => {
     return ret;
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds one location from the Locations Collection
+ * Based on its ID
+ * @param {String} LocationID 
+ * @returns JSON Object
+ */
 const queryLocationByID = async (LocationID) => {
     const collectionRef = collection(db, "Locations")
     const queryRef = query(collectionRef, where("__name__", "==", LocationID))
@@ -68,6 +80,18 @@ const queryLocationByID = async (LocationID) => {
     return ret;
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds an array of location from the Locations Collection
+ * Based on an array of IDs passes
+ * @param {Array} LocationID 
+ * @returns Array of JSON Objects
+ */
 const getFavoriteLocations = async (IDArray) => {
     let ret = []
     for(let i =0; i < IDArray.length; i++) {
@@ -79,6 +103,18 @@ const getFavoriteLocations = async (IDArray) => {
     return ret;
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In this function, we get the details of the user with the query user method
+ * we then create an object to mimic the updated document in Cloud Firestore
+ * We then use the UpdateDoc method where we pass a version of the updated document and a reference to it
+ * 
+ * We then return an updated version of the location now with an appended review to it
+ * @param {JSON Object} LocationID 
+ * @param {JSON Object} review 
+ * @param {String} uuid 
+ * @returns Array of JSON Objects
+ */
 const postReviewToLocation = async (locationDetails, review, uuid) => {
 
     const reviewCollectionRef = collection(db, "Reviews")
@@ -113,6 +149,15 @@ const postReviewToLocation = async (locationDetails, review, uuid) => {
     return newLcationDetails
 }
 
+/**
+ * This method queries the Review Collection
+ * They query is against the Unique User Identification (uuid) to retrieve all of the reviews the user has made
+ *  It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such eviews are returned
+ * 
+ * @param {String} uuid 
+ * @returns Array of JSON Objects
+ */
 const getMyReviews = async (uuid) => {
     const reviewCollectionRef = collection(db, "Reviews")
     const queryRef = query(reviewCollectionRef, where("userUUID", "==", uuid))
@@ -129,6 +174,19 @@ const getMyReviews = async (uuid) => {
 
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds one location from the Locations Collection
+ * Based on its Name without case sensitivity
+ * @param {JSON Object} req 
+ * @param {JSON Object} res 
+ * @returns JSON Object
+ */
 const queryByName = async(req, res) => {
     let ret = []
     const { Name } = req
@@ -152,6 +210,21 @@ const queryByName = async(req, res) => {
     return ret
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds an array of Locations based on the special params provided
+ * This method uses functional exports from the advanced query file
+ * It finds queries that individually fit it and the splices to find the unions
+ * Those unions are returned
+ * @param {JSON Object} params 
+ * @param {Integer} page 
+ * @returns Array of JSON Objects
+ */
 const queryWithParams = async(params, page) => {
     
     const collectionRef = collection(db, "Locations")
@@ -238,6 +311,15 @@ const queryWithParams = async(params, page) => {
     return matchedResults
 }
 
+/**
+ * This functional Export essentially adds the location ID to the user's array of liked locations
+ * 
+ * It first queries the user using the UUID
+ * It then creates an updated version of the user object
+ * It then updates the user using the updateDoc method
+ * It returns the user's updated profile
+ * @param {String} locationID 
+ */
 const postLikedLocation = async (locationID) => {
     const currUserProf = JSON.parse(localStorage.getItem('profile'))
 
@@ -259,6 +341,18 @@ const postLikedLocation = async (locationID) => {
 
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds one user from the Users Collection
+ * Based on its UUID
+ * @param {String} uuid 
+ * @returns JSON Object
+ */
 const queryUser = async (uuid) => {
 
     try {
@@ -281,6 +375,17 @@ const queryUser = async (uuid) => {
     
 }
 
+/**
+ * Using Collection Refernces, the following creates a query reference
+ * In that reference, we pass the collection from where to query from
+ * We then pass the "where function" that takes in the actual NoSQL Version of a query
+ * It returns a Query Reference and we then use the GetDocs method to get all the documents in the query snapshot
+ * Such locations are returned
+ * 
+ * This finds one user from the Users Collection
+ * Based on its uuid, it returns the document ID of the user
+ * @param {String} uuid
+ */
 const queryUserID = async (uuid) => {
 
     try {
@@ -303,6 +408,15 @@ const queryUserID = async (uuid) => {
     
 }
 
+/**
+ * This functional export handles all of the searching features for the FAQ page
+ * Using the keyword extractor package, this function breaks the search string into an array of key word components
+ * These are then queries against the FAQs collection to find any questions that are similar to the keywords
+ * 
+ * It then retuns an array of FAQs that are similar in question to the search string
+ * @param {String} searchString 
+ * @returns Array of JSON objects
+ */
 const queryFAQs = async (searchString) => {
     const collectionRef = collection(db, "FAQs")
 
@@ -330,17 +444,46 @@ const queryFAQs = async (searchString) => {
 
 }
 
+/**
+ * This functional export is invoked everytime the register user button is clicked
+ * It does two things
+ *  --> Create a new user using the Firebase Authentication Service
+ *  --> Creates a new document witin the user collection
+ * 
+ * @param {String} email 
+ * @param {String} password 
+ * @param {String} name 
+ * @returns The JSON Object information about the user
+ */
 const createUser = async (email, password, name) => {
+    /**
+     * Create a collection reference to the Users collection
+     * We pass the "db" variable as an instance to where the database is
+     * We pass a string for the collection title 
+     */
     const collectionRef = collection(db, "Users")
     try {
-        
+        /**
+         * Using the function from Firebase Auth, we create a new user by passing in the auth instance
+         * The email and the password
+         * This creates a secure and a hashed password that is not stores on ViewRado's Firebase account
+         */
         let userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+
+        /**
+         * We then create a document reference for the new user we are adding
+         * Using the addDoc method, we insert the new user's information
+         */
         const docRef = await addDoc(collectionRef, {
             email: userCredentials.user.email,
             Name:name,
             uuid: userCredentials.user.uid, 
             likedLocations: []
         })
+        /**
+         * We then parse through the newly added doc and return the user's profile information
+         * To be stored onto Local Storage
+         */
         await getDoc(docRef)
             .then((doc) => {
                 userCredentials = doc.data()
@@ -351,6 +494,17 @@ const createUser = async (email, password, name) => {
     }
 }
 
+/**
+ *  This functional export is invoked everytime the login user button is clicked
+ * It does two things
+ *  --> Checks the user if they are in the databse
+ *  --> Uses Auth Services to make sure they exist in the Firebase account
+ * 
+ * It returns a instance of the user's profile information
+ * @param {String} email 
+ * @param {String} password 
+ * @returns JSON Object
+ */
 const signInUser = async (email, password) => {
     try {
         const userCredentials = await signInWithEmailAndPassword(auth, email, password)
@@ -363,6 +517,17 @@ const signInUser = async (email, password) => {
     }
 }
 
+/**
+ * This functional component is responsible for updating the user's credentials'
+ * This takes in the necessary credentials
+ * Because in order to update the password, Firebase Auth must reverify the user's existing credentials
+ * They do this by re logging in the user
+ * After the original user is verified with their credentials, an updatePassword functionn is invoked
+ * A return of the boolean variable type determines whether the password was updates successfully or not
+ * @param {String} email 
+ * @param {String} password 
+ * @param {String} updatedPassword 
+ */
 const updateUserPassword = async (email, password, updatedPassword) => {
     const auth = getAuth();
     const user = auth.currentUser
@@ -375,11 +540,33 @@ const updateUserPassword = async (email, password, updatedPassword) => {
     
 }
 
+/**
+ * Thif functional export is used to send an email to the user's email address
+ * This email contains a secure link that resets the user's password
+ * The link is only active for 12 hours
+ * The 3rd arguemnt in the sendPasswordResetEmail is the url to where the user should be renavigated when the reset  
+ * @param {String} email 
+ * @returns 
+ */
 const forgotPassword = async (email) => {
     const auth = getAuth();
-    return sendPasswordResetEmail(auth, email, {url:'http://localhost:3000/login'})
+    return sendPasswordResetEmail(auth, email, {url:'https://viewrado.com/login'})
 }
 
+/**
+ *  This functional component is responsible for updating the user's credentials'
+ * This takes in the necessary credentials
+ * Because in order to update the email, Firebase Auth must reverify the user's existing credentials
+ * They do this by re logging in the user
+ * After the original user is verified with their credentials, an update email functionn is invoked
+ * A return of the boolean variable type determines whether the email was updates successfully or not
+ * 
+ * Additionally, an update to the databse if performed to ensure the user's Firestore documents are up-to-date
+ * @param {String} email 
+ * @param {String} password 
+ * @param {String} updatedEmail 
+ * @param {String} userUUID 
+ */
 const updateUserEmail = async (email, password, updatedEmail, userUUID) => {
 
     const auth = getAuth();
@@ -400,6 +587,19 @@ const updateUserEmail = async (email, password, updatedEmail, userUUID) => {
     })
 }
 
+/**
+ * This functional is responsible creating a new trip
+ * It essentially writes a new document to the database - the Trip Collections
+ * It is essential to have the users UUID as part of doucment props because that is how main queries are performed
+ * Additioanlly, more cleanup is done so that there is an array that each contains an object 
+ * Each object is representitive of a day on their trip
+ * @param {String} name 
+ * @param {JSON Date Object} start 
+ * @param {JSON Date Object} end 
+ * @param {Integer} totalPeople 
+ * @param {String} uuid 
+ * @returns an instance of the Create My Trip
+ */
 const createNewTrip = async (name, start, end, totalPeople, uuid) => {
     const collectionRef = collection(db, "Trips")
     const dates = getDatesInRange(start, end)

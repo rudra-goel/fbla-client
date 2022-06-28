@@ -382,7 +382,7 @@ function App() {
         <div onL>
             <body>
                 <NavigationBar />
-                <section class="hero">
+                <div class="hero">
 
                     <div class="search-bar">
 
@@ -392,7 +392,7 @@ function App() {
                             <form onSubmit={handleSubmitBasicearch}>
                                 <div class='main-searchbar-input-and-button'>
                                     <input class='main-searchbar' name="main-search-title" type='text' placeholder='Search Specific Destination' id='main-search-title'></input>
-                                    <button class='main-search-btn' type='submit' id='main-search-title'>
+                                    <button class='home-main-search-btn' type='submit' id='main-search-title'>
                                         <img src={searchBtn} alt="Search" width="35" height="35"></img>
                                     </button>
                                 </div>
@@ -403,7 +403,7 @@ function App() {
                     </div>
 
                     <div class='bottom-hero'>
-                        <div class="left-hero">
+                        <div class="left-hero-search">
 
                             <form onSubmit={handleSubmitAdvancedSearch}>
                                 <div class="search-criteria">
@@ -414,71 +414,71 @@ function App() {
                                         <div>
                                             <label class="activities">Filter by Activities</label><br></br>
                                             <div class="checkbox-search-criteria">
-                                                <input type="checkbox" id="AmusementParks" name="Amusement Parks, Play Centers, and Indoor Entertainment" value="Amusement Parks, Play Centers and Indoor Entertainment"></input>
+                                                <input class="activity-check" type="checkbox" id="AmusementParks" name="Amusement Parks, Play Centers, and Indoor Entertainment" value="Amusement Parks, Play Centers and Indoor Entertainment"></input>
                                                 <label for="AmusementParks">Amusement Parks, Play Centers, and Indoor Entertainment</label><br></br>
-                                                <input type="checkbox" id="Aquariums" name="Aquariums and Zoos" value="Aquariums and Zoos"></input>
+                                                <input class="activity-check" type="checkbox" id="Aquariums" name="Aquariums and Zoos" value="Aquariums and Zoos"></input>
                                                 <label for="Aquariums">Aquariums and Zoos</label><br></br>
-                                                <input type="checkbox" id="ArchaeologicalSites" name="Archaeological Sites" value="Archaeological Sites"></input>
+                                                <input class="activity-check" type="checkbox" id="ArchaeologicalSites" name="Archaeological Sites" value="Archaeological Sites"></input>
                                                 <label for="ArchaeologicalSites">Archaeological Sites</label><br></br>
-                                                <input type="checkbox" id="Arts" name="Arts Activities" value="Arts Activities"></input>
+                                                <input class="activity-check" type="checkbox" id="Arts" name="Arts Activities" value="Arts Activities"></input>
                                                 <label for="Arts">Arts Activities</label><br></br>
-                                                <input type="checkbox" id="Ballooning" name="Ballooning and Aerial Sightseeing" value="Ballooning and Aerial Sightseeing"></input>
+                                                <input class="activity-check" type="checkbox" id="Ballooning" name="Ballooning and Aerial Sightseeing" value="Ballooning and Aerial Sightseeing"></input>
                                                 <label for="Ballooning">Ballooning and Aerial Sightseeing</label><br></br>
-                                                <input type="checkbox" id="Botanical" name="Botanical Gardens" value="Botanical Gardens"></input>
+                                                <input class="activity-check" type="checkbox" id="Botanical" name="Botanical Gardens" value="Botanical Gardens"></input>
                                                 <label for="Botanical">Botanical Gardens</label><br></br>
-                                                <input type="checkbox" id="Breweries" name="Breweries" value="Breweries"></input>
+                                                <input class="activity-check" type="checkbox" id="Breweries" name="Breweries" value="Breweries"></input>
                                                 <label for="Breweries">Breweries</label><br></br>
-                                                <input type="checkbox" id="Casinos" name="Casinos" value="Casinos"></input>
+                                                <input class="activity-check" type="checkbox" id="Casinos" name="Casinos" value="Casinos"></input>
                                                 <label for="Casinos">Casinos</label><br></br>
-                                                <input type="checkbox" id="Certified" name="Certified Creative Districts" value="Certified Creative Districts"></input>
+                                                <input class="activity-check" type="checkbox" id="Certified" name="Certified Creative Districts" value="Certified Creative Districts"></input>
                                                 <label for="Certified">Certified Creative Districts</label><br></br>
-                                                <input type="checkbox" id="Cideries" name="Cideries" value="Cideries"></input>
+                                                <input class="activity-check" type="checkbox" id="Cideries" name="Cideries" value="Cideries"></input>
                                                 <label for="Cideries">Cideries</label><br></br>
-                                                <input type="checkbox" id="Culinary" name="Culinary Experiences" value="Culinary Experiences"></input>
+                                                <input class="activity-check" type="checkbox" id="Culinary" name="Culinary Experiences" value="Culinary Experiences"></input>
                                                 <label for="Culinary">Culinary Experiences</label><br></br>
-                                                <input type="checkbox" id="Distilleries" name="Distilleries" value="Distilleries"></input>
+                                                <input class="activity-check" type="checkbox" id="Distilleries" name="Distilleries" value="Distilleries"></input>
                                                 <label for="Distilleries">Distilleries</label><br></br>
-                                                <input type="checkbox" id="Ecotourism" name="Ecotourism" value="Ecotourism"></input>
+                                                <input class="activity-check" type="checkbox" id="Ecotourism" name="Ecotourism" value="Ecotourism"></input>
                                                 <label for="Ecotourism">Ecotourism</label><br></br>
-                                                <input type="checkbox" id="Factory Tours" name="Factory Tours" value="Factory Tours"></input>
+                                                <input class="activity-check" type="checkbox" id="Factory Tours" name="Factory Tours" value="Factory Tours"></input>
                                                 <label for="Factory Tours">Factory Tours</label><br></br>
-                                                <input type="checkbox" id="Farm" name="Farm" value="Farm and Ranch Activities"></input>
+                                                <input class="activity-check" type="checkbox" id="Farm" name="Farm" value="Farm and Ranch Activities"></input>
                                                 <label for="Farm">Farm and Ranch Activities</label><br></br>
-                                                <input type="checkbox" id="Hot Springs" name="Hot Springs" value="Hot Springs"></input>
+                                                <input class="activity-check"type="checkbox" id="Hot Springs" name="Hot Springs" value="Hot Springs"></input>
                                                 <label for="Hot Springs">Hot Springs</label><br></br>
-                                                <input type="checkbox" id="Mines" name="Mines and Gold Panning" value="Mines and Gold Panning"></input>
+                                                <input class="activity-check" type="checkbox" id="Mines" name="Mines and Gold Panning" value="Mines and Gold Panning"></input>
                                                 <label for="Mines">Mines and Gold Panning</label><br></br>
-                                                <input type="checkbox" id="Museums" name="Museums" value="Museums"></input>
+                                                <input class="activity-check" type="checkbox" id="Museums" name="Museums" value="Museums"></input>
                                                 <label for="Museums">Museums</label><br></br>
-                                                <input type="checkbox" id="National Monuments" name="National Monuments" value="National Monuments"></input>
+                                                <input class="activity-check" type="checkbox" id="National Monuments" name="National Monuments" value="National Monuments"></input>
                                                 <label for="National Monuments">National Monuments</label><br></br>
-                                                <input type="checkbox" id="National Parks" name="National Parks" value="National Parks"></input>
+                                                <input class="activity-check" type="checkbox" id="National Parks" name="National Parks" value="National Parks"></input>
                                                 <label for="National Parks">National Parks</label><br></br>
-                                                <input type="checkbox" id="Pro Sports" name="Pro Sports" value="Pro Sports"></input>
+                                                <input class="activity-check" type="checkbox" id="Pro Sports" name="Pro Sports" value="Pro Sports"></input>
                                                 <label for="Pro Sports">Pro Sports</label><br></br>
-                                                <input type="checkbox" id="Rodeos and County Fairs" name="Rodeos and County Fairs" value="Rodeos and County Fairs"></input>
+                                                <input class="activity-check" type="checkbox" id="Rodeos and County Fairs" name="Rodeos and County Fairs" value="Rodeos and County Fairs"></input>
                                                 <label for="Rodeos and County Fairs">Rodeos and County Fairs</label><br></br>
-                                                <input type="checkbox" id="Scenic Railways" name="Scenic Railways" value="Scenic Railways"></input>
+                                                <input class="activity-check" type="checkbox" id="Scenic Railways" name="Scenic Railways" value="Scenic Railways"></input>
                                                 <label for="Scenic Railways">Scenic Railways</label><br></br>
-                                                <input type="checkbox" id="Spas" name="Spas" value="Spas"></input>
+                                                <input class="activity-check" type="checkbox" id="Spas" name="Spas" value="Spas"></input>
                                                 <label for="Spas">Spas</label><br></br>
-                                                <input type="checkbox" id="State Parks" name="State Parks" value="State Parks"></input>
+                                                <input class="activity-check" type="checkbox" id="State Parks" name="State Parks" value="State Parks"></input>
                                                 <label for="State Parks">State Parks</label><br></br>
-                                                <input type="checkbox" id="Tours" name="Tours" value="Tours"></input>
+                                                <input class="activity-check" type="checkbox" id="Tours" name="Tours" value="Tours"></input>
                                                 <label for="Tours">Tours</label><br></br>
-                                                <input type="checkbox" id="Yoga and Fitness" name="Yoga and Fitness" value="Yoga and Fitness"></input>
+                                                <input class="activity-check" type="checkbox" id="Yoga and Fitness" name="Yoga and Fitness" value="Yoga and Fitness"></input>
                                                 <label for="Yoga and Fitness">Yoga and Fitness</label><br></br>
                                             </div>
                                         </div>
                                         
                                         <div class="search-star">
-                                            <label>Filter by Average Rating</label><br></br>
-                                            <input type="number" id="search-stars" name="search-stars" min="1" max="5" />   Minimum Average Stars
+                                            <label class="average-star">Filter by Average Rating</label><br></br>
+                                            <input class="search-stars" type="number" id="search-stars" name="search-stars" min="1" max="5" /> Minimum Average Stars
                                             
                                         </div>
 
                                         <div class="search-intensity">
-                                            <label class="intensity">Filter by Activity Intensity Level</label><br></br>
+                                            <label class="intensity">Filter by Activity Intensity Level</label>
                                             <input type="radio" name="search-intensity" id="intensityL" value="Low" ></input>
                                             <label for="intensityL">Low</label>
                                             <input type="radio" name="search-intensity" id="intensityM" value="Medium"></input>
@@ -486,24 +486,24 @@ function App() {
                                             <input type="radio" name="search-intensity" id="intensityH" value="High"></input>
                                             <label for="intensityH">High</label>
                                         </div>
-                                        <div class="search-location">
 
-                                            <label class="location">Filter by Location</label><br></br>
+                                        <div class="search-location">
+                                            <label class="location">Filter by Location</label>
+
                                             <input type="radio" name="search-location" id="radio1"></input>
                                             <label for="radio1">Filter by range to ZIP Code</label>
-                                            <br></br>
-                                            <input type="radio" name="search-location" id="radio2"></input>
-                                            <label for="radio2">Filter by city search</label><br></br>
 
                                             <div class="location-search-slider">
-                                                <input type="range" id="slider" defaultValue="10" min="1" max="100" onChange={handleRangerAction()}/>
-                                                <br></br>
+                                                <input class="location-slider" type="range" id="slider" defaultValue="10" min="1" max="100" onChange={handleRangerAction()}/>
                                                 <div class="miles-paragraph">
                                                     <label id="rangeValueID">10</label>
                                                     <label class="many-miles"> miles radius from</label>
+                                                    <input class="zip-input" type="text" placeholder="ZIP Code" id="ZIPinput"></input>
                                                 </div>                                                
-                                                <input class="zip-input" type="text" placeholder="ZIP Code" id="ZIPinput"></input>
                                             </div>
+
+                                            <input type="radio" name="search-location" id="radio2"></input>
+                                            <label for="radio2">Filter by city search</label>                                        
 
                                             <div class="location-search-name">
                                                 <label for="city-input-box">City:</label>
@@ -512,29 +512,26 @@ function App() {
                                         </div>
 
                                         <div class="demographic">
-                                            <div class="Audience">
-                                                <label class="name-age">Filter by Audience</label><br></br>
-                                                <input type="radio" id="adult" name="Audience" value="Adult"></input>
-                                                <label for="adult">Adults Only</label><br></br>
-                                                <input type="radio" id="family" name="Audience" value="Family"></input>
-                                                <label for="family">Family</label><br></br>
-                                            </div>
-                                            <div class="cost">
-                                                <div class="Price Range">
-                                                    <label class="price">Filter by Price Range</label><br></br>
-                                                    <input type="number" id="pricemin" placeholder="Price Min" min="0" max="1000"></input>
-                                                    <input type="number" id="pricemax" placeholder="Price Max" min="0" max="1000"></input>
-                                                </div>
-                                            </div>
-
-                                            <br></br>
-
-                                            <div class="search-btn">
-                                                <button type='reset' class="search-btn">Clear Form</button>
-                                                <button class="search-btn" type="submit" id="apply-search-filter-btn">Apply Filters</button>
-                                            </div>
-
+                                                <label class="name-age">Filter by Audience</label>
+                                                <input class="adult" type="radio" id="adult" name="Audience" value="Adult"></input>
+                                                <label for="adult">Adults Only</label>
+                                                <input class="family" type="radio" id="family" name="Audience" value="Family"></input>
+                                                <label for="family">Family</label>
                                         </div>
+
+                                        <div class="cost">
+                                                <label class="price">Filter by Price Range</label>
+                                                <input class="pricemin" type="number" id="pricemin" placeholder="Min Price" min="0" max="4000"></input>
+                                                <input class="pricemax" type="number" id="pricemax" placeholder="Max Price" min="0" max="4000"></input>
+                                        </div>
+
+                                        <br></br>
+
+                                        <div class="search-btn">
+                                            <button type='reset' class="search-btn-clear">Clear Form</button>
+                                            <button class="search-btn-apply" type="submit" id="apply-search-filter-btn">Apply Filters</button>
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -549,7 +546,7 @@ function App() {
                             <LocationCardContainer />
                         </div>
                     </div>
-                </section>
+                </div>
 
                 <section class="contact-info">
                     <div class="container">

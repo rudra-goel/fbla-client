@@ -43,15 +43,15 @@
   
   .if-logged-in-navbar button{
     background-color: var(--primary-color);
-      border-radius:20px;
-      border:1px solid var(--primary-color);
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:1em;
-      padding:.5em .75em;
-      text-decoration:none;
+    border-radius:20px;
+    border:1px solid var(--primary-color);
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:1em;
+    padding:.5em .75em;
+    text-decoration:none;
   }
 
   .if-not-logged-in-navbar a{

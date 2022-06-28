@@ -536,7 +536,7 @@ function App(){
                                 })
 
                             ) : (
-                                <p1>Be the First to Review!</p1>
+                                <div class="first-to-review">Be the First to Review!</div>
                             )
                         }
                     </div>    

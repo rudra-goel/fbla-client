@@ -42,7 +42,7 @@ h3 {
 /*
 This changes the form to have more stylized input boxes
 */
-input{
+.update-prof-input{
     width: 50%;
     padding: 0 0.5em;
     margin: 0 0.5em;

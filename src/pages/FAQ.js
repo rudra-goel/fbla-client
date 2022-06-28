@@ -22,7 +22,7 @@ import { useDispatch } from 'react-redux'
 /**
  * Image used for the search button
  */
-import searchBtn from './Images/SearchButton.png'
+import searchBtn from './Images/SearchButtonWhite.png'
 /**
  * Middleman Function used to send the search strign to the API and return the array of JSON objects back to the component
  */
