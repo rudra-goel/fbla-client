@@ -255,11 +255,11 @@ function App() {
 
         if (counter == 0) { chbxActivities.push(-1) }
 
-        if (document.getElementById("radio1").checked) {
-            ZIPFilterArray.push(rangeVal)
-            ZIPFilterArray.push((document.getElementById("ZIPinput").value))
+        // if (document.getElementById("radio1").checked) {
+        //     ZIPFilterArray.push(rangeVal)
+        //     ZIPFilterArray.push((document.getElementById("ZIPinput").value))
             
-        }
+        // }
         
         if (document.getElementById("radio2").checked) {
             ZIPFilterArray.push(-1)
