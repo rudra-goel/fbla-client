@@ -28,13 +28,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAjDGlBPU1qKwh9gJp9vQfA--iMO0ZSmxc",
-  authDomain: "viewrado-e0652.firebaseapp.com",
-  projectId: "viewrado-e0652",
-  storageBucket: "viewrado-e0652.appspot.com",
-  messagingSenderId: "87552897261",
-  appId: "1:87552897261:web:3bc6b8f14fb58f61541ce4",
-  measurementId: "G-Y9P3QQM9KM"
+  apiKey: "AIzaSyC-4HQTDEXtXTWzMsXhWq5sGTfPqTJN0q0",
+  authDomain: "viewradotestting.firebaseapp.com",
+  projectId: "viewradotestting",
+  storageBucket: "viewradotestting.appspot.com",
+  messagingSenderId: "817836503159",
+  appId: "1:817836503159:web:c57715fb24951ca8159672"
 };
 
 // Initialize Firebase
