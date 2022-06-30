@@ -259,7 +259,9 @@ function App() {
             ZIPFilterArray.push(rangeVal)
             ZIPFilterArray.push((document.getElementById("ZIPinput").value))
             
-        } else if (document.getElementById("radio2").checked) {
+        }
+        
+        if (document.getElementById("radio2").checked) {
             ZIPFilterArray.push(-1)
             CityArray.push((document.getElementById("city-input-box").value))
         } else {
