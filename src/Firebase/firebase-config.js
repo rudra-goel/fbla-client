@@ -1,7 +1,23 @@
 // Import the functions you need from the SDKs you need
 import firebase, { initializeApp } from "firebase/app";
+
+/**
+ * This is an import used to access the storage variables in our Firebase application
+ * We pass in the app varible as is contains all of the config file
+ */
 import { getStorage } from "firebase/storage"
+
+/**
+ * This is the method imported from firebase that gives us access to our Firestore instance
+ * We pass in the app variable as is contains all of the config file
+ */
 import { getFirestore } from "@firebase/firestore"
+
+/**
+ * Both Get auth and GoogleAuthProvider are functions imported from the auth service of firebase
+ * It offers the ability create and authenticate usrs into our system
+ * All of this information is done throught google cloud services
+ */
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
 
 
@@ -24,12 +40,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+/**
+ * Storeage instance called through the imported function
+ */
 export const storage = getStorage(app)
 
-
+/**
+ * Auth instance called through the imported function
+ */
 export const auth = getAuth(app)
 
+/**
+ * Provider instance called through the imported function
+ */
 export const provider = new GoogleAuthProvider();
 
+/**
+ * Database instance called through the imported function
+ */
 export const db = getFirestore(app);
 

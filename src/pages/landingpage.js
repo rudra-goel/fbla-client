@@ -490,7 +490,7 @@ function App() {
                                         <div class="search-location">
                                             <label class="location">Filter by Location</label>
 
-                                            <input type="radio" name="search-location" id="radio1"></input>
+                                            {/* <input type="radio" name="search-location" id="radio1"></input>
                                             <label for="radio1">Filter by range to ZIP Code</label>
 
                                             <div class="location-search-slider">
@@ -500,7 +500,7 @@ function App() {
                                                     <label class="many-miles"> miles radius from</label>
                                                     <input class="zip-input" type="text" placeholder="ZIP Code" id="ZIPinput"></input>
                                                 </div>                                                
-                                            </div>
+                                            </div> */}
 
                                             <input type="radio" name="search-location" id="radio2"></input>
                                             <label for="radio2">Filter by city search</label>                                        

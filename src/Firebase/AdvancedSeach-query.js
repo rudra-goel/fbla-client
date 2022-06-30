@@ -31,7 +31,7 @@ const queryByStars = async (collectionRef, params) => {
 }
 
 const queryByZIP = async (collectionRef, params) => {
-    
+    console.log(params.Zip)
     let nearby = await zipcodes.near(params.Zip[1], params.Zip[0])
 
     const queryRef = query(collectionRef, where("Zip", "in", nearby))
